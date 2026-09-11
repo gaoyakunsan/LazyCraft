@@ -1,5 +1,5 @@
 'use client'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Breadcrumb, Button, Card, Tag } from 'antd'
 import Link from 'next/link'
 import styles from './index.module.scss'
@@ -15,12 +15,24 @@ const _tags: any = {
   Failed: { text: '失败', color: 'error' },
   Cancel: { text: '已取消', color: 'default' },
 }
+// 日志详情页只拉取并渲染尾部 N 行，避免大日志整文件渲染导致页面卡顿
+const TAIL_LINES = 1000
+// 轮询间隔（毫秒）：任务运行中时定时刷新状态与日志
+const POLL_INTERVAL = 5000
+const RUNNING_STATUS = ['InQueue', 'Pending', 'Submitting', 'InProgress', 'Download']
+
 const AdjustDetail = (req) => {
   const { id } = req.params
   const [baseInfo, setBaseInfo] = useState<any>({})
   const [logLines, setLogLines] = useState<string[]>([])
+  const [logTotal, setLogTotal] = useState<number | null>(null)
   const [drawVisible, setDrawVisible] = useState(false)
+  const logWrapRef = useRef<HTMLDivElement>(null)
+  // 用户向上滚动查看历史日志时不再自动滚动到底部
+  const stickBottomRef = useRef(true)
+  const fetchingRef = useRef(false)
   const token = localStorage.getItem('console_token')
+  const isRunning = RUNNING_STATUS.includes(baseInfo?.status)
   const getInfo = useCallback(async () => {
     try {
       const res = await getAdjustInfo({ url: `/finetune/detail/${id}` })
@@ -31,8 +43,11 @@ const AdjustDetail = (req) => {
     }
   }, [id])
   const getLog = useCallback(() => {
-    fetch(`${apiPrefix}/finetune/log/${id}`, {
-      method: 'GET', // 或 'POST', 'PUT', 'DELETE' 等
+    if (fetchingRef.current)
+      return
+    fetchingRef.current = true
+    fetch(`${apiPrefix}/finetune/log/${id}?tail=${TAIL_LINES}`, {
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`, // 设置 Authorization 头
       },
@@ -41,6 +56,9 @@ const AdjustDetail = (req) => {
         // 检查响应是否成功
         if (!response.ok)
           throw new Error('error')
+        const total = Number.parseInt(response.headers.get('X-Log-Total-Lines') || '', 10)
+        if (!Number.isNaN(total))
+          setLogTotal(total)
         return response.arrayBuffer()
       })
       .then((data) => {
@@ -60,12 +78,63 @@ const AdjustDetail = (req) => {
       .catch((error) => {
         console.error('There has been a problem with your fetch operation:', error)
       })
-  }, [id])
+      .finally(() => {
+        fetchingRef.current = false
+      })
+  }, [id, token])
+
+  const handleDownloadLog = useCallback(() => {
+    fetch(`${apiPrefix}/finetune/log/${id}?download=1`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        if (!response.ok)
+          throw new Error('error')
+        return response.blob()
+      })
+      .then((blob) => {
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = `finetune_${id}.log`
+        a.click()
+        URL.revokeObjectURL(url)
+      })
+      .catch((error) => {
+        console.error('下载日志失败:', error)
+      })
+  }, [id, token])
+
+  const handleLogScroll = () => {
+    const el = logWrapRef.current
+    if (el)
+      stickBottomRef.current = el.scrollHeight - el.scrollTop - el.clientHeight < 40
+  }
 
   useEffect(() => {
     getInfo()
     getLog()
   }, [getInfo, getLog])
+
+  // 任务运行中时轮询刷新状态与日志，结束后自动停止
+  useEffect(() => {
+    if (!isRunning)
+      return
+    const timer = setInterval(() => {
+      getInfo()
+      getLog()
+    }, POLL_INTERVAL)
+    return () => clearInterval(timer)
+  }, [isRunning, getInfo, getLog])
+
+  // 日志更新时，若用户停留在底部则跟随滚动到最新
+  useEffect(() => {
+    const el = logWrapRef.current
+    if (el && stickBottomRef.current)
+      el.scrollTop = el.scrollHeight
+  }, [logLines])
 
   const handleAddModalClose = () => {
     setDrawVisible(false)
@@ -117,10 +186,17 @@ const AdjustDetail = (req) => {
             </div>
           </div>
         </Card>
-        <Card type='inner' title={<div className={styles.title} >
-          训练日志
-        </div>}>
-          <div className={styles.logWrap}>
+        <Card
+          type='inner'
+          title={<div className={styles.title}>训练日志</div>}
+          extra={<Button type='link' onClick={handleDownloadLog}>下载完整日志</Button>}
+        >
+          {
+            logTotal !== null && logTotal > TAIL_LINES && (
+              <div className={styles.logTip}>日志较大，仅展示最近日志（共 {logTotal.toLocaleString()} 行），完整内容请下载查看</div>
+            )
+          }
+          <div ref={logWrapRef} className={styles.logWrap} onScroll={handleLogScroll}>
             {logLines.map((line, index) => (
               <div key={index} className={styles.logLine}>
                 {line}

@@ -114,9 +114,9 @@ class FinetuneService:
         )
         for i in pagination.items:
             if i.created_by and i.created_by == Account.get_administrator_id():
-                i.user_name = "Lazy LLM官方"
+                i.user_name = "admin"
                 if i.created_by_account:
-                    i.created_by_account.name = "Lazy LLM官方"
+                    i.created_by_account.name = "admin"
             else:
                 i.user_name = getattr(db.session.get(Account, i.created_by), "name", "")
             # 训练时长计算逻辑：始终优先使用 LazyLLM 的 cost 值（如果存在且有效）
@@ -789,11 +789,12 @@ class FinetuneService:
         db.session.commit()
         return record
 
-    def task_logs(self, task_id):
+    def task_logs(self, task_id, tail=None):
         """获取微调任务日志流。
 
         Args:
             task_id (int): 任务ID。
+            tail (int, optional): 只返回日志尾部指定行数，避免大日志整文件传输导致前端渲染卡顿。
 
         Returns:
             generator/stream: 日志内容生成器或流。
@@ -810,9 +811,66 @@ class FinetuneService:
                     if status == "Pending":
                         return reader("任务正在排队中..")
             if task.log_path is not None and task.log_path != "":
+                if tail:
+                    runner = storage.storage_runner
+                    if hasattr(runner, "get_filepath"):
+                        return reader(self._read_log_tail(runner.get_filepath(task.log_path), tail))
+                    # 非本地存储无文件路径语义，退化为全量流式返回
+                    return storage.load_stream(task.log_path)
                 return storage.load_stream(task.log_path)
             else:
                 return reader("没有收集到日志")
+
+    @staticmethod
+    def _read_log_tail(path, n=1000, block=64 * 1024):
+        """从日志文件尾部读取最后 n 行。
+
+        通过 seek 从文件末尾按块倒读，只加载尾部内容，不整文件加载。
+
+        Args:
+            path (str): 日志文件路径。
+            n (int): 需要返回的最大行数。
+            block (int): 每次向前读取的块大小（字节）。
+
+        Returns:
+            str: 文件尾部至多 n 行的文本内容。
+        """
+        if not os.path.exists(path):
+            return "没有收集到日志"
+        with open(path, "rb") as f:
+            f.seek(0, os.SEEK_END)
+            pos = f.tell()
+            data = b""
+            while pos > 0 and data.count(b"\n") <= n:
+                read_size = min(block, pos)
+                pos -= read_size
+                f.seek(pos)
+                data = f.read(read_size) + data
+        lines = data.split(b"\n")
+        if pos > 0 and len(lines) > 1:
+            lines = lines[1:]  # 首段可能是被截断的半行，丢弃
+        if lines and lines[-1] == b"":
+            lines = lines[:-1]  # 文件末尾换行产生的空串
+        return b"\n".join(lines[-n:]).decode("utf-8", errors="replace")
+
+    @staticmethod
+    def _count_log_lines(path, block=1024 * 1024):
+        """统计日志文件总行数。
+
+        Args:
+            path (str): 日志文件路径。
+            block (int): 每次读取的块大小（字节）。
+
+        Returns:
+            int: 文件总行数，文件不存在时返回 0。
+        """
+        if not os.path.exists(path):
+            return 0
+        total = 0
+        with open(path, "rb") as f:
+            for chunk in iter(lambda: f.read(block), b""):
+                total += chunk.count(b"\n")
+        return total
 
     def ft_pause_task(self, job_id, task_name):
         """调用微调后端接口暂停任务。

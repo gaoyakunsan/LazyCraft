@@ -27,6 +27,7 @@ from parts.finetune.finetune_service import FinetuneService
 from parts.logs import Action, LogService, Module
 from parts.urls import api
 from utils.util_database import db
+from utils.util_storage import storage
 
 from ..data.data_service import DataService
 from ..models_hub.service import ModelService
@@ -401,6 +402,9 @@ class FinetuneDatasetApi(Resource):
 
 
 class FinetuneLogApi(Resource):
+    # tail 模式单次返回的最大行数，防止超大 tail 变相全量拉取
+    MAX_TAIL_LINES = 5000
+
     @login_required
     def get(self, task_id):
         """获取微调任务日志。
@@ -409,6 +413,11 @@ class FinetuneLogApi(Resource):
 
         Args:
             task_id (int): 微调任务ID
+
+        Query Params:
+            tail (int, optional): 只返回日志尾部指定行数（详情页展示用，避免大日志卡顿），
+                并通过响应头 X-Log-Total-Lines 返回日志总行数。
+            download (str, optional): 传 1 时下载完整日志（Content-Disposition: attachment）。
 
         Returns:
             Response: 日志文件响应，包含日志内容
@@ -420,11 +429,22 @@ class FinetuneLogApi(Resource):
         task = db.session.query(FinetuneTask).filter(FinetuneTask.id == task_id,).first()
         self.check_can_read_object(task)
         service = FinetuneService(current_user)
+        tail = request.args.get("tail", type=int)
+        download = request.args.get("download", default="", type=str) == "1"
+        if tail:
+            tail = max(1, min(tail, self.MAX_TAIL_LINES))
         headers = {
-            "Content-Disposition": "attachment; filename=finetune.log",
+            "Content-Disposition": (
+                f"attachment; filename=finetune_{task_id}.log" if download else "inline"
+            ),
             "Content-Type": "text/plain; charset=utf-8",
         }
-        return Response(service.task_logs(task_id), headers=headers)
+        if tail and task and task.log_path:
+            runner = storage.storage_runner
+            if hasattr(runner, "get_filepath"):
+                log_file = runner.get_filepath(task.log_path)
+                headers["X-Log-Total-Lines"] = str(service._count_log_lines(log_file))
+        return Response(service.task_logs(task_id, tail=tail), headers=headers)
 
 
 class FinetuneStartApi(Resource):

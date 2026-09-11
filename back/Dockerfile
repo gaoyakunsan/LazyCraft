@@ -50,7 +50,10 @@ RUN cd /tmp/LazyLLM && pip install -r requirements.txt --no-cache-dir && \
     cp pyproject.toml lazyllm/ && \
     pip install . --no-cache-dir && \
     cd .. && rm -rf LazyLLM && \
-    pip cache purge 
+    pip cache purge
+
+# 固定 mcp 为 1.x：mcp 2.x 移除了顶层 McpError 导出，与 parts/mcp/service.py 不兼容
+RUN pip install "mcp<2" --no-cache-dir
 
 # 创建必要的目录
 RUN mkdir -p /app/src /app/upload /app/logs /app/build_so
@@ -81,17 +84,16 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt \
     && pip cache purge && rm -rf /tmp/*
     
 # 安装Node.js环境, 暂用代理开源后删除
-ENV NVM_DIR=/usr/local/nvm/.nvm
-RUN mkdir -p /usr/local/nvm/.nvm \
-    && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash \
-    && . "$NVM_DIR/nvm.sh" \
-    && export NVM_NODEJS_ORG_MIRROR=https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/ \
-    && nvm install 22 \
-    && nvm use 22 \
-    && nvm alias default 22 \
-    && ln -s "$NVM_DIR/versions/node/$(nvm version 22)/bin/node" /usr/local/bin/node \
-    && ln -s "$NVM_DIR/versions/node/$(nvm version 22)/bin/npm" /usr/local/bin/npm \
-    && ln -s "$NVM_DIR/versions/node/$(nvm version 22)/bin/npx" /usr/local/bin/npx \
+# 注: GitHub 直连不可用, 改用清华 nodejs-release 镜像直接安装 Node 官方二进制(替代 nvm),
+#     保留原有的 /usr/local/bin 软链与 npm 全局包, 运行时 npx 调用方式不变
+RUN mkdir -p /usr/local/node \
+    && curl -fsSL https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v22.16.0/node-v22.16.0-linux-x64.tar.gz \
+        | tar -xzf - --strip-components=1 -C /usr/local/node \
+    && ln -sf /usr/local/node/bin/node /usr/local/bin/node \
+    && ln -sf /usr/local/node/bin/npm /usr/local/bin/npm \
+    && ln -sf /usr/local/node/bin/npx /usr/local/bin/npx \
+    && export PATH=/usr/local/node/bin:$PATH \
+    && npm config set registry https://registry.npmmirror.com \
     && npm install -g mcp-searxng-public \
     && npm install -g mcp-email
 

@@ -50,6 +50,19 @@ class LocalStorage(AbstractStorage):
             )  # 改为 /app/storage 目录，而非 /app/src/storage
         self.folder = folder
 
+    def get_filepath(self, filename: str) -> str:
+        """获取文件在本地文件系统中的完整路径。
+
+        Args:
+            filename: 相对于存储目录的文件名。
+
+        Returns:
+            str: 文件的绝对路径。
+        """
+        if not self.folder or self.folder.endswith("/"):
+            return self.folder + filename
+        return self.folder + "/" + filename
+
     def save(self, filename, data):
         """保存数据到本地文件。
 
