@@ -335,6 +335,49 @@ class StartService(Resource):
         return build_response(message="Service started failed")
 
 
+class ServiceLogApi(Resource):
+    """服务日志控制器。
+
+    提供推理服务运行日志的增量查询，供前端轮询实现近实时刷新。
+    """
+
+    def __init__(self):
+        """初始化服务日志控制器。
+
+        Returns:
+            None: 无返回值。
+        """
+        self.infer_service = InferService()
+
+    @login_required
+    def get(self, service_id):
+        """处理GET请求，增量获取推理服务日志。
+
+        Args:
+            service_id (int): 服务ID，URL路径参数。
+            offset (int): 查询参数，上次读取的字节偏移量，默认0。
+            limit (int): 查询参数，单次最多返回的字节数，默认200000。
+
+        Returns:
+            dict: 包含日志内容和偏移量的响应。
+        """
+        offset = request.args.get("offset", 0, type=int)
+        limit = request.args.get("limit", 200000, type=int)
+
+        service = InferModelService.query.get(service_id)
+        if not service:
+            return build_response(status=400, message="Service not found")
+        self.check_can_read_object(service)
+        if service.tenant_id != current_user.current_tenant_id:
+            return build_response(status=400, message="当前用户无权限操作")
+
+        try:
+            result = self.infer_service.get_service_log(service_id, offset, limit)
+        except ValueError as e:
+            return build_response(status=400, message=str(e))
+        return build_response(result=result)
+
+
 class StopService(Resource):
     """停止服务控制器。
 
@@ -689,6 +732,7 @@ api.add_resource(CreateService, "/infer-service/service/create")
 api.add_resource(StartServiceGroup, "/infer-service/group/start")
 api.add_resource(CloseServiceGroup, "/infer-service/group/close")
 api.add_resource(StartService, "/infer-service/service/start")
+api.add_resource(ServiceLogApi, "/infer-service/service/log/<int:service_id>")
 api.add_resource(StopService, "/infer-service/service/stop")
 api.add_resource(DeleteService, "/infer-service/service/delete")
 api.add_resource(ListForDrawService, "/infer-service/list/draw")

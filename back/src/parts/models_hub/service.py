@@ -381,7 +381,7 @@ class ModelService:
 
         for i in pagination.items:
             if i.user_id and i.user_id == Account.get_administrator_id():
-                i.user_name = "Lazy LLM官方"
+                i.user_name = "admin"
             else:
                 i.user_name = getattr(db.session.get(Account, i.user_id), "name", "")
             if search_online_llm:
@@ -1070,6 +1070,30 @@ class ModelService:
             except Exception as e:
                 logging.info(f"amp delete failed: {str(e)}")
                 # return False
+            # 停止引用该模型(含子模型)的推理服务，释放GPU
+            try:
+                from parts.inferservice.model import InferModelService
+                from parts.inferservice.service import InferService
+
+                related_model_ids = [model.id]
+                related_model_ids += [
+                    c.id
+                    for c in db.session.query(Lazymodel)
+                    .filter(Lazymodel.parent_model_id == model.id)
+                    .all()
+                ]
+                related_services = InferModelService.query.filter(
+                    InferModelService.model_id.in_(related_model_ids)
+                ).all()
+                for infer_service in related_services:
+                    try:
+                        InferService().stop_service(infer_service.id)
+                    except Exception as stop_err:
+                        logging.warning(
+                            f"删除模型前停止推理服务失败: service_id={infer_service.id}, err={stop_err}"
+                        )
+            except Exception as e:
+                logging.warning(f"删除模型前清理推理服务异常: {e}")
             model.deleted_flag = 1
             Tag.delete_bindings(Tag.Types.MODEL, model_id)
             db.session.query(Lazymodel).filter(Lazymodel.id == model.id).update(
@@ -1890,7 +1914,7 @@ class ModelService:
             raise CommonError("基础模型不存在")
         base = marshal(model, fields.model_fields)
         if model.user_id and model.user_id == Account.get_administrator_id():
-            base["user_name"] = "Lazy LLM官方"
+            base["user_name"] = "admin"
         else:
             base["user_name"] = getattr(
                 db.session.get(Account, model.user_id), "name", ""

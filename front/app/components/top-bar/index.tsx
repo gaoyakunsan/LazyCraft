@@ -2,7 +2,6 @@
 import { useEffect } from 'react'
 import Link from 'next/link'
 import { Tooltip } from 'antd'
-import { GithubOutlined } from '@ant-design/icons'
 import { useRouter, useSelectedLayoutSegment } from 'next/navigation'
 import { useBoolean } from 'ahooks'
 import { Bars3Icon } from '@heroicons/react/20/solid'
@@ -59,12 +58,6 @@ const Header = () => {
     </Link>
   )
 
-  const renderGithubLink = () => (
-    <a href="https://github.com/LazyAGI/LazyLLM" target="_blank" className='flex mt-[-5px] text-[22px] items-center w-[1.3021vw]'>
-      <GithubOutlined />
-    </a>
-  )
-
   const renderDesktopNavigation = () => (
     <div className='flex items-center'>
       <AppNav />
@@ -93,14 +86,6 @@ const Header = () => {
       </div>
       <div
         className={`${style.iconWrap}`}
-        onClick={() => { navigationRouter.push('/docCenter') }}
-      >
-        <Tooltip title="帮助文档">
-          <Iconfont type='icon-bangzhuwendang' />
-        </Tooltip>
-      </div>
-      <div
-        className={`${style.iconWrap}`}
         onClick={() => { oepnProgressMonitor({ title: '上传/下载进度' }) }}
       >
         <Tooltip title="上传/下载进度">
@@ -125,7 +110,6 @@ const Header = () => {
       <div className='flex items-center'>
         {isMobileView && renderMobileMenuButton()}
         {!isMobileView && renderLogoSection()}
-        {renderGithubLink()}
       </div>
       {isMobileView && renderMobileLogo()}
       {!isMobileView && renderDesktopNavigation()}

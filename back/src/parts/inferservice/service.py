@@ -514,7 +514,7 @@ class InferService:
                     and infer_model_service_group.created_by
                     == Account.get_administrator_id()
                 ):
-                    user_name = "Lazy LLM官方"
+                    user_name = "admin"
                 else:
                     user_name = getattr(
                         db.session.get(Account, infer_model_service_group.created_by),
@@ -644,6 +644,82 @@ class InferService:
 
         return service_info_map
 
+    def get_service_log(self, service_id, offset=0, limit=200000):
+        """增量读取推理服务的运行日志。
+
+        通过AMS获取服务的日志文件路径(挂载卷内)，按字节偏移量增量读取，
+        支持前端轮询实现近实时刷新。
+
+        Args:
+            service_id (int): 服务ID。
+            offset (int): 上次读取到的字节偏移量，0表示从头(或尾部)加载。
+            limit (int): 单次最多返回的字节数，默认200KB。
+
+        Returns:
+            dict: 包含 content(日志内容)、offset(新的偏移量)、status(状态) 的字典。
+        """
+        service = InferModelService.query.get(service_id)
+        if not service:
+            raise ValueError("服务不存在")
+
+        if not service.gid:
+            return {"content": "服务未启动，暂无日志", "offset": 0, "status": "empty"}
+
+        # 从AMS获取日志文件路径
+        log_path = ""
+        try:
+            ams_get_url = (
+                os.getenv("AMS_ENDPOINT") + "/v1/inference_services/" + service.gid
+            )
+            response = requests.get(ams_get_url, timeout=5)
+            if response.status_code == 200:
+                log_path = response.json().get("log_path") or ""
+        except Exception as e:
+            logging.warning(f"获取AMS日志路径失败, gid: {service.gid}, error: {e}")
+
+        if not log_path:
+            return {"content": "未获取到日志文件路径", "offset": 0, "status": "nolog"}
+
+        if not os.path.exists(log_path):
+            return {
+                "content": "日志文件尚未生成，服务可能正在排队启动中...",
+                "offset": 0,
+                "status": "pending",
+            }
+
+        try:
+            file_size = os.path.getsize(log_path)
+            truncated = False
+            if offset <= 0:
+                # 首次加载：文件过大时只读尾部，避免一次传输过大内容
+                read_offset = max(0, file_size - limit)
+                truncated = read_offset > 0
+            else:
+                # 增量读取：偏移量越界(文件轮转)时自动收敛到文件末尾
+                read_offset = min(offset, file_size)
+
+            content = ""
+            new_offset = read_offset
+            if read_offset < file_size:
+                with open(log_path, "rb") as f:
+                    f.seek(read_offset)
+                    data = f.read(limit)
+                content = data.decode("utf-8", errors="replace")
+                new_offset = read_offset + len(data)
+
+            if truncated:
+                content = "【日志过长，仅显示最后部分】\n" + content
+
+            return {
+                "content": content,
+                "offset": new_offset,
+                "size": file_size,
+                "status": "ok",
+            }
+        except Exception as e:
+            logging.error(f"读取推理服务日志失败, log_path: {log_path}, error: {e}")
+            return {"content": f"读取日志失败: {e}", "offset": 0, "status": "error"}
+
     def create_infer_model_service_group(
         self, model_type, model_id, model_name, services
     ):
@@ -726,10 +802,13 @@ class InferService:
                 raise ValueError(f"服务组已{group_id} 不存在，请刷新列表重试")
             existing_service_names = set()
             for service in services:
-                # 检查服务名称是否重复
+                # 检查服务名称是否重复(限定当前租户,与列表查询口径一致)
                 existing_service = (
                     db.session.query(InferModelService)
-                    .filter(InferModelService.name == service.get("name"))
+                    .filter(
+                        InferModelService.name == service.get("name"),
+                        InferModelService.tenant_id == current_user.current_tenant_id,
+                    )
                     .first()
                 )
 
@@ -978,7 +1057,17 @@ class InferService:
                 logging.info(f"[stop_service] AMS停止服务成功，gid: {service.gid}")
                 service.gid = None
             else:
-                logging.warning(f"[stop_service] 服务gid为空，跳过AMS停止调用，service_id: {service_id}")
+                # gid 丢失兜底：AMS 可能残留同名服务(如历史记录被直接删库)，按服务名清理
+                ams_ok, ams_status, _ = self.ams_get_service_status(service.name)
+                if ams_ok and ams_status and ams_status != "Cancelled":
+                    logging.warning(
+                        f"[stop_service] 服务gid为空但AMS存在同名残留，按服务名清理: {service.name}, 状态: {ams_status}"
+                    )
+                    if not self.ams_stop_service(service.name):
+                        logging.warning(f"[stop_service] 按服务名清理AMS残留失败: {service.name}")
+                        return False
+                else:
+                    logging.warning(f"[stop_service] 服务gid为空，跳过AMS停止调用，service_id: {service_id}")
 
             # 检查当前用户是否为超级管理员
             account = Account.default_getone(current_user.id)
@@ -1032,15 +1121,18 @@ class InferService:
             logging.info(
                 f"ams_start_service 响应非JSON，status={response.status_code}, text={response.text}"
             )
-            return False, ""
+            return False, "", f"cloud-service 响应异常(HTTP {response.status_code})"
         logging.info(f"ams_start_service response: {response.status_code}")
         logging.info(f"ams_start_service response: {response.text}")
         if response.status_code != 200:
-            logging.info(
-                f"ams_start_service failed: {response_data.get('code')}, {response_data.get('message')}"
+            fail_reason = (
+                response_data.get("message")
+                or response_data.get("detail")
+                or f"HTTP {response.status_code}"
             )
-            return False, ""
-        return True, response_data.get("lwsName")
+            logging.info(f"ams_start_service failed: {fail_reason}")
+            return False, "", str(fail_reason)
+        return True, response_data.get("lwsName"), ""
 
     def is_cloud_service_available(self, timeout: float = 2.0):
         """检查 cloud-service 是否可用。
@@ -1101,18 +1193,37 @@ class InferService:
                 infer_model_name = (
                     model_info.model_key_ams + ":" + model_info.model_name
                 )
-            ams_start_service_result, ams_start_service_return = self.ams_start_service(
+            ams_start_service_result, ams_start_service_return, ams_fail_reason = self.ams_start_service(
                 service.name, infer_model_name, 1 if service.model_num_gpus is None or service.model_num_gpus < 1 else service.model_num_gpus
             )
             logging.info(
                 f"ams_start_service result: {ams_start_service_result}, {ams_start_service_return}"
             )
+            if not ams_start_service_result and ams_fail_reason and "already exists" in str(ams_fail_reason).lower():
+                # AMS 存在同名残留(如历史孤儿服务)，清理后重试一次
+                ams_ok, ams_status, _ = self.ams_get_service_status(service.name)
+                if ams_ok:
+                    logging.warning(
+                        f"启动撞名，清理AMS残留服务: {service.name}, 状态: {ams_status}"
+                    )
+                    self.ams_stop_service(service.name)
+                    (
+                        ams_start_service_result,
+                        ams_start_service_return,
+                        ams_fail_reason,
+                    ) = self.ams_start_service(
+                        service.name, infer_model_name, 1 if service.model_num_gpus is None or service.model_num_gpus < 1 else service.model_num_gpus
+                    )
+                    logging.info(
+                        f"ams_start_service retry result: {ams_start_service_result}, {ams_start_service_return}"
+                    )
             if ams_start_service_result:
                 service.gid = ams_start_service_return
                 service.job_id = ""
                 service.updated_time = TimeTools.now_datetime_china()
             else:
-                return False
+                # 启动失败时向前端透出原因，不再静默返回
+                raise ValueError(f"推理服务启动失败：{ams_fail_reason or 'cloud-service 无响应'}")
 
             # 只有非超级管理员需要增加GPU使用量统计
             if not account.is_super:

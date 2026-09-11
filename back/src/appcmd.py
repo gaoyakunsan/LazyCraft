@@ -568,7 +568,7 @@ def init_datasets():
     admin_account = AccountService.load_user(user_id=Account.get_administrator_id())
     temp_account = Account()
     temp_account.id = admin_account.id
-    temp_account.name = "Lazy LLM官方"
+    temp_account.name = "admin"
     temp_account.current_tenant_id = admin_account.current_tenant_id
     data_service = DataService(temp_account)
     tag_service = TagService(temp_account)
@@ -649,7 +649,7 @@ def init_scripts():
     admin_account = AccountService.load_user(user_id=Account.get_administrator_id())
     temp_account = Account()
     temp_account.id = admin_account.id
-    temp_account.name = "Lazy LLM官方"
+    temp_account.name = "admin"
     temp_account.current_tenant_id = admin_account.current_tenant_id
 
     # {"name":"官方脚本测试","description":"官方脚本测试","script_type":"数据清洗","data_type":"文本类","input_type":"local","script_url":"/app/upload/script/00000000-0000-0000-0000-000000000000/ff6d1689-2456-466d-b18d-96e671390ad6/alpaca_clean_data.py","icon":""}

@@ -41,7 +41,7 @@ openssl req -x509 -nodes -days $DAYS \
   -keyout $KEY_FILE \
   -out $CERT_FILE \
   -subj "/C=CN/ST=Beijing/L=Beijing/O=LazyCraft/OU=IT/CN=$DOMAIN" \
-  -addext "subjectAltName=DNS:localhost,DNS:*.localhost,IP:127.0.0.1"
+  -addext "subjectAltName=DNS:localhost,DNS:*.localhost,IP:127.0.0.1,IP:42.193.120.207"
 
 # 设置权限
 chmod 600 $KEY_FILE

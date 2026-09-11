@@ -19,7 +19,7 @@ const EntryNodeDefaults: ExecutionNodeDefault<EntryNodeCategory> = {
         name: 'config__output_shape',
         type: 'config__output_shape',
         label: '参数',
-        tooltip: '定义LazyLLM工作流需要的输入参数，可以选择多种格式',
+        tooltip: '定义工作流需要的输入参数，可以选择多种格式',
       },
     ],
   },

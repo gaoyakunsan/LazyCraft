@@ -469,7 +469,7 @@ class TenantUserListApi(Resource):
         self.check_can_read()
         accounts = TenantService.get_tenant_accounts(current_user.current_tenant_id)
         # 新造一个Account的官方账号，将官方账添加到accounts的第一个
-        llm_account = {"id": Account.get_administrator_id(), "name": "Lazy LLM官方"}
+        llm_account = {"id": Account.get_administrator_id(), "name": "admin"}
         accounts.insert(0, llm_account)
         return accounts
 

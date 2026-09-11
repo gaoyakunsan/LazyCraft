@@ -1,56 +1,15 @@
 'use client'
 import type { FC } from 'react'
-import { Suspense, useEffect, useState } from 'react'
-import Image from 'next/image'
+import { Suspense } from 'react'
 
 type LogoSiteComponentProps = {
   className?: string
 }
 
-const LogoSiteContent: FC<LogoSiteComponentProps> = ({
-  className,
-}) => {
-  const [customLogoName, setCustomLogoName] = useState('')
-
-  // 从localStorage获取自定义logo名称
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const storedLogoName = localStorage.getItem('posterName')
-      setCustomLogoName(storedLogoName || '')
-    }
-  }, [])
-
-  // 保存自定义logo名称到localStorage
-  useEffect(() => {
-    if (customLogoName && typeof window !== 'undefined')
-      localStorage.setItem('posterName', customLogoName)
-  }, [customLogoName])
-
-  // 渲染自定义logo
-  const renderCustomLogo = () => (
-    <Image
-      src={`/logo/${customLogoName}.png`}
-      alt='lazyLLMlogo'
-      width={120}
-      height={20}
-    />
-  )
-
-  // 渲染默认logo
-  const renderDefaultLogo = () => (
-    <Image
-      src='/logo/logo2.png'
-      alt='logo2'
-      width={120}
-      height={20}
-    />
-  )
-
-  return (
-    <div className={className}>
-      {customLogoName ? renderCustomLogo() : renderDefaultLogo()}
-    </div>
-  )
+// 演示环境隐藏默认品牌 Logo：直接不渲染任何内容。
+// 如需恢复或替换为客户 Logo，将 /logo/logo2.png 替换为对应图片并恢复渲染逻辑即可。
+const LogoSiteContent: FC<LogoSiteComponentProps> = () => {
+  return null
 }
 
 const BrandMark: FC<LogoSiteComponentProps> = ({ className }) => {

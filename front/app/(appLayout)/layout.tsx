@@ -41,7 +41,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 }
 
 export const metadata = {
-  title: 'LazyLLM',
+  title: '智能AI应用平台',
 }
 
 export default AppLayout

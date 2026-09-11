@@ -40,7 +40,7 @@ const AnotherLayout = ({ children }: AnotherLayoutProps) => {
 }
 
 export const metadata = {
-  title: 'LazyLLM',
+  title: '智能AI应用平台',
 }
 
 export default AnotherLayout

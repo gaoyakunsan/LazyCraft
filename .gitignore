@@ -1,2 +1,6 @@
 back/src/parts/data/common_datasets/common_datasets.zip
 docker/volumes/
+
+# 部署本机配置，不入库
+docker/.env
+docker/nginx/ssl/

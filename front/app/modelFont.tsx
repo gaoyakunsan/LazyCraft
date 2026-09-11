@@ -41,7 +41,7 @@ const ModelFont: React.FC = () => {
       width={600}
     >
       <div style={{ padding: '20px 0' }}>
-        <p>{message}，请前往<a href='https://github.com/LazyAGI/LazyCraft'>https://github.com/LazyAGI/LazyCraft</a></p>
+        <p>{message}，请联系管理员。</p>
       </div>
     </Modal>
   )

@@ -5,6 +5,7 @@ import { MinusCircleOutlined, PlusCircleOutlined, QuestionCircleOutlined } from 
 import { useUpdateEffect } from 'ahooks'
 import style from './page.module.scss'
 import ChatModal from './chatModal'
+import LogModal from './logModal'
 import ClassifyMode from '@/app/components/tagSelect/ClassifyMode'
 import CreatorSelect from '@/app/components/tagSelect/creatorSelect'
 import useRadioAuth from '@/shared/hooks/use-radio-auth'
@@ -64,6 +65,7 @@ const InferenceService = () => {
   const [creator, setCreator] = useState([]) as any
   const [riskModalOpen, setRiskModalOpen] = useState(false)
   const [pendingValues, setPendingValues] = useState<any>(null)
+  const [logService, setLogService] = useState<any>(null)
 
   // 添加轮询相关的引用
   const pollingTimer = useRef<NodeJS.Timeout | null>(null)
@@ -338,6 +340,11 @@ const InferenceService = () => {
     setVisible(true)
   }
 
+  const openLog = (e, item) => {
+    e.stopPropagation()
+    setLogService(item)
+  }
+
   const onPageChange = (page) => {
     setPageOption({ ...pageOption, page })
   }
@@ -423,6 +430,7 @@ const InferenceService = () => {
                           <div className={style.creator}>创建者：{ite?.created_by}</div>
                           <div className={style.createTime}>创建时间: {ite?.updated_at}</div>
                           <div className={style.actionSty}>
+                            <Button type='link' size='small' onClick={e => openLog(e, ite)}>日志</Button>
                             {item?.model_type === 'localLLM' && <Button disabled={ite?.status !== 'Ready'} type='link' size='small' onClick={e => openTest(e, ite)}>测试</Button>}
                             {canEdit(item?.user_id) && <span>
                               {
@@ -595,6 +603,7 @@ const InferenceService = () => {
           </div>
         </Modal>
         <ChatModal agentId={testInfo?.id} modelName={testInfo?.name} visible={visible} onOk={() => setVisible(false)} onCancel={() => setVisible(false)} />
+        <LogModal open={!!logService} serviceId={logService?.id ?? null} serviceName={logService?.name ?? ''} onClose={() => setLogService(null)} />
       </div>
     </Spin>
   )
