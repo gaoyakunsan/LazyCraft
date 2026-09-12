@@ -1,5 +1,6 @@
 'use client'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import BackButton from '@/app/components/base/back-button'
 import { Breadcrumb, Button, Card, Modal, Popconfirm, Radio, Space, Table, Typography } from 'antd'
 import type { RadioChangeEvent, TableProps } from 'antd'
 import { ExclamationCircleFilled } from '@ant-design/icons'
@@ -561,19 +562,7 @@ const DatasetDetail = (req) => {
     <div className='page'>
       <div className={styles.container}>
         <div className={styles.breadcrumb}>
-          <Breadcrumb
-            items={[
-              {
-                title: '数据集',
-              },
-              {
-                title: <Link href='/datasets/datasetManager'>数据集管理</Link>,
-              },
-              {
-                title: '版本管理',
-              },
-            ]}
-          />
+          <BackButton label='返回数据列表' fallback='/datasets/datasetManager' />
         </div>
         <Card type='inner' title={<div className={styles.title} >
           基础信息

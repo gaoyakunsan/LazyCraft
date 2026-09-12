@@ -1,6 +1,7 @@
 'use client'
 
 import React, { Suspense, useCallback, useEffect, useState } from 'react'
+import BackButton from '@/app/components/base/back-button'
 import { ReadOutlined } from '@ant-design/icons'
 import {
   useSearchParams,
@@ -230,16 +231,7 @@ const KnowledgeBaseDetailContent = () => {
   return (
     <div className={styles.page}>
       <div className={styles.breadcrumb}>
-        <Breadcrumb
-          items={[
-            {
-              title: <Link href='/resourceBase/knowledgeBase'>知识库</Link>,
-            },
-            {
-              title: '知识库详情',
-            },
-          ]}
-        />
+        <BackButton label='返回知识库列表' fallback='/resourceBase/knowledgeBase' />
       </div>
       <div className={styles.card}>
         <div className={styles.header}>

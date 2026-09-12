@@ -1,6 +1,7 @@
 'use client'
 
 import React, { Suspense } from 'react'
+import BackButton from '@/app/components/base/back-button'
 import {
   useRouter,
   useSearchParams,
@@ -64,12 +65,7 @@ const DatabaseDetailContent = () => {
   }
   return (
     <div className='px-[30px] pt-5'>
-      <Breadcrumb
-        items={[
-          { title: <Link href='/resourceBase/dataBase'>数据库</Link> },
-          { title: '数据库详情' },
-        ]}
-      />
+      <BackButton label='返回数据库列表' fallback='/resourceBase/dataBase' />
       <div className='mt-2'>
         <Card title="数据库" >
           <Row gutter={10}>

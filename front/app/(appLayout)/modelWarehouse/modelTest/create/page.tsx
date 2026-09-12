@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import BackButton from '@/app/components/base/back-button'
 import { Breadcrumb, Button, Col, Divider, Form, Input, InputNumber, Radio, Row, Select, Space, Tooltip, Upload, message } from 'antd'
 import { ExclamationCircleOutlined, InboxOutlined } from '@ant-design/icons'
 import Link from 'next/link'
@@ -230,16 +231,7 @@ const ModelTestCreate = () => {
     <div className={styles.modelTestCreate}>
       <div className={styles.createWrap}>
         <div className={styles.breadcrumb}>
-          <Breadcrumb
-            items={[
-              {
-                title: <Link href='/modelWarehouse/modelTest'>模型测评</Link>,
-              },
-              {
-                title: '创建任务',
-              },
-            ]}
-          />
+          <BackButton label='返回模型评测列表' fallback='/modelWarehouse/modelTest' />
         </div>
         <Form
           form={baseForm}

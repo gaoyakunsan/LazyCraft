@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import BackButton from '@/app/components/base/back-button'
 import { Breadcrumb, Button, Card, Popconfirm, Radio, Table } from 'antd'
 import Link from 'next/link'
 import { useAntdTable } from 'ahooks'
@@ -145,16 +146,7 @@ const ModelDetail = (req) => {
   return (
     <div className={styles.container}>
       <div className={styles.breadcrumb}>
-        <Breadcrumb
-          items={[
-            {
-              title: <Link href='/modelWarehouse/modelManage'>模型管理</Link>,
-            },
-            {
-              title: '详情',
-            },
-          ]}
-        />
+        <BackButton label='返回模型列表' fallback='/modelWarehouse/modelManage' />
       </div>
       <Card className={styles.cardSty} style={{ marginBottom: 20 }} type='inner' title={<div className={styles.title} >
         基础模型

@@ -1,5 +1,6 @@
 'use client'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
+import BackButton from '@/app/components/base/back-button'
 import { Breadcrumb, Button, Card, Tag } from 'antd'
 import Link from 'next/link'
 import styles from './index.module.scss'
@@ -148,16 +149,7 @@ const AdjustDetail = (req) => {
     <div className={styles.adjustDetailWrap}>
       <div className={styles.container}>
         <div className={styles.breadcrumb}>
-          <Breadcrumb
-            items={[
-              {
-                title: <Link href='/modelAdjust'>模型微调</Link>,
-              },
-              {
-                title: '任务详情',
-              },
-            ]}
-          />
+          <BackButton label='返回模型列表' fallback='/modelAdjust' />
         </div>
         <Card style={{ marginBottom: 20 }} type='inner' title={<div className={styles.title} >
           基础信息
