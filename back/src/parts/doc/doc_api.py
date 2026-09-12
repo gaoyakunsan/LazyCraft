@@ -214,7 +214,7 @@ class DocImage(Resource):
         return Response(
             gen,
             content_type=get_content_type(file_name),
-            headers={"Content-Disposition": f"attachment; {file_name}"},
+            headers={"Content-Disposition": f"inline; {file_name}"},
         )
 
 
@@ -257,6 +257,18 @@ class DocView(Resource):
             return Response(content, content_type="text/html;charset=UTF-8")
 
         try:
+            # docsify 会把 markdown 中的图片路径解析为相对当前路由的地址
+            # （如 /console/api/doc/view/console/api/doc/image/...），
+            # 这里兼容任意前缀，凡是包含 doc_image/ 的请求直接返回图片内容
+            if subpath and 'doc_image/' in subpath:
+                img_path = subpath[subpath.index('doc_image/'):]
+                file_name = os.path.basename(img_path)
+                gen = storage.load_stream(img_path)
+                return Response(
+                    gen,
+                    content_type=get_content_type(file_name),
+                    headers={'Content-Disposition': f'inline; {file_name}'},
+                )
             params = get_params(subpath)
             doc_service = DocService(current_user)
             if len(params) >= 1:
