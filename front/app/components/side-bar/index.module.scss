@@ -95,6 +95,7 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
+  position: relative;
 
   /* 应用商店(共享Nav)的外层容器在侧栏内去掉自带内边距并撑满，保证图标列对齐。
      :not 排除资源库等根元素本身携带 navItem 类的组件，避免误清其内边距 */
@@ -165,6 +166,41 @@
 
 .collapsed .navItem [class*='anticon'] {
   font-size: 16px;
+}
+
+/* 二级菜单展开/收起箭头（有二级菜单的父项右侧，默认折叠） */
+.expandBtn {
+  position: absolute;
+  right: 6px;
+  top: 7px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--pulse-tx3);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--pulse-accent);
+    background: var(--pulse-bg2);
+  }
+
+  svg {
+    transition: transform .2s ease;
+  }
+
+  &.expanded svg {
+    transform: rotate(180deg);
+  }
+}
+
+/* 资源库图标字形偏左，微调右移对齐 */
+.iconNudge > *:first-child {
+  transform: translateX(2px);
 }
 
 /* 二级菜单 */

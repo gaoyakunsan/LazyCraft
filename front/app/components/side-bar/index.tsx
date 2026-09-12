@@ -36,6 +36,9 @@ const SideBar = () => {
   const isMobileView = deviceType === 'mobile'
   const [collapsed, setCollapsed] = useState(false)
   const [mounted, setMounted] = useState(false)
+  // 有二级菜单的分组默认折叠，点击箭头展开
+  const [expandedMap, setExpandedMap] = useState<Record<string, boolean>>({})
+  const pathname = usePathname()
 
   useEffect(() => {
     setCollapsed(window.localStorage.getItem(COLLAPSED_KEY) === '1')
@@ -49,6 +52,10 @@ const SideBar = () => {
     })
   }
 
+  const toggleExpanded = (key: string) => {
+    setExpandedMap(prev => ({ ...prev, [key]: !prev[key] }))
+  }
+
   const navGroups: NavGroup[] = [
     {
       title: '应用',
@@ -57,7 +64,7 @@ const SideBar = () => {
         {
           key: 'resourceBase',
           title: '资源库',
-          node: <ResourceBaseNav className={s.navItem} />,
+          node: <ResourceBaseNav className={`${s.navItem} ${s.iconNudge}`} />,
           children: [
             { title: '知识库', href: '/resourceBase/knowledgeBase' },
             { title: '数据库', href: '/resourceBase/dataBase' },
@@ -107,6 +114,17 @@ const SideBar = () => {
     },
   ]
 
+  // 当前路径落在某组二级菜单内时，自动展开该组
+  useEffect(() => {
+    if (!pathname)
+      return
+    navGroups.forEach(g => g.items.forEach((item) => {
+      if (item.children?.some(c => pathname === c.href || pathname.startsWith(`${c.href}/`)))
+        setExpandedMap(prev => ({ ...prev, [item.key]: true }))
+    }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname])
+
   // 移动端维持顶栏汉堡菜单的原有交互，侧栏不渲染
   if (isMobileView)
     return null
@@ -123,10 +141,25 @@ const SideBar = () => {
           <div key={group.title} className={s.group}>
             {!collapsed && <div className={s.groupTitle}>{group.title}</div>}
             {group.items.map((item) => {
+              const expanded = !!expandedMap[item.key]
               return (
                 <div key={item.key} className={s.itemWrap} title={collapsed ? item.title : undefined}>
                   {item.node}
                   {!collapsed && item.children && (
+                    <button
+                      type='button'
+                      className={`${s.expandBtn} ${expanded ? s.expanded : ''}`}
+                      aria-label={expanded ? '收起子菜单' : '展开子菜单'}
+                      onClick={() => toggleExpanded(item.key)}
+                    >
+                      <svg viewBox='0 0 16 16' width='12' height='12' fill='none' stroke='currentColor'
+                        strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round'
+                      >
+                        <path d='M4 6l4 4 4-4' />
+                      </svg>
+                    </button>
+                  )}
+                  {!collapsed && item.children && expanded && (
                     <div className={s.subList}>
                       {item.children.map(sub => (
                         <SubNavItem key={sub.href} {...sub} />
