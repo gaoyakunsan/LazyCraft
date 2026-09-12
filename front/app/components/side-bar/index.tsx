@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import AppNav from '@/app/components/top-bar/app-gateway'
 import ResourceBaseNav from '@/app/components/top-bar/res-source'
@@ -15,9 +16,19 @@ import s from './index.module.scss'
 
 const COLLAPSED_KEY = 'pulse-sidebar-collapsed'
 
-type NavGroup = {
-  title: string
-  items: { key: string; title: string; node: React.ReactNode }[]
+type SubItem = { title: string; href: string }
+type NavItem = { key: string; title: string; node: React.ReactNode; children?: SubItem[] }
+type NavGroup = { title: string; items: NavItem[] }
+
+/** 二级菜单项：按路径前缀匹配高亮 */
+const SubNavItem = ({ title, href }: SubItem) => {
+  const pathname = usePathname()
+  const active = pathname === href || pathname.startsWith(`${href}/`)
+  return (
+    <Link href={href} className={`${s.subItem} ${active ? s.subActive : ''}`}>
+      {title}
+    </Link>
+  )
 }
 
 const SideBar = () => {
@@ -43,15 +54,39 @@ const SideBar = () => {
       title: '应用',
       items: [
         { key: 'apps', title: '应用商店', node: <AppNav className={s.navItem} /> },
-        { key: 'resourceBase', title: '资源库', node: <ResourceBaseNav className={s.navItem} /> },
+        {
+          key: 'resourceBase',
+          title: '资源库',
+          node: <ResourceBaseNav className={s.navItem} />,
+          children: [
+            { title: '知识库', href: '/resourceBase/knowledgeBase' },
+            { title: '数据库', href: '/resourceBase/dataBase' },
+          ],
+        },
         { key: 'prompt', title: 'Prompt', node: <PromptNav className={s.navItem} /> },
       ],
     },
     {
       title: '模型',
       items: [
-        { key: 'modelWarehouse', title: '模型仓库', node: <ModelNav className={s.navItem} /> },
-        { key: 'inferenceService', title: '推理服务', node: <InferenceServiceNav className={s.navItem} /> },
+        {
+          key: 'modelWarehouse',
+          title: '模型仓库',
+          node: <ModelNav className={s.navItem} />,
+          children: [
+            { title: '模型管理', href: '/modelWarehouse/modelManage' },
+            { title: '模型评测', href: '/modelWarehouse/modelTest' },
+          ],
+        },
+        {
+          key: 'inferenceService',
+          title: '推理服务',
+          node: <InferenceServiceNav className={s.navItem} />,
+          children: [
+            { title: '平台服务', href: '/inferenceService/platform' },
+            { title: '云服务', href: '/inferenceService/cloud' },
+          ],
+        },
         { key: 'modelAdjust', title: '模型微调', node: <ModelAdjustNav className={s.navItem} /> },
       ],
     },
@@ -59,7 +94,15 @@ const SideBar = () => {
       title: '运营',
       items: [
         { key: 'tools', title: '工具', node: <ToolsNav className={s.navItem} /> },
-        { key: 'datasets', title: '数据', node: <DatasetNav className={s.navItem} /> },
+        {
+          key: 'datasets',
+          title: '数据集',
+          node: <DatasetNav className={s.navItem} />,
+          children: [
+            { title: '数据集管理', href: '/datasets/datasetManager' },
+            { title: '脚本管理', href: '/datasets/scriptManager' },
+          ],
+        },
       ],
     },
   ]
@@ -83,6 +126,13 @@ const SideBar = () => {
               return (
                 <div key={item.key} className={s.itemWrap} title={collapsed ? item.title : undefined}>
                   {item.node}
+                  {!collapsed && item.children && (
+                    <div className={s.subList}>
+                      {item.children.map(sub => (
+                        <SubNavItem key={sub.href} {...sub} />
+                      ))}
+                    </div>
+                  )}
                 </div>
               )
             })}
