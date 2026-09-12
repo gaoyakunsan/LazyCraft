@@ -14,6 +14,7 @@ type NavigationProps = {
   activeSegment: string | string[]
   link: string
   curNav: boolean
+  className?: string
 }
 
 const Nav = ({
@@ -21,6 +22,7 @@ const Nav = ({
   activeSegment,
   link,
   curNav,
+  className,
 }: NavigationProps) => {
   const setAppDetail = useAppStore(state => state.setAppDetail)
   const elementRef = useRef(null)
@@ -35,9 +37,9 @@ const Nav = ({
       window.location.href = '/apps'
   }
 
-  const buildContainerClassName = () => `
+  const buildContainerClassName = () => classNames(`
     flex items-center h-8 mr-0 px-0.5 rounded-[4px] text-sm shrink-0 font-medium
-  `
+  `, className)
 
   const buildLinkClassName = () => classNames(`
     flex items-center h-7 px-2.5 cursor-pointer rounded-[4px]

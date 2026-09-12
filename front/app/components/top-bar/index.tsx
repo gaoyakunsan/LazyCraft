@@ -9,12 +9,7 @@ import AccountDropdown from './user-panel'
 import AppNav from './app-gateway'
 import DatasetNav from './data-route'
 import ToolsNav from './tools-route'
-import ResourceBaseNav from './res-source'
-import PromptNav from './prompt-route'
 import MessageList from './message-list/page'
-import ModelNav from './model-route'
-import ModelAdjustNav from './model-tune'
-import InferenceServiceNav from './ai-path'
 import style from './index.module.scss'
 
 import BrandMark from '@/app/components/base/brand-mark/logo-site'
@@ -49,25 +44,6 @@ const Header = () => {
       onClick={toggleNavigationMenu}
     >
       <Bars3Icon className="h-4 w-4 text-gray-500" />
-    </div>
-  )
-
-  const renderLogoSection = () => (
-    <Link href="/apps" className='flex items-center mr-4 w-[8.9583vw]'>
-      <BrandMark className='object-contain' />
-    </Link>
-  )
-
-  const renderDesktopNavigation = () => (
-    <div className='flex items-center'>
-      <AppNav />
-      <ResourceBaseNav className={navigationItemClasses} />
-      <PromptNav className={navigationItemClasses} />
-      <ModelNav className={navigationItemClasses} />
-      <InferenceServiceNav className={navigationItemClasses} />
-      <ModelAdjustNav className={navigationItemClasses} />
-      <ToolsNav className={navigationItemClasses} />
-      <DatasetNav className={navigationItemClasses} />
     </div>
   )
 
@@ -109,10 +85,8 @@ const Header = () => {
     <div className='flex flex-1 items-center justify-between px-4'>
       <div className='flex items-center'>
         {isMobileView && renderMobileMenuButton()}
-        {!isMobileView && renderLogoSection()}
       </div>
       {isMobileView && renderMobileLogo()}
-      {!isMobileView && renderDesktopNavigation()}
       {renderRightSection()}
       {(isMobileView && isNavigationMenuVisible) && renderMobileNavigationMenu()}
     </div>

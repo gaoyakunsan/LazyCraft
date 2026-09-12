@@ -7,6 +7,7 @@ import { EmitterProvider } from '@/shared/hooks/event-emitter'
 import { RootStateHubProvider } from '@/shared/hooks/app-context'
 import TopFrameEnclosure from '@/app/components/top-bar/head-wrap'
 import Header from '@/app/components/top-bar'
+import SideBar from '@/app/components/side-bar'
 import SwrInitializer from '@/app/components/data-fetch'
 
 type AppLayoutProps = {
@@ -20,10 +21,18 @@ const AppLayout = ({ children }: AppLayoutProps) => {
         <EmitterProvider>
           <LayerStackContextProvider>
             <EntryCheckContextProvider>
-              <TopFrameEnclosure>
-                <Header />
-              </TopFrameEnclosure>
-              {children}
+              {/* 左侧导航 + 右侧（顶栏 + 内容）双列布局 */}
+              <div className='flex h-full w-full'>
+                <SideBar />
+                <div className='flex h-full min-w-0 flex-1 flex-col'>
+                  <TopFrameEnclosure>
+                    <Header />
+                  </TopFrameEnclosure>
+                  <div className='min-h-0 flex-1'>
+                    {children}
+                  </div>
+                </div>
+              </div>
             </EntryCheckContextProvider>
           </LayerStackContextProvider>
         </EmitterProvider>

@@ -2,7 +2,7 @@
 import Nav from '../nav'
 import { useStore as useAppStore } from '@/app/components/app/store'
 
-const ApplicationNavigation = () => {
+const ApplicationNavigation = ({ className }: { className?: string }) => {
   const currentAppDetail = useAppStore(state => state.appDetail)
 
   const navigationConfig = {
@@ -14,7 +14,7 @@ const ApplicationNavigation = () => {
 
   return (
     <>
-      <Nav {...navigationConfig} />
+      <Nav {...navigationConfig} className={className} />
     </>
   )
 }
