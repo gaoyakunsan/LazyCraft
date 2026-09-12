@@ -132,7 +132,7 @@ const SideBar = () => {
   return (
     <aside className={`${s.sidebar} ${collapsed ? s.collapsed : ''}`}>
       <Link href='/apps' className={s.brand}>
-        <span className={s.brandMark} aria-hidden />
+        <img src='/logo.svg' alt='' className={s.brandMark} />
         {!collapsed && <span className={s.brandText}>智能AI应用平台</span>}
       </Link>
 

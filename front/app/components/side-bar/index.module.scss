@@ -35,19 +35,10 @@
 
 .brandMark {
   flex: none;
-  width: 22px;
-  height: 22px;
+  display: block;
+  width: 24px;
+  height: 24px;
   border-radius: 6px;
-  background: conic-gradient(from 210deg, var(--pulse-accent), #9bc5b8 55%, transparent 55%);
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 5px;
-    border-radius: 3px;
-    background: #fff;
-  }
 }
 
 .collapsed .brand {
