@@ -27,7 +27,7 @@
 
         .infoMiddle {
             color: var(--pulse-tx2);
-            width: 60.2708vw;
+            width: calc(100% - 48px);
             margin-right: 5.4167vw;
 
             .first {

@@ -6,7 +6,7 @@
 
     .toolInfo {
         padding: 12px 0;
-        width: 87.5vw;
+        width: calc(100% - 48px);
         margin: 0 auto;
         height: 70px;
         box-sizing: border-box;
@@ -75,7 +75,7 @@
     }
 
     .card {
-        width: 87.5vw;
+        width: calc(100% - 48px);
         margin: 0 auto;
         height: calc(100vh - 130px); // 保证card充满剩余屏幕
         background: #fff;

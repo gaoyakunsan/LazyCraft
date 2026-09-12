@@ -7,7 +7,7 @@
     overflow-y: auto;
 
     .container {
-        width: 87.5vw;
+        width: calc(100% - 48px);
         margin: 0 auto;
         padding-bottom: 1.5625vw;
 

@@ -1,5 +1,6 @@
 .inferenceWrap {
-  width: 84.7083vw;
+  width: calc(100% - 48px);
+  overflow-x: auto;
   margin: 0 auto;
   // padding-top: 1.5625vw;
   height: auto;
