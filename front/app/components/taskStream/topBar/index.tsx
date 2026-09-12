@@ -8,6 +8,7 @@ import {
 } from 'react'
 import { Affix, Button, Modal, message } from 'antd'
 import { CloseCircleOutlined, LoadingOutlined } from '@ant-design/icons'
+import { useRouter } from 'next/navigation'
 import { useNodes, useStoreApi } from 'reactflow'
 import { useContext } from 'use-context-selector'
 import { useRequest } from 'ahooks'
@@ -383,6 +384,8 @@ const LazyLLMHeader: FC = () => {
     return data
   }, [fileSettings?.image?.enabled, startVariables])
 
+  const router = useRouter()
+
   const appTitle = useMemo(() => {
     const appName = appDetail?.name || ''
     return isMainFlow ? appName : `${appName}-${patentState?.subModuleTitle || ''}`
@@ -597,8 +600,19 @@ const LazyLLMHeader: FC = () => {
 
   return (
     <div className='absolute top-0 left-0 z-10 flex items-center justify-between w-full px-3 h-14 bg-white border border-[#EBEFEE]'>
-      <div>
-        <div className='text-xs font-medium text-gray-700 ml-14 mt-2 whitespace-nowrap overflow-hidden text-ellipsis max-w-[900px]'>
+      <div className='flex items-center'>
+        <button
+          type='button'
+          className='flex items-center justify-center w-8 h-8 mr-3 ml-1 rounded-md text-gray-500 hover:bg-gray-100 hover:text-gray-700'
+          onClick={() => router.push('/apps')}
+        >
+          <svg viewBox='0 0 16 16' width='16' height='16' fill='none' stroke='currentColor'
+            strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round'
+          >
+            <path d='M10 3L5 8l5 5' />
+          </svg>
+        </button>
+        <div className='text-xs font-medium text-gray-700 mt-2 whitespace-nowrap overflow-hidden text-ellipsis max-w-[900px] shrink-0'>
           {appTitle}
         </div>
         {standard && <LazyLLMEditingTitle />}
