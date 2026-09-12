@@ -28,7 +28,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
                   <TopFrameEnclosure>
                     <Header />
                   </TopFrameEnclosure>
-                  <div className='min-h-0 flex-1'>
+                  <div className='min-h-0 flex-1 px-4'>
                     {children}
                   </div>
                 </div>

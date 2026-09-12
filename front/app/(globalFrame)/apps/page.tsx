@@ -3,7 +3,7 @@ import AppList from '@/app/components/app-hub/app-list'
 
 const AppListPage = async () => {
   return (
-    <div>
+    <div className='px-4 h-full overflow-y-auto'>
       <AppList />
     </div>
   )
