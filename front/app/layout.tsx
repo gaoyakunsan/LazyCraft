@@ -10,6 +10,7 @@ import HeaderBar from './components/base/head-bar'
 import ModelFont from './modelFont'
 import './styles/antdUpdate.scss'
 import './styles/markdown.scss'
+import './styles/tokens.scss'
 import './styles/globals.css'
 
 /**

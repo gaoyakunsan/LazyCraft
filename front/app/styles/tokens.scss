@@ -1,0 +1,35 @@
+/*
+ * 「脉冲 Pulse」设计令牌 —— 青瓷亮色体系
+ * 与 theme-skins/theme-config.ts（antd）、tailwind.config.js（primary/gray 色阶）三处同值。
+ * SCSS module 中引用示例：color: var(--pulse-tx1);
+ */
+:root {
+  /* 背景：三档密度 */
+  --pulse-bg0: #F4F6F5;      /* 晨岚 · 页面底 */
+  --pulse-bg1: #FFFFFF;      /* 云板 · 面板 */
+  --pulse-bg2: #EBEFEE;      /* 抬升层 / 悬停 */
+
+  /* 文本：墨松层级 */
+  --pulse-tx1: #1C2B29;      /* 主文本 */
+  --pulse-tx2: #5C6B68;      /* 次文本 */
+  --pulse-tx3: #8A9995;      /* 弱文本 */
+
+  /* 边框 */
+  --pulse-line: #DDE3E1;
+  --pulse-line-strong: #C7D0CD;
+
+  /* 强调：青瓷（全站唯一强调色） */
+  --pulse-accent: #0E9F8C;
+  --pulse-accent-hover: #12B39D;
+  --pulse-accent-dim: rgba(14, 159, 140, 0.09);
+  --pulse-accent-ink: #FFFFFF;
+
+  /* 状态色 */
+  --pulse-ok: #4E9F3D;
+  --pulse-warn: #D9930B;
+  --pulse-danger: #E04758;
+
+  /* 登录页深色品牌区 */
+  --pulse-dark: #101E1C;
+  --pulse-dark-tx: #EAF2EF;
+}
