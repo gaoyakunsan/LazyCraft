@@ -37,16 +37,16 @@ const Nav = ({
       window.location.href = '/apps'
   }
 
-  const buildContainerClassName = () => classNames(`
+  const buildContainerClassName = () => `
     flex items-center h-8 mr-0 px-0.5 rounded-[4px] text-sm shrink-0 font-medium
-  `, className)
+  `
 
   const buildLinkClassName = () => classNames(`
     flex items-center h-7 px-2.5 cursor-pointer rounded-[4px]
     ${style.wrapNav}
     ${isActive ? 'text-components-main-nav-nav-button-text-active' : 'text-gray-500'}
     ${curNav && isActive && 'hover:bg-components-main-nav-nav-button-bg-active-hover'}
-  `)
+  `, className)
 
   const renderIcon = () => {
     if (isHovered && curNav)

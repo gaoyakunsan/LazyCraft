@@ -93,6 +93,19 @@
 /* 导航项容器（折叠时为图标加原生 title 提示） */
 .itemWrap {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+
+  /* 应用商店(共享Nav)的外层容器在侧栏内去掉自带内边距并撑满，保证图标列对齐 */
+  > div:first-child {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  > * {
+    width: 100%;
+  }
 }
 
 .collapsed .itemWrap {
@@ -107,7 +120,7 @@
   gap: 10px;
   width: 100%;
   padding: 0 10px;
-  height: 36px;
+  min-height: 36px;
   border-radius: 6px;
   font-size: 13.5px;
   font-weight: 500;
@@ -119,6 +132,23 @@
   &:hover {
     color: var(--pulse-tx1);
     background: var(--pulse-bg2);
+  }
+
+  /* 统一图标列：8 个导航组件的图标包裹层结构不同(div/span、有无内嵌容器)，
+     强制第一子元素为固定 24px 竖列，保证所有图标对齐在同一条线上 */
+  > *:first-child {
+    flex: 0 0 24px;
+    width: 24px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    > * {
+      flex: none;
+    }
   }
 }
 
