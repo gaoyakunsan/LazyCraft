@@ -24,8 +24,8 @@ const ResultDownloadComponent: FC<ResultDownloadComponentProps> = ({
   // 渲染下载按钮内容
   const renderDownloadButtonContent = () => (
     <Button className='space-x-2 bg-white' disabled={!hasValidData}>
-      <Iconfont type='icon-xiazaianniu' className='w-4 h-4 text-[#155EEF]' />
-      <span className='text-[#155EEF]'>
+      <Iconfont type='icon-xiazaianniu' className='w-4 h-4 text-[#0E9F8C]' />
+      <span className='text-[#0E9F8C]'>
         {hasValidData ? '下载' : '暂无数据'}
       </span>
     </Button>

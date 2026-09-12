@@ -164,8 +164,8 @@ const SelectComponent: FC<Partial<FieldItemProps>> = ({
     <div className="document_node_group_wrapper">
       <div className="document_node_group_header">
         <div className="header-title">
-          <label style={{ color: '#071127', fontWeight: 500 }}>
-            <Divider type="vertical" style={{ backgroundColor: '#1677ff', width: 3, marginLeft: 0 }} />
+          <label style={{ color: '#1C2B29', fontWeight: 500 }}>
+            <Divider type="vertical" style={{ backgroundColor: '#0E9F8C', width: 3, marginLeft: 0 }} />
             内置节点组
           </label>
         </div>
@@ -185,8 +185,8 @@ const SelectComponent: FC<Partial<FieldItemProps>> = ({
 
       <div className="document_node_group_list w-full">
         <div className="custom-group-header">
-          <label style={{ color: '#071127', fontWeight: 500 }}>
-            <Divider type="vertical" style={{ backgroundColor: '#1677ff', width: 3, marginLeft: 0 }} />
+          <label style={{ color: '#1C2B29', fontWeight: 500 }}>
+            <Divider type="vertical" style={{ backgroundColor: '#0E9F8C', width: 3, marginLeft: 0 }} />
             自定义节点组
           </label>
         </div>
@@ -228,7 +228,7 @@ const SelectComponent: FC<Partial<FieldItemProps>> = ({
             <Button
               size='small'
               type='text'
-              style={{ color: '#1677ff' }}
+              style={{ color: '#0E9F8C' }}
               onClick={addGroup}
               disabled={readOnly || isLoading}
               className="add-group-button"

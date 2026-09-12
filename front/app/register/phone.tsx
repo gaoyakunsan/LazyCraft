@@ -251,7 +251,7 @@ const Register_phone = () => {
           注册
         </Button>
       </Form.Item>
-      <div className='text-center mt-[-10px]'><span style={{ color: '#5E6472' }}>已有账号？</span><Link href={'/signin'}>立即登录</Link></div>
+      <div className='text-center mt-[-10px]'><span style={{ color: '#5C6B68' }}>已有账号？</span><Link href={'/signin'}>立即登录</Link></div>
     </Form>
   )
 }

@@ -123,7 +123,7 @@ const FieldItem: FC<Partial<FieldItemProps>> = ({
         onClick={() => setIsAiModalOpen(true)}
         title="AI代码生成"
       >
-        <Icon type="icon-AIshengcheng1" style={{ fontSize: 16, color: '#1890ff' }} />
+        <Icon type="icon-AIshengcheng1" style={{ fontSize: 16, color: '#0E9F8C' }} />
       </div>
     )
   }, [readOnly, currentLanguage])

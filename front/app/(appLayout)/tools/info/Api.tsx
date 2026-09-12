@@ -49,7 +49,7 @@ const ToggleIcon = ({ value = true, disabled = false, onChange }: { value?: bool
             </Tooltip>
           )
           : (
-            <IconFont type='icon-yanjing-kai' style={{ fontSize: 24, color: disabled ? '#C1C3C9' : '#0E5DD8' }} />
+            <IconFont type='icon-yanjing-kai' style={{ fontSize: 24, color: disabled ? '#C1C3C9' : '#0E9F8C' }} />
           )
         : (
           <IconFont type='icon-yanjing-bi' style={{ fontSize: 24, color: '#C1C3C9' }} />
@@ -214,7 +214,7 @@ const Step1 = (props: Props) => {
             style={{ width: '80%' }}
           >
             <div className={styles.tHead}>
-              <span><span style={{ color: '#FF5E5E' }}>* </span>Header列表<Tooltip className='ml-1' title="HTTP请求头列表是客户端程序和服务器在每个HTTP请求和响应中发送和接收的字符串列表。这些标头通常对最终用户不可见，仅由服务器和客户端应用程序处理或记录">
+              <span><span style={{ color: '#E04758' }}>* </span>Header列表<Tooltip className='ml-1' title="HTTP请求头列表是客户端程序和服务器在每个HTTP请求和响应中发送和接收的字符串列表。这些标头通常对最终用户不可见，仅由服务器和客户端应用程序处理或记录">
                 <ExclamationCircleOutlined />
               </Tooltip></span>
               <Button type='link' size='small' className='mb-[4px]' style={{ float: 'right' }} onClick={handleAdd}>添 加</Button>

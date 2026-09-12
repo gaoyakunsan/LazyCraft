@@ -19,7 +19,7 @@ const SCROLL_THRESHOLD = 5
 
 // 样式常量
 const commonStyles = {
-  inputIcon: { color: '#5E6472' },
+  inputIcon: { color: '#5C6B68' },
   buttonHeight: { height: 35 },
 }
 

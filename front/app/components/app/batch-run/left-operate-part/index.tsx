@@ -132,7 +132,7 @@ const BatchExecution: FC<BatchExecutionProps> = ({
         config={{}}
         data={[generateTemplateData]}
       >
-        <div className='flex items-center h-[18px] space-x-1 text-[#155EEF] text-xs font-medium' style={{ position: 'relative', top: -6 }}>
+        <div className='flex items-center h-[18px] space-x-1 text-[#0E9F8C] text-xs font-medium' style={{ position: 'relative', top: -6 }}>
           <Iconfont type='icon-xiazaianniu' className='w-3 h-3' />
           <span>下载模版</span>
         </div>

@@ -14,8 +14,8 @@ type CustomInputProps = {
 
 enum ReadOnlyBackgroundColors {
   default = 'rgba(0,0,0,0)',
-  success = '#69D17B',
-  error = '#FF5E5E',
+  success = '#4E9F3D',
+  error = '#E04758',
   warning = '#fffbe8',
   processing = '#F5F6F7',
 }
@@ -47,7 +47,7 @@ const CustomInput: React.FC<CustomInputProps> = (props) => {
           <Tooltip title={restProps?.value}>{restProps?.value}</Tooltip>
         </span>
         {tooltip && <Tooltip title={tooltip}>
-          <InfoCircleOutlined style={{ color: '#5E6472', marginLeft: 2 }} />
+          <InfoCircleOutlined style={{ color: '#5C6B68', marginLeft: 2 }} />
         </Tooltip>}
       </div>
     )
@@ -57,7 +57,7 @@ const CustomInput: React.FC<CustomInputProps> = (props) => {
         style={style}
         suffix={tooltip
           ? (<Tooltip title={tooltip}>
-            <InfoCircleOutlined style={{ color: '#5E6472' }} />
+            <InfoCircleOutlined style={{ color: '#5C6B68' }} />
           </Tooltip>)
           : undefined}
         {...restProps}

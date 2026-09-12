@@ -376,7 +376,7 @@ const EditableTable = (props: any) => {
             <p className="ant-upload-text">将文件拖拽至此区域或选择文件上传</p>
           </Dragger>
         </Form.Item>
-        <div className='text-[#8F949E] mb-5'>
+        <div className='text-[#8A9995] mb-5'>
           <div>导入要求：</div>
           <div>
             1. 点击<Button type="link" style={{ padding: 0 }} onClick={handleDownloadTemplate}>下载模版</Button>，并按照规定格式填写数据，*部分为必填字段；

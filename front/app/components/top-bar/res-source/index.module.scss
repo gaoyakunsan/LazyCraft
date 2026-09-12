@@ -3,10 +3,10 @@
   gap: 4px;
 
   &:hover {
-    color: #0E5DD8;
+    color: var(--pulse-accent);
 
     .normal {
-      background: linear-gradient(150deg, #26ADF0 0%, #69D17B 100%);
+      background: linear-gradient(150deg, #26ADF0 0%, var(--pulse-ok) 100%);
       border-radius: 8px;
       color: #fff;
     }
@@ -27,7 +27,7 @@
     width: 24px;
     height: 24px;
     font-size: 24px;
-    background: linear-gradient(150deg, #26ADF0 0%, #69D17B 100%);
+    background: linear-gradient(150deg, #26ADF0 0%, var(--pulse-ok) 100%);
     border-radius: 8px;
     color: #fff;
     text-align: center;

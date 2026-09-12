@@ -335,13 +335,13 @@ const IDEMode = (props: IProps) => {
                             </Button>
                           </div>
                           <div className={styles.paraHead}>
-                            <div style={{ width: '11.9vw' }}>参数名称 <span style={{ color: '#FF5E5E' }}>*</span><Tooltip className='ml-1' title="仅支持字母、数字、下划线">
+                            <div style={{ width: '11.9vw' }}>参数名称 <span style={{ color: '#E04758' }}>*</span><Tooltip className='ml-1' title="仅支持字母、数字、下划线">
                               <ExclamationCircleOutlined />
                             </Tooltip></div>
-                            <div style={{ width: '12vw' }}>参数描述 <span style={{ color: '#FF5E5E' }}>*</span><Tooltip className='ml-1' title="帮助用户/大模型更好的理解">
+                            <div style={{ width: '12vw' }}>参数描述 <span style={{ color: '#E04758' }}>*</span><Tooltip className='ml-1' title="帮助用户/大模型更好的理解">
                               <ExclamationCircleOutlined />
                             </Tooltip></div>
-                            <div style={{ width: '8.5vw' }}>参数类型 <span style={{ color: '#FF5E5E' }}>*</span></div>
+                            <div style={{ width: '8.5vw' }}>参数类型 <span style={{ color: '#E04758' }}>*</span></div>
                             <div style={{ width: '8.7vw' }}>是否必填</div>
                             <div>操作</div>
                           </div>
@@ -455,13 +455,13 @@ const IDEMode = (props: IProps) => {
                             </Button>
                           </div>
                           <div className={styles.paraHead}>
-                            <div style={{ width: '11.9vw' }}>参数名称 <span style={{ color: '#FF5E5E' }}>*</span><Tooltip className='ml-1' title="仅支持字母、数字、下划线">
+                            <div style={{ width: '11.9vw' }}>参数名称 <span style={{ color: '#E04758' }}>*</span><Tooltip className='ml-1' title="仅支持字母、数字、下划线">
                               <ExclamationCircleOutlined />
                             </Tooltip></div>
-                            <div style={{ width: '12vw' }}>参数描述 <span style={{ color: '#FF5E5E' }}>*</span><Tooltip className='ml-1' title="帮助用户/大模型更好的理解">
+                            <div style={{ width: '12vw' }}>参数描述 <span style={{ color: '#E04758' }}>*</span><Tooltip className='ml-1' title="帮助用户/大模型更好的理解">
                               <ExclamationCircleOutlined />
                             </Tooltip></div>
-                            <div style={{ width: '8.5vw' }}>参数类型 <span style={{ color: '#FF5E5E' }}>*</span></div>
+                            <div style={{ width: '8.5vw' }}>参数类型 <span style={{ color: '#E04758' }}>*</span></div>
                             <div style={{ width: '8.7vw' }}>是否必填</div>
                             <div>操作</div>
                           </div>

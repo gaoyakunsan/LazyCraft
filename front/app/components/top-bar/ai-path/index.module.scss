@@ -3,7 +3,7 @@
   gap: 4px;
 
   &:hover {
-    color: #0E5DD8;
+    color: var(--pulse-accent);
 
     .inactiveIcon {
       background: linear-gradient(153deg, #5CAAFF 0%, #E580FF 100%);

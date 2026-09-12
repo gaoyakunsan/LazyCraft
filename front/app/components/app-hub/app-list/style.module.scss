@@ -59,8 +59,8 @@
           >span {
             font-size: 0.625vw;
             line-height: 1.0417vw;
-            background: #F6F7F8;
-            color: #8F949E;
+            background: var(--pulse-bg0);
+            color: var(--pulse-tx3);
           }
         }
 
@@ -74,7 +74,7 @@
           padding: 0 16px;
 
           .iconWrap {
-            background: #f6f7f8;
+            background: var(--pulse-bg0);
             border-radius: 15%;
             display: flex;
             justify-content: center;
@@ -88,8 +88,8 @@
             }
 
             &:hover {
-              border: 1px solid #0e5dd8;
-              color: #0e5dd8;
+              border: 1px solid var(--pulse-accent);
+              color: var(--pulse-accent);
               cursor: pointer;
             }
           }
@@ -100,7 +100,7 @@
 }
 
 .avataWrap {
-  border: 1px solid #F0F1F3;
+  border: 1px solid var(--pulse-bg2);
   height: 42px;
   border-radius: 0.5rem;
 

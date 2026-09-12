@@ -17,7 +17,7 @@
         }
 
         .infoWrap {
-            color: #5E6472;
+            color: var(--pulse-tx2);
 
             .first {
                 display: flex;
@@ -27,7 +27,7 @@
 
                 .name {
                     font-size: 16px;
-                    color: #071127;
+                    color: var(--pulse-tx1);
                     line-height: 24px;
                     font-weight: bold;
                 }
@@ -46,7 +46,7 @@
         .logTip {
             margin-bottom: 8px;
             font-size: 13px;
-            color: #5E6472;
+            color: var(--pulse-tx2);
         }
 
         .logWrap {
@@ -58,7 +58,7 @@
 
     .title {
         font-size: 22px;
-        color: #071127;
+        color: var(--pulse-tx1);
         font-weight: bold;
     }
 

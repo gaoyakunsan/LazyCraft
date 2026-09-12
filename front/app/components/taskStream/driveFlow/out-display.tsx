@@ -25,7 +25,7 @@ const ExecutionOutput: FC<ExecutionOutputProps> = ({
       {!isRunning && error && (
         <div className='px-4'>
           <div className='px-3 py-[10px] rounded-lg !bg-[#fef3f2] border-[0.5px] border-[rgba(0,0,0,0.05)] shadow-xs'>
-            <div className='text-xs leading-[18px] text-[#d92d20]'>{error}</div>
+            <div className='text-xs leading-[18px] text-[#E04758]'>{error}</div>
           </div>
         </div>
       )}

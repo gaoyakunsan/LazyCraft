@@ -21,7 +21,7 @@ const COLOR_STYLES = {
   },
   red: {
     bg: 'bg-[#F04438]',
-    border: 'border-[#D92D20]',
+    border: 'border-[#E04758]',
     shadow: 'shadow-[0_0_5px_-3px_rgba(249,112,102,0.1),0.5px_0.5px_3px_rgba(249, 112, 102, 0.2), inset_1.5px_1.5px_0_rgba(255, 255, 255, 0.4)]',
   },
   blue: {

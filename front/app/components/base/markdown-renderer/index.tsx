@@ -85,7 +85,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: '#1677ff', textDecoration: 'underline' }}
+              style={{ color: '#0E9F8C', textDecoration: 'underline' }}
               {...props}
             >
               {children}

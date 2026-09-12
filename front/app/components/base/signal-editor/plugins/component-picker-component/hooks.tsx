@@ -23,7 +23,7 @@ const useVariableOptions = (
           return (
             <VariableDropdownItem
               title={item.value}
-              icon={<RiCodeLine className='w-[14px] h-[14px] text-[#2970FF]' />}
+              icon={<RiCodeLine className='w-[14px] h-[14px] text-[#0E9F8C]' />}
               isSelected={isSelected}
               onClick={onSelect}
               onMouseEnter={onSetHighlight}

@@ -30,7 +30,7 @@
         font-size: 16px;
         font-weight: 500;
         line-height: 24px;
-        color: #071127;
+        color: var(--pulse-tx1);
       }
     }
 
@@ -54,7 +54,7 @@
 
     .ant-modal-footer {
       padding: 14px 20px;
-      border-top: 1px solid #F0F1F3;
+      border-top: 1px solid var(--pulse-bg2);
     }
   }
 }
@@ -62,7 +62,7 @@
 .ant-form-item {
   .ant-form-item-label {
     label {
-      color: #5E6472 !important;
+      color: var(--pulse-tx2) !important;
     }
   }
 }

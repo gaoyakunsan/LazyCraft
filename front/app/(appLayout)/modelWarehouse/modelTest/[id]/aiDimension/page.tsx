@@ -122,11 +122,11 @@ const Dimension = (req) => {
                 创建人：{baseInfo?.username}
               </div>
               <div className={styles.detailWrap}>
-                <div>模型：<span style={{ color: '#071127' }}>{baseInfo?.model_name}</span></div>
-                <div>测评进度：<span style={{ color: '#071127' }}>{baseInfo?.process}</span></div>
-                <div>测评成功：<span style={{ color: '#69D17B' }}>{baseInfo?.ai_eva_success}</span></div>
-                <div>测评失败：<span style={{ color: '#FF5E5E' }}>{baseInfo?.ai_eva_fail}</span></div>
-                <div>AI测评器：<span style={{ color: '#071127' }}>{baseInfo?.ai_evaluator_name}</span></div>
+                <div>模型：<span style={{ color: '#1C2B29' }}>{baseInfo?.model_name}</span></div>
+                <div>测评进度：<span style={{ color: '#1C2B29' }}>{baseInfo?.process}</span></div>
+                <div>测评成功：<span style={{ color: '#4E9F3D' }}>{baseInfo?.ai_eva_success}</span></div>
+                <div>测评失败：<span style={{ color: '#E04758' }}>{baseInfo?.ai_eva_fail}</span></div>
+                <div>AI测评器：<span style={{ color: '#1C2B29' }}>{baseInfo?.ai_evaluator_name}</span></div>
               </div>
             </div>
           </Card>

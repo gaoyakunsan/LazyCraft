@@ -351,7 +351,7 @@ const DatasetVersionDetail = (req) => {
           <div className={styles.desc}>
             {info?.description}
           </div>
-          <Space style={{ color: '#5E6472', columnGap: 30 }}>
+          <Space style={{ color: '#5C6B68', columnGap: 30 }}>
             <div>
               来源：{originMap[info?.from_type]}
             </div>

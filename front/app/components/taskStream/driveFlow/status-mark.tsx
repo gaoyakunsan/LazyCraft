@@ -29,7 +29,7 @@ const EXECUTION_STATUS_MAPPING = {
   },
   failed: {
     bgColor: '!bg-[#fef3f2]',
-    textColor: '!text-[#d92d20]',
+    textColor: '!text-[#E04758]',
     label: 'FAIL',
     showIndicator: true,
     indicatorColor: 'red' as const,
@@ -106,7 +106,7 @@ const ExecutionStatus: FC<ExecutionStatusProps> = ({
       {hasFailed && error && (
         <>
           <div className='my-2 h-[0.5px] bg-black opacity-5' />
-          <div className='text-xs leading-[18px] text-[#d92d20] break-words'>
+          <div className='text-xs leading-[18px] text-[#E04758] break-words'>
             {error.detail_error}
           </div>
         </>

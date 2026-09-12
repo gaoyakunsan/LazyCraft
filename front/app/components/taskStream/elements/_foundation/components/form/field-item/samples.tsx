@@ -48,14 +48,14 @@ const SelectComponent: FC<Partial<FieldItemProps>> = ({
         className="sql_examples_group_title w-full"
         style={{ paddingBottom: 16, marginBottom: 16, borderBottom: '1px solid #e8e8e8' }}
       >
-        <label style={{ color: '#5E6472' }}>
-          <Divider type="vertical" style={{ backgroundColor: '#1677ff', width: 3, marginLeft: 0 }} />
+        <label style={{ color: '#5C6B68' }}>
+          <Divider type="vertical" style={{ backgroundColor: '#0E9F8C', width: 3, marginLeft: 0 }} />
           自然语言转SQL脚本的样例
         </label>
         {!readOnly && <Button
           size='small'
           type='text'
-          style={{ color: '#1677ff', float: 'right' }}
+          style={{ color: '#0E9F8C', float: 'right' }}
           onClick={addGroup}
           disabled={readOnly}
         >

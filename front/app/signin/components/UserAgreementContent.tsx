@@ -83,7 +83,7 @@ const UserAgreementContent = forwardRef<HTMLDivElement, UserAgreementContentProp
       <h4 style={{ fontSize: '16px', fontWeight: 'bold', marginTop: '20px', marginBottom: '12px' }}>二、服务说明</h4>
       <p style={{ marginBottom: '12px' }}>平台提供全方位的大模型开发与应用服务：</p>
 
-      <p style={{ marginBottom: '8px', fontWeight: 'bold', color: '#1890ff' }}>核心功能模块：</p>
+      <p style={{ marginBottom: '8px', fontWeight: 'bold', color: '#0E9F8C' }}>核心功能模块：</p>
       <ul style={{ marginBottom: '16px', paddingLeft: '20px' }}>
         <li><strong>应用商店</strong>：浏览和使用各类 AI 应用，包括客服助手、办公助手、代码助手、文本创作等多种场景</li>
         <li><strong>模型仓库</strong>：管理和部署各类大语言模型，支持主流开源模型和私有模型</li>
@@ -95,7 +95,7 @@ const UserAgreementContent = forwardRef<HTMLDivElement, UserAgreementContentProp
         <li><strong>工具集成</strong>：集成各类 AI 工具和 MCP 协议，扩展平台能力</li>
       </ul>
 
-      <p style={{ marginBottom: '8px', fontWeight: 'bold', color: '#1890ff' }}>应用场景覆盖：</p>
+      <p style={{ marginBottom: '8px', fontWeight: 'bold', color: '#0E9F8C' }}>应用场景覆盖：</p>
       <ul style={{ marginBottom: '16px', paddingLeft: '20px' }}>
         <li><strong>办公提效</strong>：文档处理、数据分析、邮件撰写、会议纪要等</li>
         <li><strong>文本创作</strong>：文章生成、内容改写、创意策划、营销文案等</li>
@@ -106,7 +106,7 @@ const UserAgreementContent = forwardRef<HTMLDivElement, UserAgreementContentProp
         <li><strong>多媒体处理</strong>：图像识别、音频转写、视频分析等</li>
       </ul>
 
-      <p style={{ marginBottom: '8px', fontWeight: 'bold', color: '#1890ff' }}>企业级特性：</p>
+      <p style={{ marginBottom: '8px', fontWeight: 'bold', color: '#0E9F8C' }}>企业级特性：</p>
       <ul style={{ marginBottom: '12px', paddingLeft: '20px' }}>
         <li>用户组和权限管理，支持多租户隔离</li>
         <li>完整的日志追踪和成本核算系统</li>
@@ -179,7 +179,7 @@ const UserAgreementContent = forwardRef<HTMLDivElement, UserAgreementContentProp
         border: '1px solid #d1e9ff',
       }}
       >
-        <p style={{ margin: 0, color: '#1890ff', fontWeight: 'bold' }}>
+        <p style={{ margin: 0, color: '#0E9F8C', fontWeight: 'bold' }}>
           提示：请滚动到底部后，点击&ldquo;同意并继续&rdquo;按钮。
         </p>
       </div>

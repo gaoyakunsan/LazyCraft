@@ -782,10 +782,10 @@ const Apps = () => {
                         </Row>
                       </Col>
                     </Row>
-                    <div className='text-[#5E6472] text-sm'>
+                    <div className='text-[#5C6B68] text-sm'>
                       <div className='mt-4 flex justify-between'>
                         <Paragraph ellipsis={{ rows: 1, tooltip: item.created_by_account.name }} style={{ marginBottom: 8 }}>
-                          <span className='text-[#5E6472]'>
+                          <span className='text-[#5C6B68]'>
                             创建人：{item.created_by_account.name}
                           </span>
                           {getAuthCode(item.created_by_account.id) && (
@@ -818,7 +818,7 @@ const Apps = () => {
                         {item?.engine_status === '服务异常' && <span className='text-[red] text-[12px]'>{item?.engine_status}</span>}
                       </div>
                       <Paragraph ellipsis={{ rows: 2, tooltip: item.description }} style={{ marginBottom: 8 }} className='h-[44px]'>
-                        <span className='text-[#5E6472] text-sm'>
+                        <span className='text-[#5C6B68] text-sm'>
                           {item.description}
                         </span>
                       </Paragraph>
@@ -830,13 +830,13 @@ const Apps = () => {
                     </div>
 
                     <div className={style.lastLine}>
-                      <div className='text-[#5E6472] text-sm, text-[0.7292vw]'>
+                      <div className='text-[#5C6B68] text-sm, text-[0.7292vw]'>
                         {
                           item.status === 'draft'
                             ? '未发布'
                             : <span>
-                              <Iconfont type="icon-fabu" style={{ color: '#0E5DD8' }} />
-                              <span className='text-[#0E5DD8] ml-1'>已发布</span>
+                              <Iconfont type="icon-fabu" style={{ color: '#0E9F8C' }} />
+                              <span className='text-[#0E9F8C] ml-1'>已发布</span>
                               <Divider type="vertical" />
                               更新于
                               {formatTime(item.workflow_updated_at, 'YYYY-MM-DD HH:mm' as string)}

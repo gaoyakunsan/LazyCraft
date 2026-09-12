@@ -463,7 +463,7 @@ const Prompt = () => {
                     {statusAi && <Iconfont
                       type='icon-AIshengcheng1'
                       style={{
-                        color: isView ? '#ccc' : '#1890ff',
+                        color: isView ? '#ccc' : '#0E9F8C',
                         fontSize: 16,
                         position: 'absolute',
                         right: 10,

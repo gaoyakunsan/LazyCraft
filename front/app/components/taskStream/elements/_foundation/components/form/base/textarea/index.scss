@@ -1,7 +1,7 @@
 .custom-textarea {
   // border color
   &.ant-input-outlined {
-    border-color: #D9DBE0;
+    border-color: var(--pulse-line);
   }
   // placeholder color
   &::placeholder {
@@ -11,8 +11,8 @@
 .custom-textarea-readonly {
   &.ant-input-outlined[disabled] {
     background-color: #fff;
-    border-color: #D9DBE0;
-    color: #071127;
+    border-color: var(--pulse-line);
+    color: var(--pulse-tx1);
     cursor: auto;
   }
 }

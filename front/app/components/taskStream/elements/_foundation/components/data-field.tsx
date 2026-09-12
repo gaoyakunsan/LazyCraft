@@ -79,7 +79,7 @@ const FieldComponent: FC<FieldComponentProps> = ({
     <div className='flex items-center h-6 min-w-0 flex-1'>
       <div className='system-sm-semibold-uppercase text-text-secondary truncate pr-1 min-w-0 flex-1'>
         {/* 必填字段显示红色星号标识 */}
-        {required && <span className='ml-0.5 text-xs font-semibold text-[#D92D20]'>*</span>}
+        {required && <span className='ml-0.5 text-xs font-semibold text-[#E04758]'>*</span>}
         {title}
       </div>
       {/* 提示信息图标，使用TooltipPlus组件显示详细信息 */}

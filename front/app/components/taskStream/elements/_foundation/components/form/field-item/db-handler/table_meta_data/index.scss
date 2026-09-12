@@ -36,14 +36,14 @@
 }
 
 .tables-info-dict-column-edit-btn {
-  color: #5E6472;
+  color: var(--pulse-tx2);
   &:hover {
-    color: #0E5DD8;
+    color: var(--pulse-accent);
   }
 }
 
 .tables-info-dict-column-delete-btn {
-  color: #5E6472;
+  color: var(--pulse-tx2);
   &:hover {
     color: #EF4444;
   }

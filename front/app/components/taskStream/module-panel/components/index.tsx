@@ -79,7 +79,7 @@ const Components = () => {
     <div className='canvas-subcontent-overflow' style={{ height: 'calc(100vh - 190px)' }}>
       {
         BLOCK_CLASSIFICATIONS.map((categorization: string, index) => <div key={`categorization${index}`}>
-          <div className='flex items-center justify-between text-[#5E6472] text-xs ml-5 mb-2'>
+          <div className='flex items-center justify-between text-[#5C6B68] text-xs ml-5 mb-2'>
             {CLASSIFICATION_NAMES[categorization] || categorization}
           </div>
           {

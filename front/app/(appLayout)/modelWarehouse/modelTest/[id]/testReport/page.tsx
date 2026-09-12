@@ -99,8 +99,8 @@ const Dimension = (req) => {
               创建人：{reportInfo?.created_by}
             </div>
             <div className={styles.detailWrap}>
-              <div>测评类型：<span style={{ color: '#071127' }}>{reportInfo?.evaluation_method === 'manual' ? '人工测评' : 'AI测评'}</span></div>
-              <div>测评进度：<span style={{ color: '#071127' }}>{reportInfo?.progress}</span></div>
+              <div>测评类型：<span style={{ color: '#1C2B29' }}>{reportInfo?.evaluation_method === 'manual' ? '人工测评' : 'AI测评'}</span></div>
+              <div>测评进度：<span style={{ color: '#1C2B29' }}>{reportInfo?.progress}</span></div>
             </div>
           </div>
         </Card>

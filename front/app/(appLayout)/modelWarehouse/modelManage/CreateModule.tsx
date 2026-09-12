@@ -728,7 +728,7 @@ const CreateModal = (props: any) => {
                   </p>
                   <p className="ant-upload-text">将文件拖拽至此区域或选择文件上传</p>
                 </Dragger>
-                <div className='mt-2 text-xs text-[#8f949e]'>
+                <div className='mt-2 text-xs text-[#8A9995]'>
                   <p>导入要求：模型文件为zip格式</p>
                 </div>
               </Form.Item>}

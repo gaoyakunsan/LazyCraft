@@ -1,6 +1,6 @@
 .ant-input.ant-input-outlined:not(.ant-input-disabled) {
   &.while-error-input {
-    border-color: #ff4d4f;
+    border-color: var(--pulse-danger);
   }
   &.while-loop-normal-input {
     border-color: #d9d9d9;

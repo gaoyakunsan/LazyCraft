@@ -87,16 +87,16 @@ const AppTemplate = (props: any) => {
                       <Button type="text" size="small" danger onClick={() => onDeleteTemplate(item)}>删除</Button>
                     </Col>
                   </Row>
-                  <div className='text-left mt-1 ml-4 text-[#5E6472]' style={{ minHeight: '22px' }}>
+                  <div className='text-left mt-1 ml-4 text-[#5C6B68]' style={{ minHeight: '22px' }}>
                     {dataType === APP_MODE.GROUP && `账号名称：${item.created_by_account.name}`}
                   </div>
-                  <div className='text-left mb-1 ml-4 text-[#5E6472]'>
+                  <div className='text-left mb-1 ml-4 text-[#5C6B68]'>
                     更新时间：
                     {formatTime(item.updated_at, 'YYYY-MM-DD HH:mm' as string)}
                   </div>
                   <div className='my-2 mx-4 h-[40px]'>
                     <Paragraph ellipsis={{ rows: 2 }} title={item.description}>
-                      <div className='text-[#5E6472] text-sm text-left'>
+                      <div className='text-[#5C6B68] text-sm text-left'>
                         {item.description}
                       </div>
                     </Paragraph>

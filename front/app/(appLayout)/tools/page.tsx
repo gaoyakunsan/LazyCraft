@@ -345,7 +345,7 @@ const Tools = () => {
                             </div>
 
                           </div>
-                          <div className='text-[#5E6472] text-[12px]'>
+                          <div className='text-[#5C6B68] text-[12px]'>
                             {item.publish && canEdit(item?.user_id) && <div>
                               是否开启：<Switch size='small' value={item.enable} onChange={(checked: boolean) => onSwitchChange(checked, item)} onClick={(checked, e) => { e.stopPropagation() }} />
                             </div>}
@@ -380,10 +380,10 @@ const Tools = () => {
                       <div className={styles.footer}>
                         <div className={styles.statusWrap}>
                           <span>{item.publish ? '已发布' : '未发布'}</span>
-                          <span style={{ color: '#D9DBE0' }}> I </span>
+                          <span style={{ color: '#DDE3E1' }}> I </span>
                           {item?.auth === 1 && <span>
                             <span>已激活</span>
-                            <span style={{ color: '#D9DBE0' }}> I </span>
+                            <span style={{ color: '#DDE3E1' }}> I </span>
                           </span>}
                           {item.publish_at}
                         </div>
@@ -564,7 +564,7 @@ const Tools = () => {
                               <div className={styles.type}>Mcp</div>
                             </div>
                           </div>
-                          <div className='text-[#5E6472] text-[12px]'>
+                          <div className='text-[#5C6B68] text-[12px]'>
                             {item.publish && canEdit(item?.user_id) && <div>
                               是否开启：<Switch size='small' value={item.enable} onChange={(checked: boolean) => onSwitchMcpChange(checked, item)} onClick={(checked, e) => { e.stopPropagation() }} />
                             </div>}
@@ -597,7 +597,7 @@ const Tools = () => {
                       <div className={styles.footer}>
                         <div className={styles.statusWrap}>
                           <span>{item.publish ? '已发布' : '未发布'}</span>
-                          <span style={{ color: '#D9DBE0' }}> I </span>
+                          <span style={{ color: '#DDE3E1' }}> I </span>
                           {item.publish_at}
                         </div>
                         <div className='flex'>

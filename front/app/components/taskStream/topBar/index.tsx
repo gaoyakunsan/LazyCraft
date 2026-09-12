@@ -457,7 +457,7 @@ const LazyLLMHeader: FC = () => {
         <Affix offsetTop={15} className="text-right">
           <CloseCircleOutlined
             className="cursor-pointer"
-            style={{ color: '#ff4d4f' }}
+            style={{ color: '#E04758' }}
             onClick={() => messageApi.destroy()}
           />
         </Affix>
@@ -596,7 +596,7 @@ const LazyLLMHeader: FC = () => {
   }, [loadingSwitchDebuggingStatus, debugStatus])
 
   return (
-    <div className='absolute top-0 left-0 z-10 flex items-center justify-between w-full px-3 h-14 bg-white border border-[#F0F1F3]'>
+    <div className='absolute top-0 left-0 z-10 flex items-center justify-between w-full px-3 h-14 bg-white border border-[#EBEFEE]'>
       <div>
         <div className='text-xs font-medium text-gray-700 ml-14 mt-2 whitespace-nowrap overflow-hidden text-ellipsis max-w-[900px]'>
           {appTitle}

@@ -492,7 +492,7 @@ const McpToolPageContent = () => {
                                   else if (event === 'completed' || event === 'finish')
                                     color = '#52c41a'
                                   else if (event === 'start')
-                                    color = '#1677ff'
+                                    color = '#0E9F8C'
 
                                   const label = log.event || 'message'
                                   return (

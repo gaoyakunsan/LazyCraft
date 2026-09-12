@@ -1,7 +1,7 @@
 .custom-input {
   // border color
   &.ant-input-outlined {
-    border-color: #D9DBE0;
+    border-color: var(--pulse-line);
   }
   // placeholder color
   &::placeholder {
@@ -15,11 +15,11 @@
   justify-content: space-between;
   font-weight: 400;
   font-size: 14px;
-  color: #071127;
+  color: var(--pulse-tx1);
   text-align: left;
   font-style: normal;
   border-radius: 4px;
-  border: 1px solid #D9DBE0;
+  border: 1px solid var(--pulse-line);
   padding: 5px 12px;
   height: 30px;
   .custom-input-readonly-value {

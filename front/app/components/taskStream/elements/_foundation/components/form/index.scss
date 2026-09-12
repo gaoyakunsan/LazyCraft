@@ -27,25 +27,25 @@
   &.ant-form-item {
     margin-bottom: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #F0F1F3;
+    border-bottom: 1px solid var(--pulse-bg2);
   }
 }
 
 // 表单label样式
 .field-item-label {
   font-size: 14px;
-  color: #5E6472;
+  color: var(--pulse-tx2);
   vertical-align: middle;
 
   // title类型的标题样式
   &.title-styled-label {
     font-size: 14px;
-    color: #071127;
+    color: var(--pulse-tx1);
     font-weight: 500;
     // margin-bottom: 6px;
 
     .title-divider {
-      background-color: #1677ff;
+      background-color: var(--pulse-accent);
       width: 3px;
       margin-left: 0;
       margin-right: 6px;
@@ -57,7 +57,7 @@
   &.ant-btn {
     font-size: 14px;
     padding: 4px 0;
-    color: #0E5DD8 !important;
+    color: var(--pulse-accent) !important;
     background-color: #fff !important;
 
     .anticon {

@@ -112,7 +112,7 @@ const ExecutionNode: FC<ExecutionNodeProps> = ({
 
     if (nodeInfo.status === 'failed' && nodeInfo.error) {
       return (
-        <div className='px-3 py-[10px] bg-[#fef3f2] rounded-lg border-[0.5px] border-[rgba(0,0,0,0.05)] text-xs leading-[18px] text-[#d92d20] shadow-xs break-words'>
+        <div className='px-3 py-[10px] bg-[#fef3f2] rounded-lg border-[0.5px] border-[rgba(0,0,0,0.05)] text-xs leading-[18px] text-[#E04758] shadow-xs break-words'>
           {nodeInfo.error}
         </div>
       )

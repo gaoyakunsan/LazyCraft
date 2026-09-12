@@ -235,7 +235,7 @@ const UserList = () => {
         form={form}
         autoComplete="off"
       >
-        <div className='text-[#8F949E] text-[12px]'>此处可对该账号的个人空间资源进行配置</div>
+        <div className='text-[#8A9995] text-[12px]'>此处可对该账号的个人空间资源进行配置</div>
         <Form.Item initialValue={dataInfo?.tenant_id} name='tenant_id' hidden >
           <Input />
         </Form.Item>

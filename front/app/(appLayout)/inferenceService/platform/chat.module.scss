@@ -40,7 +40,7 @@
             top: 0;
             left: 0;
             bottom: 0;
-            background: #1677ff;
+            background: var(--pulse-accent);
           }
         }
 
@@ -196,7 +196,7 @@
       }
 
       .defaultText {
-        color: #071127;
+        color: var(--pulse-tx1);
         font-size: 28px;
         margin-top: 22px;
       }

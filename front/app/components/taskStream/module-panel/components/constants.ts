@@ -18,7 +18,7 @@ export const BLOCK_CLASSIFICATIONS: string[] = [
 ]
 
 export const iconColorDict = {
-  [BlockClassificationEnum.FundamentalComponent]: '#0E5DD8',
+  [BlockClassificationEnum.FundamentalComponent]: '#0E9F8C',
   [BlockClassificationEnum.BasicModel]: '#19B68D',
   [BlockClassificationEnum.FunctionModule]: '#8F59CA',
   [BlockClassificationEnum.ControlFlow]: '#454555',

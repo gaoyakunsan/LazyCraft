@@ -100,7 +100,7 @@ const DataSetManager = () => {
         return (
           <>
             {record.tags.map((item, index) => {
-              return <Tag style={{ color: '#8F949E', background: '#F6F7F8', marginBottom: '5px' }} key={item}>{item}</Tag>
+              return <Tag style={{ color: '#8A9995', background: '#F4F6F5', marginBottom: '5px' }} key={item}>{item}</Tag>
             })}
           </>
         )

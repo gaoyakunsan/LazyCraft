@@ -3,7 +3,7 @@
   gap: 4px;
 
   &:hover {
-    color: #0E5DD8;
+    color: var(--pulse-accent);
 
     .normal {
       background: linear-gradient(151deg, #8095FF 0%, #B485FF 100%);

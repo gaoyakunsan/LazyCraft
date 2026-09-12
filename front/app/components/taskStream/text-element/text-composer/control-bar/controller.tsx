@@ -91,7 +91,7 @@ const NodeOperator = ({
       className={cn(
         'flex items-center justify-between px-3 h-8 cursor-pointer rounded-md text-sm transition-colors',
         item.variant === 'danger'
-          ? 'text-gray-700 hover:text-[#D92D20] hover:bg-[#FEF3F2]'
+          ? 'text-gray-700 hover:text-[#E04758] hover:bg-[#FEF3F2]'
           : 'text-gray-700 hover:bg-black/5',
       )}
       onClick={item.action}

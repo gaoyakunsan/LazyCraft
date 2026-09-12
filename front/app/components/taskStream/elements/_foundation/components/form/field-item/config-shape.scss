@@ -64,12 +64,12 @@
     .args-set {
       input,
       .ant-select-selector {
-        border-color: #ff4d4f;
+        border-color: var(--pulse-danger);
       }
     }
 
     .config-shape-check {
-      color: #ff4d4f;
+      color: var(--pulse-danger);
       font-weight: 500;
       height: auto !important;
       padding: 4px 0;
@@ -121,7 +121,7 @@
       text-overflow: ellipsis;
 
       .prev-name {
-        color: #0E5DD8;
+        color: var(--pulse-accent);
       }
     }
 
@@ -209,7 +209,7 @@
 .error-message-container {
   display: flex;
   align-items: center;
-  color: #ff4d4f;
+  color: var(--pulse-danger);
   font-weight: 500;
   padding: 4px 0;
   

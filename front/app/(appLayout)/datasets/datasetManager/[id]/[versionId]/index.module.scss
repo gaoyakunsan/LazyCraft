@@ -8,13 +8,13 @@
 
 .title {
     font-size: 22px;
-    color: #071127;
+    color: var(--pulse-tx1);
     font-weight: bold;
 }
 
 .name {
     font-size: 16px;
-    color: #071127;
+    color: var(--pulse-tx1);
     line-height: 24px;
     font-weight: bold;
     display: flex;
@@ -24,13 +24,13 @@
 .versionTag {
     margin-left: 4px;
     height: 20px;
-    background: #F0F5FC;
+    background: var(--pulse-accent-tint);
     border-radius: 4px 0px 4px 0px;
-    border: 1px solid #0E5DD8;
+    border: 1px solid var(--pulse-accent);
     padding: 0 4px;
     font-size: 12px;
     line-height: 20px;
-    color: #0E5DD8;
+    color: var(--pulse-accent);
 }
 
 .tags {
@@ -38,12 +38,12 @@
     display: flex;
 
     .tagItem {
-        background: #F6F7F8;
+        background: var(--pulse-bg0);
         border-radius: 4px;
-        border: 1px solid #F0F1F3;
+        border: 1px solid var(--pulse-bg2);
         padding: 2px 8px;
         margin-right: 2px;
-        color: #8F949E;
+        color: var(--pulse-tx3);
         font-size: 12px;
     }
 }
@@ -53,7 +53,7 @@
 .desc {
     margin-top: 4px;
     width: 100%;
-    color: #5E6472;
+    color: var(--pulse-tx2);
     line-height: 22px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -78,21 +78,21 @@
 }
 
 .doing {
-    background: #F0F5FC;
-    border-color: #0E5DD8;
-    color: #0E5DD8;
+    background: var(--pulse-accent-tint);
+    border-color: var(--pulse-accent);
+    color: var(--pulse-accent);
 }
 
 .failed {
     background: #FFF6F6;
-    border-color: #FF5E5E;
-    color: #FF5E5E;
+    border-color: var(--pulse-danger);
+    color: var(--pulse-danger);
 }
 
 .done {
     background: #F6FCF7;
-    border-color: #69D17B;
-    color: #69D17B
+    border-color: var(--pulse-ok);
+    color: var(--pulse-ok)
 }
 
 .item {

@@ -11,7 +11,7 @@
     padding: 1.5625vw 10px;
     box-sizing: border-box;
     overflow-y: auto;
-    border-right: 1px solid #F0F5FC;
+    border-right: 1px solid var(--pulse-accent-tint);
     background: #FCFCFD;
 
     .menu {
@@ -30,8 +30,8 @@
     }
 
     .active {
-        background: #F0F5FC;
-        color: #0E5DD8;
+        background: var(--pulse-accent-tint);
+        color: var(--pulse-accent);
     }
 
     .icon {

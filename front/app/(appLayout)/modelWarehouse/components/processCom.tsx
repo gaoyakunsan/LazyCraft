@@ -32,7 +32,7 @@ export default (props: IProps) => {
   }, [id])
   return (
     <div>
-      <IconFont type='icon-xiazai' style={{ color: '#0E5DD8' }} />
+      <IconFont type='icon-xiazai' style={{ color: '#0E9F8C' }} />
       <span className='text-[12px]'>
         下载中
       </span>

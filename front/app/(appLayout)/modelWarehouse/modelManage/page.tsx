@@ -289,7 +289,7 @@ const ModelWarehouse = () => {
                             && <div>
                               {
                                 item?.api_key
-                                && <Tooltip title="API-KEY已配置，模型可正常使用" placement="bottom" ><IconFont className='text-[18px] mr-[5px]' style={{ color: '#69D17B' }} type='icon-chenggong' /></Tooltip>
+                                && <Tooltip title="API-KEY已配置，模型可正常使用" placement="bottom" ><IconFont className='text-[18px] mr-[5px]' style={{ color: '#4E9F3D' }} type='icon-chenggong' /></Tooltip>
                               }
                               <Tooltip title="添加API Key" placement="bottom" >
                                 <IconFont className={styles.editIcon} type='icon-shezhi1' onClick={e => handleEditClick(item, e)}></IconFont>

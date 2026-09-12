@@ -13,7 +13,7 @@ type ColorPalette = {
 // 主题色彩映射
 export const THEME_COLOR_MAP: Readonly<Record<NoteColorTheme, ColorPalette>> = {
   [NoteColorTheme.Sky]: {
-    primary: '#3B82F6',
+    primary: '#0E9F8C',
     header: '#DBEAFE',
     background: '#F0F9FF',
     accent: '#93C5FD',

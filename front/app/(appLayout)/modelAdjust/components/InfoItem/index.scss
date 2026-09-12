@@ -6,7 +6,7 @@
   font-size: 14px;
 
   .info__item--label {
-    color: #5E6472;
+    color: var(--pulse-tx2);
     text-align: left;
   }
 
@@ -14,7 +14,7 @@
     flex-grow: 1;
     max-width: 650px;
     // padding-left: 10px;
-    color: #071127;
+    color: var(--pulse-tx1);
     text-align: left;
     word-break: break-all;
   }

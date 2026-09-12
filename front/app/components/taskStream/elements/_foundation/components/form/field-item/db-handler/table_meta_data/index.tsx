@@ -47,7 +47,7 @@ const FieldItem: FC<Partial<FieldItemProps>> = ({
           position: 'absolute',
           right: 0,
           top: -40,
-          color: '#0E5DD8',
+          color: '#0E9F8C',
           padding: '4px 0',
           backgroundColor: '#fff',
         }}
@@ -58,7 +58,7 @@ const FieldItem: FC<Partial<FieldItemProps>> = ({
         }}
       >
         添加表
-        <IconFont type="icon-tianjia1" className="ml-0.5" style={{ color: '#0E5DD8' }} />
+        <IconFont type="icon-tianjia1" className="ml-0.5" style={{ color: '#0E9F8C' }} />
       </Button>}
 
       {value?.map((item: any) => (
@@ -67,7 +67,7 @@ const FieldItem: FC<Partial<FieldItemProps>> = ({
           className="tables-info-dict-column-item"
         >
           <div className='flex items-center'>
-            <PaperClipOutlined className="mr-2" style={{ color: '#5E6472' }} />
+            <PaperClipOutlined className="mr-2" style={{ color: '#5C6B68' }} />
             <span>{item?.name}</span>
           </div>
 

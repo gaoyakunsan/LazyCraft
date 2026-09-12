@@ -11,7 +11,7 @@
     // margin: 0 auto;
     .title {
       font-size: 22px;
-      color: #071127;
+      color: var(--pulse-tx1);
       font-weight: bold;
     }
 
@@ -21,7 +21,7 @@
     }
 
     .infoWrap {
-      color: #5E6472;
+      color: var(--pulse-tx2);
 
       .first {
         display: flex;
@@ -31,7 +31,7 @@
 
         .name {
           font-size: 16px;
-          color: #071127;
+          color: var(--pulse-tx1);
           line-height: 24px;
           font-weight: bold;
         }
@@ -59,7 +59,7 @@
           align-items: center;
           justify-content: flex-start;
           gap: 30px;
-          color: #5E6472;
+          color: var(--pulse-tx2);
           margin-bottom: 15px;
         }
       }

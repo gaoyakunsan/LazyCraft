@@ -852,7 +852,7 @@ const ConfigShape: FC<Partial<FieldItemProps>> = ({
             onClick={handleAddParam}
           >
             添加{simpleTitle || filedTitle}
-            <Icon type="icon-tianjia1" style={{ color: '#0E5DD8' }} />
+            <Icon type="icon-tianjia1" style={{ color: '#0E9F8C' }} />
           </BtnAntd>
         }
       </div>}
@@ -958,7 +958,7 @@ const ConfigShape: FC<Partial<FieldItemProps>> = ({
                       placement="topLeft"
                       title={errorMessage || '参数错误'}
                     >
-                      <Icon type="icon-jinggao" style={{ fontSize: '16px', color: '#ff4d4f' }} />
+                      <Icon type="icon-jinggao" style={{ fontSize: '16px', color: '#E04758' }} />
                     </Tooltip>
                   </div>
                 )}
@@ -1088,7 +1088,7 @@ const ConfigShape: FC<Partial<FieldItemProps>> = ({
                   }
                 </div>
                 {
-                  item.payload__batch_flag && nodeData.payload__kind === '__start__' && <span className='bg-[#69d17b1f] px-[10px] rounded-[4px]'>批处理</span>
+                  item.payload__batch_flag && nodeData.payload__kind === '__start__' && <span className='bg-[#4E9F3D1f] px-[10px] rounded-[4px]'>批处理</span>
                 }
                 <div className='args-remove' >
                   {canDelete && <Icon type="icon-shanchu1" style={{ fontSize: '16px' }} onClick={() => !readOnly && handleRemovePort(item.id)} />
@@ -1271,7 +1271,7 @@ const ConfigShape: FC<Partial<FieldItemProps>> = ({
           if (!isValid) {
             return (
               <div style={{
-                color: '#ff4d4f',
+                color: '#E04758',
                 fontSize: '12px',
                 marginTop: '8px',
                 paddingLeft: '8px',

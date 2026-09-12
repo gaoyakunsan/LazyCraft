@@ -70,7 +70,7 @@ const NormalForm = () => {
             message: '请输入正确的手机号码',
           }]}>
             <Input
-              prefix={<UserOutlined style={{ color: '#5E6472' }} />}
+              prefix={<UserOutlined style={{ color: '#5C6B68' }} />}
               placeholder='请输入手机号'
               maxLength={11}
               style={{ height: 40 }}

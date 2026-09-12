@@ -67,7 +67,7 @@ const EditTableStructureContent = () => {
       />
       <div className='mt-3 flex items-center'>
         <span className={style.splitLine} />
-        <span className='text-[#071127] text-lg font-medium'>基础信息</span>
+        <span className='text-[#1C2B29] text-lg font-medium'>基础信息</span>
       </div>
       <Divider style={{ margin: '13px 0' }} />
       {
@@ -86,7 +86,7 @@ const EditTableStructureContent = () => {
 
           <div className='mt-3 flex items-center'>
             <span className={style.splitLine} />
-            <span className='text-[#071127] text-lg font-medium'>数据表结构</span>
+            <span className='text-[#1C2B29] text-lg font-medium'>数据表结构</span>
           </div>
           <Divider style={{ margin: '13px 0' }} />
           <EditableTable onSave={setFormVal} remoteData={data.columns.columns.map((el, i) => ({ ...el, __order: i }))} tableList={tableList} database_id={database_id} />

@@ -88,7 +88,7 @@ const EditTableDataContent = () => {
       />
       <div className='mt-3 flex items-center'>
         <span className={style.splitLine} />
-        <span className='text-[#071127] text-lg font-medium'>基础信息</span>
+        <span className='text-[#1C2B29] text-lg font-medium'>基础信息</span>
       </div>
       <Divider style={{ margin: '13px 0' }} />
       {
@@ -107,7 +107,7 @@ const EditTableDataContent = () => {
 
           <div className='mt-3 flex items-center'>
             <span className={style.splitLine} />
-            <span className='text-[#071127] text-lg font-medium'>表数据</span>
+            <span className='text-[#1C2B29] text-lg font-medium'>表数据</span>
           </div>
           <Divider style={{ margin: '13px 0' }} />
           <EditableTable

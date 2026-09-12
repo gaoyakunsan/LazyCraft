@@ -111,7 +111,7 @@ const WhileLoopComponent: FC<Partial<FieldItemProps & { variableOptions?: { name
                     <Tooltip
                       open={errors?.[0]?.id === item.id && errors?.[0]?.field === 'variable_name'}
                       title={errors.find(e => e.id === item.id && e.field === 'variable_name')?.message}
-                      color="#ff4d4f"
+                      color="#E04758"
                     >
                       <Select
                         status={errors.some(e => e.id === item.id && e.field === 'variable_name') ? 'error' : undefined}
@@ -126,7 +126,7 @@ const WhileLoopComponent: FC<Partial<FieldItemProps & { variableOptions?: { name
                     <Tooltip
                       open={errors?.[0]?.id === item.id && errors?.[0]?.field === 'operator'}
                       title={errors.find(e => e.id === item.id && e.field === 'operator')?.message}
-                      color="#ff4d4f"
+                      color="#E04758"
                     >
                       <Select
                         status={errors.some(e => e.id === item.id && e.field === 'operator') ? 'error' : undefined}
@@ -142,7 +142,7 @@ const WhileLoopComponent: FC<Partial<FieldItemProps & { variableOptions?: { name
                     <Tooltip
                       open={errors?.[0]?.id === item.id && errors?.[0]?.field === 'value'}
                       title={errors.find(e => e.id === item.id && e.field === 'value')?.message}
-                      color="#ff4d4f"
+                      color="#E04758"
                     >
                       <Input
                         status={errors.some(e => e.id === item.id && e.field === 'value') ? 'error' : undefined}

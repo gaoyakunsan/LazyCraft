@@ -183,7 +183,7 @@ const PickerUser = memo((props: any) => {
 
   return (
     <div>
-      <div style={{ border: '1px solid #F0F1F3', display: 'flex', justifyContent: 'space-between', padding: '16px 0 16px 16px' }}>
+      <div style={{ border: '1px solid #EBEFEE', display: 'flex', justifyContent: 'space-between', padding: '16px 0 16px 16px' }}>
         <div style={{ flex: 1 }}>
           <div><Input.Search onSearch={userSearchEvent} disabled={disabled} allowClear /></div>
           <div style={{ display: 'flex', justifyContent: 'space-between', padding: '12px 0' }}>
@@ -205,7 +205,7 @@ const PickerUser = memo((props: any) => {
             }
           </div>
         </div>
-        <div style={{ flex: 1, marginLeft: '16px', borderLeft: '1px solid #F0F1F3', paddingLeft: '16px' }}>
+        <div style={{ flex: 1, marginLeft: '16px', borderLeft: '1px solid #EBEFEE', paddingLeft: '16px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '10px' }}>
           </div>
           <div style={{ height: '230px', overflowY: 'scroll' }}>

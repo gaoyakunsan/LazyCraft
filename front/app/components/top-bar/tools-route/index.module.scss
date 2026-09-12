@@ -3,10 +3,10 @@
   gap: 4px;
 
   &:hover {
-    color: #0E5DD8;
+    color: var(--pulse-accent);
 
     .normal {
-      background: linear-gradient(154deg, #FF5E5E 0%, #FFAD42 100%);
+      background: linear-gradient(154deg, var(--pulse-danger) 0%, #FFAD42 100%);
       border-radius: 8px;
       color: #fff;
     }
@@ -26,7 +26,7 @@
   .activeIcon {
     width: 24px;
     height: 24px;
-    background: linear-gradient(154deg, #FF5E5E 0%, #FFAD42 100%);
+    background: linear-gradient(154deg, var(--pulse-danger) 0%, #FFAD42 100%);
     border-radius: 8px;
     color: #fff;
     text-align: center;

@@ -16,7 +16,7 @@
 .titleText {
   font-weight: 600;
   font-size: 21px;
-  color: #071127;
+  color: var(--pulse-tx1);
 }
 
 .backWrap {
@@ -24,17 +24,17 @@
   height: 30px;
   background: #FFFFFF;
   border-radius: 3px;
-  border: 1px solid #D9DBE0;
+  border: 1px solid var(--pulse-line);
   text-align: center;
   line-height: 30px;
   font-size: 13px;
-  color: #5E6472;
+  color: var(--pulse-tx2);
   cursor: pointer;
   margin-right: 18px;
 
   &:hover {
-    color: #0E5DD8;
-    border: 1px solid #0E5DD8;
+    color: var(--pulse-accent);
+    border: 1px solid var(--pulse-accent);
   }
 }
 
@@ -46,9 +46,9 @@
   height: 30px;
   font-size: 17px;
   border-radius: 3px;
-  border: 1px solid #D9DBE0;
+  border: 1px solid var(--pulse-line);
   margin-right: 13px;
-  color: #5E6472;
+  color: var(--pulse-tx2);
 
 
   >span {
@@ -56,8 +56,8 @@
   }
 
   &:hover {
-    border: 1px solid #0e5dd8;
-    color: #0e5dd8;
+    border: 1px solid var(--pulse-accent);
+    color: var(--pulse-accent);
     cursor: pointer;
   }
 }

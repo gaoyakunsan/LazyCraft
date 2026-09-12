@@ -21,18 +21,18 @@
 
 .tipWrap {
     font-size: 12px;
-    color: #8F949E;
+    color: var(--pulse-tx3);
     line-height: 24px;
 }
 
 .tagsWrap {
     padding: 2px 4px;
     height: 24px;
-    background: #F6F7F8;
+    background: var(--pulse-bg0);
     border-radius: 4px;
-    border: 1px solid #F0F1F3;
+    border: 1px solid var(--pulse-bg2);
     font-size: 12px;
-    color: #8F949E;
+    color: var(--pulse-tx3);
 }
 
 .modalOuter {

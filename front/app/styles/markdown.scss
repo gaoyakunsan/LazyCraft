@@ -109,7 +109,7 @@
 
 .markdown-body a {
   background-color: transparent;
-  color: #155EEF;
+  color: var(--pulse-accent);
   text-decoration: none;
 }
 
@@ -333,7 +333,7 @@
 }
 
 .markdown-body blockquote {
-  border-left: 2px solid #2970FF;
+  border-left: 2px solid var(--pulse-accent);
   margin: 0;
   padding: 0 8px;
 }

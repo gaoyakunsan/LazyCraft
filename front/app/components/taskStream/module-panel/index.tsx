@@ -84,8 +84,8 @@ const ModulePanel = (props: any) => {
                         <div
                           className={cn(
                             'flex items-center px-2 h-6 rounded-md bg-[#F2F6FF] cursor-pointer',
-                            'text-xs font-medium text-[#8F949E]',
-                            canvasTabSSValue === tab.key && 'text-[#0E5DD8] border-[1px] border-solid border-[#0E5DD8]',
+                            'text-xs font-medium text-[#8A9995]',
+                            canvasTabSSValue === tab.key && 'text-[#0E9F8C] border-[1px] border-solid border-[#0E9F8C]',
                           )}
                           key={tab.key}
                           onClick={() => setCanvasTabSSValue(tab.key)}

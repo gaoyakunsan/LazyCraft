@@ -71,8 +71,8 @@ const DatabaseDetailContent = () => {
               <Image src={DatabaseIcon} alt="" width={80} />
             </Col>
             <Col flex="auto">
-              <div className='c-[#071127] font-bold text-lg'>{databaseTableInfo.table_name}</div>
-              <div className='c-[#5E6472]'>{databaseTableInfo.comment}</div>
+              <div className='c-[#1C2B29] font-bold text-lg'>{databaseTableInfo.table_name}</div>
+              <div className='c-[#5C6B68]'>{databaseTableInfo.comment}</div>
             </Col>
           </Row>
         </Card>

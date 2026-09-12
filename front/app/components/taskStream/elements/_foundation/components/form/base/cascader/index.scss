@@ -2,11 +2,11 @@
   &.ant-select-outlined:not(.ant-select-customize-input) {
     // border color
     .ant-select-selector {
-      border: 1px solid #D9DBE0;
+      border: 1px solid var(--pulse-line);
     }
     // arrow color
     .ant-select-arrow .anticon[aria-label="down"] >svg {
-      fill: #5E6472;
+      fill: var(--pulse-tx2);
       transform: scaleY(0.75);
     }
   }
@@ -19,16 +19,16 @@
   &.ant-select-outlined.ant-select-disabled:not(.ant-select-customize-input) {
     cursor: auto;
     background: #ffffff;
-    color: #071127;
+    color: var(--pulse-tx1);
   
     .ant-select-selector {
       cursor: auto;
       background: #ffffff;
-      color: #071127;
+      color: var(--pulse-tx1);
     }
     // arrow color
     .ant-select-arrow .anticon >svg {
-      fill: #D9DBE0;
+      fill: var(--pulse-line);
     }
   }
 }

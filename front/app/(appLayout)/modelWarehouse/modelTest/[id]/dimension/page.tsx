@@ -127,8 +127,8 @@ const Dimension = (req) => {
                 创建人：{baseInfo?.username}
               </div>
               <div className={styles.detailWrap}>
-                <div>模型：<span style={{ color: '#071127' }}>{baseInfo?.model_name}</span></div>
-                <div>测评进度：<span style={{ color: '#071127' }}>{baseInfo?.process}</span></div>
+                <div>模型：<span style={{ color: '#1C2B29' }}>{baseInfo?.model_name}</span></div>
+                <div>测评进度：<span style={{ color: '#1C2B29' }}>{baseInfo?.process}</span></div>
               </div>
             </div>
           </Card>
@@ -160,7 +160,7 @@ const Dimension = (req) => {
                   <Form form={form}>
                     {
                       rightInfo?.map((item: any, index) => <div key={item?.id} className={styles.chooseItem}>
-                        <div className={styles.chooseTitle}> <span style={{ color: '#FF5E5E' }}>*</span>{index + 1}. {item?.dimension_name}</div>
+                        <div className={styles.chooseTitle}> <span style={{ color: '#E04758' }}>*</span>{index + 1}. {item?.dimension_name}</div>
                         <div className={styles.radioList}>
                           <Form.Item
                             name={['evaluations', index, 'option_select_id']}

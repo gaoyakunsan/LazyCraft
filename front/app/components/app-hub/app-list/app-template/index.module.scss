@@ -76,7 +76,7 @@
   //       //     width: 2.9167vw;
   //       //     height: 2.9167vw;
   //       //     border-radius: 0.4167vw;
-  //       //     border: 1px solid #F0F1F3;
+  //       //     border: 1px solid var(--pulse-bg2);
   //       //     display: flex;
   //       //     justify-content: center;
   //       //     align-items: center;
@@ -86,7 +86,7 @@
   //       //   .right {
   //       //     font-size: 16px;
   //       //     max-width: 15.625vw;
-  //       //     color: #071127;
+  //       //     color: var(--pulse-tx1);
   //       //     display: -webkit-box;
   //       //     overflow: hidden;
   //       //     text-overflow: ellipsis;
@@ -101,7 +101,7 @@
   //         width: 100%;
   //         margin-top: 0.625vw;
   //         font-size: 0.7292vw;
-  //         color: #5E6472;
+  //         color: var(--pulse-tx2);
   //         display: -webkit-box;
   //         overflow: hidden;
   //         text-overflow: ellipsis;
@@ -120,7 +120,7 @@
   //         gap: 10px;
 
   //         .iconWrap {
-  //           background: #f6f7f8;
+  //           background: var(--pulse-bg0);
   //           border-radius: 15%;
   //           display: flex;
   //           justify-content: center;
@@ -134,8 +134,8 @@
   //           }
 
   //           &:hover {
-  //             border: 1px solid #0e5dd8;
-  //             color: #0e5dd8;
+  //             border: 1px solid var(--pulse-accent);
+  //             color: var(--pulse-accent);
   //             cursor: pointer;
   //           }
   //         }
@@ -146,7 +146,7 @@
 }
 
 .avataWrap {
-  border: 1px solid #F0F1F3;
+  border: 1px solid var(--pulse-bg2);
   height: 42px;
   border-radius: 0.5rem;
 }

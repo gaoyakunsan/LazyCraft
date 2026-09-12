@@ -39,7 +39,7 @@
   .name {
     margin-left: 14px;
     font-size: 16px;
-    color: #071127;
+    color: var(--pulse-tx1);
     margin-left: 16px;
     flex: 1;
     white-space: nowrap;
@@ -48,7 +48,7 @@
   }
 
   .iconWrap {
-    background: #f6f7f8;
+    background: var(--pulse-bg0);
     border-radius: 15%;
     display: flex;
     justify-content: center;
@@ -59,7 +59,7 @@
     width: 2.9167vw;
     height: 2.9167vw;
     font-size: 1.6667vw;
-    background: linear-gradient(150deg, #26adf0 0%, #69d17b 100%);
+    background: linear-gradient(150deg, #26adf0 0%, var(--pulse-ok) 100%);
     color: #fff;
   }
 
@@ -68,7 +68,7 @@
     margin-top: 0.5208vw;
     font-size: 0.7292vw;
     // min-height: 2.1875vw;
-    color: #5E6472;
+    color: var(--pulse-tx2);
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -96,8 +96,8 @@
     >span {
       font-size: 0.625vw;
       line-height: 1.0417vw;
-      background: #F6F7F8;
-      color: #8F949E;
+      background: var(--pulse-bg0);
+      color: var(--pulse-tx3);
     }
   }
 
@@ -116,8 +116,8 @@
     font-size: 16px;
 
     &:hover {
-      border: 1px solid #0e5dd8;
-      color: #0e5dd8;
+      border: 1px solid var(--pulse-accent);
+      color: var(--pulse-accent);
       cursor: pointer;
     }
   }

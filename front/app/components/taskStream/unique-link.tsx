@@ -720,7 +720,7 @@ const CustomEdge = ({
         path={edgePath}
         style={{
           strokeWidth: 2,
-          stroke: hasValidationError ? '#F04438' : (data?._mouseOver || selected || data?._runned) ? '#2970FF' : '#D0D5DD',
+          stroke: hasValidationError ? '#F04438' : (data?._mouseOver || selected || data?._runned) ? '#0E9F8C' : '#D0D5DD',
           strokeDasharray: hasValidationError ? '4 2' : 'none',
         }}
       />

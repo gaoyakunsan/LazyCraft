@@ -1,7 +1,7 @@
 .custom-input-number {
   // border color
   &.ant-input-number-outlined {
-    border-color: #D9DBE0;
+    border-color: var(--pulse-line);
   }
   // placeholder color
   &::placeholder {

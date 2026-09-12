@@ -21,7 +21,7 @@
       box-shadow: 0px 4px 8px 0px rgba(7, 17, 39, 0.1);
 
       .menu-icon {
-        color: #0E5DD8;
+        color: var(--pulse-accent);
       }
     }
   }
@@ -62,11 +62,11 @@
         text-align: center;
         cursor: pointer;
         background: #fff;
-        border: 1px solid #f0f1f3;
+        border: 1px solid var(--pulse-bg2);
         border-radius: 8px;
 
         &:hover {
-          background: #0e5dd8;
+          background: var(--pulse-accent);
         }
 
         @media screen and (max-width: 768px) {

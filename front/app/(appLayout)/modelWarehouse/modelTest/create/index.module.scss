@@ -17,7 +17,7 @@
 
   .tipWrap {
     font-size: 12px;
-    color: #8F949E;
+    color: var(--pulse-tx3);
     line-height: 24px;
   }
 
@@ -50,7 +50,7 @@
       cursor: pointer;
 
       &:hover {
-        color: #FF5E5E;
+        color: var(--pulse-danger);
       }
     }
   }

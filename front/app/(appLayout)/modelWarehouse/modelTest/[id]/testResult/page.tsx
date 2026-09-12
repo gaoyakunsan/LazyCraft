@@ -48,9 +48,9 @@ const TestResult = (req) => {
               创建人：{baseInfo?.created_from_info}
             </div>
             <div className={styles.detailWrap}>
-              <div>模型：<span style={{ color: '#071127' }}>{baseInfo?.model_name}</span></div>
-              <div>测评进度：<span style={{ color: '#071127' }}>{baseInfo?.process}</span></div>
-              <div>AI测评器：<span style={{ color: '#071127' }}>{baseInfo?.process}</span></div>
+              <div>模型：<span style={{ color: '#1C2B29' }}>{baseInfo?.model_name}</span></div>
+              <div>测评进度：<span style={{ color: '#1C2B29' }}>{baseInfo?.process}</span></div>
+              <div>AI测评器：<span style={{ color: '#1C2B29' }}>{baseInfo?.process}</span></div>
             </div>
           </div>
         </Card>

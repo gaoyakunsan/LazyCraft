@@ -173,12 +173,12 @@ const AdjustDetail = (req) => {
             <div className='flex justify-between'>
               <div className={styles.detailWrap}>
                 <div>训练状态：<Tag color={_tags[baseInfo?.status]?.color}>{_tags[baseInfo?.status]?.text}</Tag></div>
-                <div>耗时：<span style={{ color: '#071127' }}>{baseInfo?.train_runtime}s</span></div>
-                <div>基础模型：<span style={{ color: '#071127' }}>{baseInfo?.base_model_name}</span></div>
+                <div>耗时：<span style={{ color: '#1C2B29' }}>{baseInfo?.train_runtime}s</span></div>
+                <div>基础模型：<span style={{ color: '#1C2B29' }}>{baseInfo?.base_model_name}</span></div>
                 <div>训练数据集：{
                   baseInfo?.dataset_list?.map((item, index) => {
                     return (
-                      <span style={{ color: '#071127' }} key={item.id}>{item?.name} &gt; {item?.version} {index + 1 < baseInfo?.dataset_list.length && '、'}</span>
+                      <span style={{ color: '#1C2B29' }} key={item.id}>{item?.name} &gt; {item?.version} {index + 1 < baseInfo?.dataset_list.length && '、'}</span>
                     )
                   })
                 }</div>

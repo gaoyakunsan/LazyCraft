@@ -195,7 +195,7 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
                   ? <Cascader
                     allowClear={true}
                     displayRender={(label) => {
-                      return <span className='text-[#0E5DD8]'>
+                      return <span className='text-[#0E9F8C]'>
                         {label[0]}.{label[1]}
                       </span>
                     }}
@@ -225,7 +225,7 @@ const EditableCell: React.FC<React.PropsWithChildren<EditableCellProps>> = ({
             children && (isBooleanType
               ? children[1] ? '是' : '否'
               : isUnionKey
-                ? <span className='text-[#0E5DD8]'>
+                ? <span className='text-[#0E9F8C]'>
                   {children[1] ? `${children[1][0]}.` : !isEmpty(echoValue) ? `${echoValue.referred_table}.${echoValue.referred_columns}` : ''}
                   {handleLast(optionList, children[1] ? children[1][0] : null, children[1] ? children[1][1] : null)}
                 </span>
@@ -364,7 +364,7 @@ const EditableTable = (props: any) => {
   return (
     <div>
       <div className='flex justify-between'>
-        <span className='text-[#5E6472] text-sm'>输入数据表信息</span>
+        <span className='text-[#5C6B68] text-sm'>输入数据表信息</span>
         <Button onClick={handleAdd} type="link">
           添加字段
         </Button>

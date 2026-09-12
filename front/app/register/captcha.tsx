@@ -81,7 +81,7 @@ const Captcha = (props: IProps) => {
         <Col flex={1}>
           <Form.Item name={name} validateTrigger="onBlur" rules={rules} validateStatus={validateStatus} help={help}>
             <Input
-              prefix={<SafetyCertificateOutlined style={{ color: '#5E6472' }} />}
+              prefix={<SafetyCertificateOutlined style={{ color: '#5C6B68' }} />}
               onChange={onChange}
               value={defaultValue}
               placeholder={placeholder}

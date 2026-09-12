@@ -17,7 +17,7 @@
             height: 4.1667vw;
             margin-right: 10px;
             border-radius: 0.625vw;
-            border: 1px solid #F0F1F3;
+            border: 1px solid var(--pulse-bg2);
 
             >img {
                 width: 100%;
@@ -26,7 +26,7 @@
         }
 
         .infoMiddle {
-            color: #5E6472;
+            color: var(--pulse-tx2);
             width: 69.2708vw;
             margin-right: 5.4167vw;
 
@@ -38,7 +38,7 @@
 
                 .name {
                     font-size: 16px;
-                    color: #071127;
+                    color: var(--pulse-tx1);
                     line-height: 24px;
                     font-weight: bold;
                 }
@@ -71,7 +71,7 @@
 
 .title {
     font-size: 22px;
-    color: #071127;
+    color: var(--pulse-tx1);
     font-weight: bold;
 }
 

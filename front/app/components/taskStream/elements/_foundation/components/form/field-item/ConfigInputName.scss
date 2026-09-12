@@ -33,7 +33,7 @@
             }
 
             .variable-name-tip {
-                color: #ff4d4f;
+                color: var(--pulse-danger);
                 font-size: 13px;
                 position: absolute;
                 white-space: nowrap;
@@ -74,10 +74,10 @@
 }
 
 .field-item-extra-add-btn {
-    color: #0E5DD8;
+    color: var(--pulse-accent);
 
     &:hover {
-        color: #0E5DD8;
+        color: var(--pulse-accent);
         background: rgba(14, 93, 216, 0.1);
     }
 

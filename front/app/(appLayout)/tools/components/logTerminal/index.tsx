@@ -27,7 +27,7 @@ const DEFAULT_TERMINAL_OPTS = {
   cursorBlink: false,
   fontSize: 12,
   theme: {
-    foreground: '#071127', // 字体
+    foreground: '#1C2B29', // 字体
     background: '#FFFFFF', // 背景色
     pddding: 20,
     cursor: 'help', // 设置光标

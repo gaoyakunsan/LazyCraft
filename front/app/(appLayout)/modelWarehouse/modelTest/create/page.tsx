@@ -396,13 +396,13 @@ const ModelTestCreate = () => {
                         <Col xl={12} lg={24}>
                         </Col>
                         <Col xl={12} lg={24}>
-                          <span style={{ color: '#FF5E5E' }}>* </span>
+                          <span style={{ color: '#E04758' }}>* </span>
                           选项描述<Tooltip className='ml-1' title="针对不同扣分情形的具体说明，用于打分参考，如不符合语法规范 - 扣3分；表达含糊不清 - 扣2分">
                             <ExclamationCircleOutlined />
                           </Tooltip>
                         </Col>
                         <Col xl={12} lg={24}>
-                          <span style={{ color: '#FF5E5E' }}>* </span>
+                          <span style={{ color: '#E04758' }}>* </span>
                           对应分值
                         </Col>
                         <Col xl={24} lg={24} style={{ marginTop: 8 }}>
@@ -555,7 +555,7 @@ metric:
                         <Input maxLength={10000} placeholder='请输入' />
                       </Form.Item>
                     </Col>
-                    <div style={{ marginBottom: 15, color: '#5E6472' }}><span style={{ color: '#FF5E5E' }}>* </span>
+                    <div style={{ marginBottom: 15, color: '#5C6B68' }}><span style={{ color: '#E04758' }}>* </span>
                       {'$' + '{standard}'}<span><Tooltip className='ml-1' title="评分标准：为本次任务定义各维度评分标准">
                         <ExclamationCircleOutlined />
                       </Tooltip></span></div>
@@ -623,7 +623,7 @@ metric:
                                   </Form.Item>
                                 </Col>
                                 <Col xl={12} lg={24}>
-                                  <span style={{ color: '#FF5E5E' }}>* </span>
+                                  <span style={{ color: '#E04758' }}>* </span>
                                   选项描述<Tooltip className='ml-1' title="针对不同扣分情形的具体说明，用于打分参考，如不符合语法规范 - 扣3分；表达含糊不清 - 扣2分">
                                     <ExclamationCircleOutlined />
                                   </Tooltip>

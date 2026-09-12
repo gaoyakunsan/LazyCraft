@@ -26,7 +26,7 @@
 
         .title {
             font-size: 22px;
-            color: #071127;
+            color: var(--pulse-tx1);
             font-weight: bold;
         }
     }
@@ -44,7 +44,7 @@
         width: 80px;
         height: 80px;
         border-radius: 12px;
-        background: linear-gradient(150deg, #26adf0 0%, #69d17b 100%);
+        background: linear-gradient(150deg, #26adf0 0%, var(--pulse-ok) 100%);
         color: #fff;
         font-size: 46px;
         display: flex;
@@ -59,7 +59,7 @@
 
     .name {
         font-size: 16px;
-        color: #071127;
+        color: var(--pulse-tx1);
         font-weight: bold;
         line-height: 24px;
     }
@@ -67,7 +67,7 @@
     .desc {
         height: 52px;
         font-size: 14px;
-        color: #5E6472;
+        color: var(--pulse-tx2);
         line-height: 22px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
@@ -79,7 +79,7 @@
 
     .author {
         margin-top: 8px;
-        color: #5E6472;
+        color: var(--pulse-tx2);
         font-size: 14px;
     }
 }
@@ -109,7 +109,7 @@
 .splitLine {
     width: 3px;
     height: 16px;
-    background: #0E5DD8;
+    background: var(--pulse-accent);
     display: inline-block;
     margin-right: 8px;
 }

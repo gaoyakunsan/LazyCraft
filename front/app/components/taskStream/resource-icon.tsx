@@ -16,10 +16,10 @@ const ICON_SIZE_CLASSES: Record<string, string> = {
 }
 
 const ICON_BACKGROUND_COLORS: Record<string, string> = {
-  [BuiltInResourceEnum.Document]: 'bg-[#2E90FA]',
-  [BuiltInResourceEnum.Web]: 'bg-[#2E90FA]',
-  [BuiltInResourceEnum.Server]: 'bg-[#2E90FA]',
-  [BuiltInResourceEnum.SqlManager]: 'bg-[#2E90FA]',
+  [BuiltInResourceEnum.Document]: 'bg-[#0E9F8C]',
+  [BuiltInResourceEnum.Web]: 'bg-[#0E9F8C]',
+  [BuiltInResourceEnum.Server]: 'bg-[#0E9F8C]',
+  [BuiltInResourceEnum.SqlManager]: 'bg-[#0E9F8C]',
 }
 
 const getBuiltinResourceIcon = (resourceType: BuiltInResourceEnum, iconSize: string) => {

@@ -99,7 +99,7 @@ const ConfigInputName = ({
             onClick={handleAddParam}
           >
             添加输入参数
-            <Icon type="icon-tianjia1" style={{ color: '#0E5DD8' }} />
+            <Icon type="icon-tianjia1" style={{ color: '#0E9F8C' }} />
           </Button>
         </div>
       )}

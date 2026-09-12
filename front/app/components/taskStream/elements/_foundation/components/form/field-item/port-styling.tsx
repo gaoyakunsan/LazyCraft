@@ -82,7 +82,7 @@ const ConfigPorts: FC<Partial<FieldItemProps>> = ({
           onClick={() => handleAddPort()}
         >
           添加{filedTitle}
-          <IconFont type="icon-tianjia1" style={{ color: '#0E5DD8' }} />
+          <IconFont type="icon-tianjia1" style={{ color: '#0E9F8C' }} />
         </Button>
       </div>}
       {(Array.isArray(value) && value.length)

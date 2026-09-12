@@ -156,7 +156,7 @@ const QuotaPage = () => {
         const colorMap = {
           pending: '#faad14',
           approved: '#52c41a',
-          rejected: '#ff4d4f',
+          rejected: '#E04758',
           expired: '#d9d9d9',
         }
         return <span style={{ color: colorMap[status] }}>{statusMap[status]}</span>

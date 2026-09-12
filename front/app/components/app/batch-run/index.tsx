@@ -119,7 +119,7 @@ const BatchRun: FC = () => {
                 type: 'error',
                 content: <div className='overflow-y-auto max-h-[200px] relative'>
                   <Affix offsetTop={15} className="text-right">
-                    <CloseCircleOutlined className="cursor-pointer" style={{ color: '#ff4d4f' }} onClick={() => messageApi.destroy()} />
+                    <CloseCircleOutlined className="cursor-pointer" style={{ color: '#E04758' }} onClick={() => messageApi.destroy()} />
                   </Affix>
                   <div className='text-left mt-6 mr-2' dangerouslySetInnerHTML={{ __html: result.data.error?.replace(/\n/g, '<br />') || '启用调试失败' }} />
                 </div>,
@@ -493,7 +493,7 @@ const BatchRun: FC = () => {
         type: 'error',
         content: <div className='overflow-y-auto max-h-[200px]'>
           <div className='text-right'>
-            <CloseCircleOutlined className="cursor-pointer" style={{ color: '#ff4d4f' }} onClick={() => messageApi.destroy()} />
+            <CloseCircleOutlined className="cursor-pointer" style={{ color: '#E04758' }} onClick={() => messageApi.destroy()} />
           </div>
           <div className='text-left mx-5'>
             输入格式错误，请检查：<br />
@@ -548,8 +548,8 @@ const BatchRun: FC = () => {
             <div className='flex items-center space-x-2'>
               {allFailedTaskList.length > 0 && (
                 <div className='flex items-center'>
-                  <ExclamationCircleOutlined className='w-4 h-4 text-[#D92D20]' />
-                  <div className='ml-1 text-[#D92D20]'>有 {allFailedTaskList.length} 条任务失败</div>
+                  <ExclamationCircleOutlined className='w-4 h-4 text-[#E04758]' />
+                  <div className='ml-1 text-[#E04758]'>有 {allFailedTaskList.length} 条任务失败</div>
                   <Button
                     type='primary'
                     className='ml-2'

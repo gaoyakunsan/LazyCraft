@@ -60,7 +60,7 @@ const KeyValueList: React.FC<KeyValueListProps> = ({
                   <MinusCircleOutlined
                     onClick={() => remove(fieldName)}
                     style={{
-                      color: '#ff4d4f',
+                      color: '#E04758',
                       cursor: 'pointer',
                       marginTop: '6px',
                       fontSize: '16px',

@@ -29,11 +29,11 @@ const getIcon = (type: ExecutionBlockEnum, className: string) => {
 
 const ICON_CONTAINER_BG_MAP: Record<string, string> = {
   [ExecutionBlockEnum.EntryNode]: 'bg-primary-500',
-  [ExecutionBlockEnum.Code]: 'bg-[#2E90FA]',
+  [ExecutionBlockEnum.Code]: 'bg-[#0E9F8C]',
   [ExecutionBlockEnum.FinalNode]: 'bg-[#F79009]',
   [ExecutionBlockEnum.Conditional]: 'bg-[#06AED4]',
-  [ExecutionBlockEnum.SubModule]: 'bg-[#2E90FA]',
-  [ExecutionBlockEnum.Universe]: 'bg-[#2E90FA]',
+  [ExecutionBlockEnum.SubModule]: 'bg-[#0E9F8C]',
+  [ExecutionBlockEnum.Universe]: 'bg-[#0E9F8C]',
   [ExecutionBlockEnum.ParameterExtractor]: 'bg-white',
 }
 const BlockIcon: FC<BlockIconProps> = ({

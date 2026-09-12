@@ -521,7 +521,7 @@ const InferenceService = () => {
                               <Input placeholder="请输入服务名称" />
                             </Form.Item>
                             <PlusCircleOutlined
-                              style={{ color: '#0E5DD8', cursor: 'pointer' }}
+                              style={{ color: '#0E9F8C', cursor: 'pointer' }}
                               onClick={() => {
                                 const current = form.getFieldValue(['services', name]) || {}
                                 add({ name: current?.name || '', model_num_gpus: current?.model_num_gpus || undefined })
@@ -530,7 +530,7 @@ const InferenceService = () => {
                             {index !== 0 && (
                               <MinusCircleOutlined
                                 className="dynamic-delete-button"
-                                style={{ color: '#0E5DD8', cursor: 'pointer' }}
+                                style={{ color: '#0E9F8C', cursor: 'pointer' }}
                                 onClick={() => remove(name)}
                               />
                             )}
@@ -574,7 +574,7 @@ const InferenceService = () => {
                                 </div>
                               }
                             >
-                              <QuestionCircleOutlined style={{ color: '#0E5DD8', cursor: 'pointer' }} />
+                              <QuestionCircleOutlined style={{ color: '#0E9F8C', cursor: 'pointer' }} />
                             </Tooltip>
                           </div>
                         </div>
