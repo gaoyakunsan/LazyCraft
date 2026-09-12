@@ -97,6 +97,16 @@ RUN mkdir -p /usr/local/node \
     && npm install -g mcp-searxng-public \
     && npm install -g mcp-email
 
+# ===== 运行时缺陷修复(放在末尾避免打爆上层依赖缓存) =====
+# 固定 setuptools <81：81 起移除 pkg_resources，lazyllm 的依赖检查(check_requirements)仍依赖它，
+# 缺失会让工作流 LLM 节点构建报 ModuleNotFoundError: No module named 'pkg_resources'
+RUN pip install "setuptools<81" --no-cache-dir
+
+# lazyllm 在线模型类型映射未收录 BAAI 系列：BAAI/bge-m3 会被兜底判成 llm，
+# RAG 知识库在线 Embedding 调用报 "Model type must be 'embed'..."，构建期补进映射
+COPY patches/patch_lazyllm_bge_models.py /tmp/patch_lazyllm_bge_models.py
+RUN python /tmp/patch_lazyllm_bge_models.py
+
 EXPOSE 8087
 
 WORKDIR /app/src
