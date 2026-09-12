@@ -1,5 +1,5 @@
 .scriptWrap {
-  width: calc(100vw - 180px - 3.125vw);
+  width: 100%;
   margin: 0 auto;
   padding-top: 1.5625vw;
   height: 42.7083vw;
@@ -36,7 +36,7 @@
       .prpItem {
 
         // width: 21.0938vw;
-        width: calc((100vw - 180px - 6.25vw)/4);
+        width: calc((100% - 3.125vw)/4);
         height: 10.8333vw;
         background: #FFFFFF;
         border: 1px solid rgba(7, 17, 39, 0.12);
@@ -67,7 +67,7 @@
 
           .right {
             font-size: 16px;
-            max-width: 15.625vw;
+            max-width: 100%;
             color: var(--pulse-tx1);
             display: -webkit-box;
             overflow: hidden;
