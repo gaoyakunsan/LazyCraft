@@ -33,7 +33,7 @@
                 .ant-divider {
                     background: linear-gradient(145deg, var(--pulse-accent) 0%, #096dd9 100%);
                     border-radius: 2px;
-                    box-shadow: 0 1px 2px rgba(22, 119, 255, 0.3);
+                    box-shadow: 0 1px 2px rgba(14, 159, 140, 0.3);
                 }
             }
         }
@@ -90,7 +90,7 @@
                 .ant-divider {
                     background: linear-gradient(145deg, var(--pulse-accent) 0%, #096dd9 100%);
                     border-radius: 2px;
-                    box-shadow: 0 1px 2px rgba(22, 119, 255, 0.3);
+                    box-shadow: 0 1px 2px rgba(14, 159, 140, 0.3);
                 }
             }
         }
@@ -235,7 +235,7 @@
                         &:hover {
                             background: linear-gradient(145deg, #e9ecef 0%, #dee2e6 100%);
                             border-color: var(--pulse-accent);
-                            box-shadow: 0 2px 4px rgba(22, 119, 255, 0.1);
+                            box-shadow: 0 2px 4px rgba(14, 159, 140, 0.1);
                         }
 
                         .ant-checkbox {
@@ -271,7 +271,7 @@
                 &.embed-enabled .ant-checkbox-wrapper {
                     background: linear-gradient(145deg, #e6f7ff 0%, #bae7ff 100%);
                     border-color: var(--pulse-accent);
-                    box-shadow: 0 2px 4px rgba(22, 119, 255, 0.15);
+                    box-shadow: 0 2px 4px rgba(14, 159, 140, 0.15);
 
                     &::after {
                         content: '└';
@@ -338,13 +338,13 @@
 
                         &:hover {
                             border-color: var(--pulse-accent);
-                            box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.1);
+                            box-shadow: 0 0 0 2px rgba(14, 159, 140, 0.1);
                         }
 
                         &:focus,
                         &.ant-select-focused {
                             border-color: var(--pulse-accent);
-                            box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.2);
+                            box-shadow: 0 0 0 2px rgba(14, 159, 140, 0.2);
                         }
                     }
                 }
@@ -428,7 +428,7 @@
 
                 &:hover {
                     color: #096dd9;
-                    background: rgba(22, 119, 255, 0.1);
+                    background: rgba(14, 159, 140, 0.1);
                     border-radius: 4px;
                 }
 
@@ -452,13 +452,13 @@
 
                     &:hover {
                         border-color: #40a9ff;
-                        box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+                        box-shadow: 0 0 0 2px rgba(14, 159, 140, 0.2);
                     }
 
                     &:focus,
                     &.ant-select-focused {
                         border-color: #40a9ff;
-                        box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+                        box-shadow: 0 0 0 2px rgba(14, 159, 140, 0.2);
                     }
                 }
             }

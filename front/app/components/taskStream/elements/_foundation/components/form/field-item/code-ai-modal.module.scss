@@ -54,7 +54,7 @@
         &:focus {
           outline: none;
           border-color: var(--pulse-accent);
-          box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+          box-shadow: 0 0 0 3px rgba(14, 159, 140, 0.1);
           background-color: #ffffff;
         }
       }
@@ -75,7 +75,7 @@
 
         &:hover {
           transform: translateY(-1px);
-          box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+          box-shadow: 0 4px 12px rgba(14, 159, 140, 0.3);
         }
 
         &:disabled {

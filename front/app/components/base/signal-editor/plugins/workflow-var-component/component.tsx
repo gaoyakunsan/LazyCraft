@@ -60,7 +60,7 @@ const WorkflowVariablePanelComponent = ({
     <div
       className={cn(
         'mx-0.5 relative group/wrap flex items-center h-[18px] pl-0.5 pr-[3px] rounded-[5px] border select-none',
-        isSelected ? ' border-[#84ADFF] bg-[#F5F8FF]' : ' border-black/5 bg-white',
+        isSelected ? ' border-[#7ACBBE] bg-[#E8F5F2]' : ' border-black/5 bg-white',
       )}
       ref={ref}
     >

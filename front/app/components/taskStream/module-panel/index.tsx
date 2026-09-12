@@ -83,7 +83,7 @@ const ModulePanel = (props: any) => {
                       tabItems.map(tab => (
                         <div
                           className={cn(
-                            'flex items-center px-2 h-6 rounded-md bg-[#F2F6FF] cursor-pointer',
+                            'flex items-center px-2 h-6 rounded-md bg-[#EBEFEE] cursor-pointer',
                             'text-xs font-medium text-[#8A9995]',
                             canvasTabSSValue === tab.key && 'text-[#0E9F8C] border-[1px] border-solid border-[#0E9F8C]',
                           )}

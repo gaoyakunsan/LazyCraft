@@ -8,13 +8,13 @@
 
 #graph-canvas .graphreact-flow__nodesselection-rect {
   border: 1px solid #529BFF;
-  background: rgba(21, 94, 239, 0.05);
+  background: rgba(14, 159, 140, 0.05);
   cursor: move;
 }
 
 #graph-canvas .react-flow__selection {
   border: 1px solid #529BFF;
-  background: rgba(21, 94, 239, 0.05);
+  background: rgba(14, 159, 140, 0.05);
 }
 
 #graph-canvas .react-flow__attribution a[href="https://reactflow.dev"] {

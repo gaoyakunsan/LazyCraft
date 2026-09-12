@@ -64,7 +64,7 @@
 .monaco-editor .find-widget .monaco-inputbox.synthetic-focus {
     border-color: #3b82f6 !important;
     outline: none !important;
-    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.3) !important;
+    box-shadow: 0 0 0 1px rgba(14, 159, 140, 0.3) !important;
 }
 
 /* 匹配结果计数器 */

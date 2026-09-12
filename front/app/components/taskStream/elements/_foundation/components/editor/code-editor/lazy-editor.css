@@ -86,12 +86,12 @@
 
 /* 搜索结果高亮 */
 .monaco-editor .findMatch {
-  background: rgba(59, 130, 246, 0.2) !important;
+  background: rgba(14, 159, 140, 0.2) !important;
   border-radius: 2px !important;
 }
 
 .monaco-editor .currentFindMatch {
-  background: rgba(59, 130, 246, 0.4) !important;
+  background: rgba(14, 159, 140, 0.4) !important;
   border: 1px solid #3b82f6 !important;
   border-radius: 2px !important;
 }
