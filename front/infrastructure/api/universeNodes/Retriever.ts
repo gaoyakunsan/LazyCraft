@@ -91,7 +91,7 @@ export const Retriever = {
           ],
           actions: [
             {
-              key: 'config__parameters.9.hidden',
+              key: 'config__parameters.8.hidden',
               value: false,
             },
           ],
@@ -105,7 +105,7 @@ export const Retriever = {
           ],
           actions: [
             {
-              key: 'config__parameters.9.hidden',
+              key: 'config__parameters.8.hidden',
               value: true,
             },
             {
