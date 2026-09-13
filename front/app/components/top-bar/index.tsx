@@ -62,6 +62,14 @@ const Header = () => {
       </div>
       <div
         className={`${style.iconWrap}`}
+        onClick={() => { window.open(`${window.location.origin}/console/api/doc/view`, '_blank') }}
+      >
+        <Tooltip title="操作文档">
+          <Iconfont type='icon-bangzhuwendang' />
+        </Tooltip>
+      </div>
+      <div
+        className={`${style.iconWrap}`}
         onClick={() => { oepnProgressMonitor({ title: '上传/下载进度' }) }}
       >
         <Tooltip title="上传/下载进度">
