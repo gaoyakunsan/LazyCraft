@@ -1,11 +1,11 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
-import { Breadcrumb, Button, Card, Checkbox, Col, Pagination, Popconfirm, Row, Space, Table, Typography } from 'antd'
+import { Button, Card, Checkbox, Col, Pagination, Popconfirm, Row, Space, Table, Typography } from 'antd'
 import type { TableProps } from 'antd'
 import { useRouter } from 'next/navigation'
 import { useAntdTable } from 'ahooks'
-import Link from 'next/link'
 import { PhotoSlider } from 'react-photo-view'
+import BackButton from '@/app/components/base/back-button'
 import AddModal from './AddModal'
 import styles from './index.module.scss'
 import { getJoins } from '@/infrastructure/api/apps'
@@ -314,22 +314,7 @@ const DatasetVersionDetail = (req) => {
     <div className='page'>
       <div className={styles.container}>
         <div className={styles.breadcrumb}>
-          <Breadcrumb
-            items={[
-              {
-                title: '数据集',
-              },
-              {
-                title: <Link href='/datasets/datasetManager'>数据集管理</Link>,
-              },
-              {
-                title: <Link href={`/datasets/datasetManager/${params.id}`}>版本管理</Link>,
-              },
-              {
-                title: '版本详情',
-              },
-            ]}
-          />
+          <BackButton label='返回' fallback={`/datasets/datasetManager/${id}`} />
         </div>
         <Card type='inner' title={<div className={styles.title} >
           基础信息

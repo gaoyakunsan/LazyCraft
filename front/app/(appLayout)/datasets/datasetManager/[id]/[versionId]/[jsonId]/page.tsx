@@ -1,9 +1,9 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
-import { Breadcrumb, Button, Input, Pagination, Spin } from 'antd'
+import { Button, Input, Pagination, Spin } from 'antd'
 
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import BackButton from '@/app/components/base/back-button'
 // import JSONInput from 'react-json-editor-ajrm'
 // import locale from 'react-json-editor-ajrm/locale/en'
 import 'jsoneditor/dist/jsoneditor.css' // 引入 JSON 编辑器的样式
@@ -213,25 +213,7 @@ const JsonDetail = (req) => {
 
     <div className={styles.container}>
       <div className={styles.breadcrumb}>
-        <Breadcrumb
-          items={[
-            {
-              title: '数据集',
-            },
-            {
-              title: <Link href='/datasets/datasetManager'>数据集管理</Link>,
-            },
-            {
-              title: <Link href={`/datasets/datasetManager/${id}`}>版本管理</Link>,
-            },
-            {
-              title: <Link href={`/datasets/datasetManager/${id}/${versionId}`}>版本详情</Link>,
-            },
-            {
-              title: 'JSON详情',
-            },
-          ]}
-        />
+        <BackButton label='返回' fallback={`/datasets/datasetManager/${id}/${versionId}`} />
       </div>
       {from_type === 'upload' && <Input placeholder="文件名" value={name} onChange={e => setName(e.target.value)} />}
       <div className={styles.jsonWrap}>
