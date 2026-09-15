@@ -107,6 +107,11 @@ RUN pip install "setuptools<81" --no-cache-dir
 COPY patches/patch_lazyllm_bge_models.py /tmp/patch_lazyllm_bge_models.py
 RUN python /tmp/patch_lazyllm_bge_models.py
 
+# lazyllm MCPClient/make_mcp_tool 把 http URL 硬编码为 SSE：MCP 自定义服务的
+# Streamable_HTTP 类型在工具测试与画布运行两条链路走不通，构建期补上 transport 支持
+COPY patches/patch_lazyllm_mcp_streamable.py /tmp/patch_lazyllm_mcp_streamable.py
+RUN python /tmp/patch_lazyllm_mcp_streamable.py
+
 EXPOSE 8087
 
 WORKDIR /app/src

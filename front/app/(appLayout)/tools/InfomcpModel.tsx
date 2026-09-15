@@ -126,7 +126,7 @@ const InfoMcpModel = (props: any) => {
           submitData.stdio_arguments = data.stdio_arguments
           submitData.stdio_env = data.stdio_env
         }
-        else if (data.transport_type === 'SSE' || data.transport_type === 'Streamable HTTP') {
+        else if (data.transport_type === 'SSE' || data.transport_type === 'Streamable_HTTP') {
           submitData.http_url = data.http_url
           submitData.headers = data.headers
         }
@@ -145,7 +145,7 @@ const InfoMcpModel = (props: any) => {
           delete submitData.http_url
           delete submitData.headers
         }
-        else if (values.transport_type === 'SSE' || values.transport_type === 'Streamable HTTP') {
+        else if (values.transport_type === 'SSE' || values.transport_type === 'Streamable_HTTP') {
           if (values.headers && Array.isArray(values.headers)) {
             const headersObject: Record<string, string> = {}
             values.headers.forEach((item: { key: string; value: string }) => {
@@ -230,6 +230,7 @@ const InfoMcpModel = (props: any) => {
   const categoryItems = [
     { label: 'STDIO', value: 'STDIO' },
     { label: 'SSE', value: 'SSE' },
+    { label: 'Streamable HTTP', value: 'Streamable_HTTP' },
   ]
   const stdioItems = [
     { label: 'npx', value: 'npx' },
@@ -391,7 +392,7 @@ const InfoMcpModel = (props: any) => {
                 )}
 
                 {/* SSE 和 Streamable HTTP 类型字段 */}
-                {(transportType === 'SSE' || transportType === 'Streamable HTTP') && (
+                {(transportType === 'SSE' || transportType === 'Streamable_HTTP') && (
                   <>
                     <Form.Item
                       name="http_url"
@@ -408,7 +409,7 @@ const InfoMcpModel = (props: any) => {
                         },
                       ]}
                     >
-                      <Input placeholder='请输入服务端URL' />
+                      <Input placeholder={transportType === 'Streamable_HTTP' ? '请输入MCP端点地址（通常以 /mcp 结尾）' : '请输入服务端URL'} />
                     </Form.Item>
                     <KeyValueList
                       name="headers"

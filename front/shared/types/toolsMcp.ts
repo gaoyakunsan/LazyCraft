@@ -1,5 +1,8 @@
 // MCP工具相关类型定义
 
+// MCP 传输协议类型（取值与后端 TransportType 常量保持一致，注意是下划线不是空格）
+export type TransportTypeValue = 'STDIO' | 'SSE' | 'Streamable_HTTP'
+
 // 标签项类型
 export type TagItem = {
   name: string
@@ -40,7 +43,7 @@ export type McpItem = {
   tenant_id?: string
   test_state?: string
   timeout?: number
-  transport_type?: string
+  transport_type?: TransportTypeValue
   [key: string]: any
 }
 
@@ -72,7 +75,7 @@ export type CreateUpdateMcpParams = {
   name: string
   description?: string
   icon?: string
-  transport_type?: string
+  transport_type?: TransportTypeValue
   stdio_command?: string
   stdio_arguments?: string
   stdio_env?: Record<string, string>
@@ -104,7 +107,7 @@ export type CreateUpdateMcpResponse = {
   tenant_id: string
   test_state: string
   timeout: number
-  transport_type: string
+  transport_type: TransportTypeValue
   user_id: string
   user_name: string
   // API 通用响应字段

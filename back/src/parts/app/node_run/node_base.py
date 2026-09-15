@@ -23,7 +23,7 @@ from typing import Any
 
 from sqlalchemy.orm.exc import NoResultFound
 
-from parts.mcp.model import McpTool
+from parts.mcp.model import McpTool, TransportType
 from parts.tools.model import Tool, ToolAuth, ToolHttp
 
 # 操作符映射
@@ -1226,14 +1226,15 @@ class McpToolNode(BaseNode):
 
         self.timeout = mcp_server.timeout or 30  # 默认超时时间
         self.tool_name = mcp_tool.name
-        if mcp_server.transport_type == "STDIO":
+        self.transport_type = mcp_server.transport_type
+        if mcp_server.transport_type == TransportType.STDIO:
             self.command_or_url = mcp_server.stdio_command
             self.env = mcp_server.stdio_env or {}
             if mcp_server.stdio_arguments:
                 self.args = [
                     word for word in mcp_server.stdio_arguments.split(" ") if word
                 ]
-        elif mcp_server.transport_type == "SSE":
+        elif mcp_server.transport_type in (TransportType.SSE, TransportType.STREAMABLE_HTTP):
             self.command_or_url = mcp_server.http_url
             self.headers = mcp_server.headers or {}
         else:
@@ -1248,5 +1249,6 @@ class McpToolNode(BaseNode):
             "env": self.env if hasattr(self, "env") else {},
             "headers": self.headers if hasattr(self, "headers") else {},
             "timeout": self.timeout,
+            "transport": self.transport_type,  # 透传给 lazyllm make_mcp_tool
         }
         return result

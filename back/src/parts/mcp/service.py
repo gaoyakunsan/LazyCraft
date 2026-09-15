@@ -26,6 +26,7 @@ from httpx import ConnectError
 from mcp import ClientSession, McpError, StdioServerParameters
 from mcp.client.sse import sse_client
 from mcp.client.stdio import stdio_client
+from mcp.client.streamable_http import streamablehttp_client
 from mcp.shared.context import RequestContext
 from mcp.shared.exceptions import McpError as SharedMcpError
 from mcp.types import CreateMessageRequestParams
@@ -42,7 +43,7 @@ from parts.tag.model import Tag
 from utils.util_database import db
 
 
-from .model import McpServer, McpTool, TestState
+from .model import McpServer, McpTool, TestState, TransportType
 from parts.app.model import App, WorkflowRefer
 
 
@@ -207,7 +208,7 @@ class McpServerService:
         now_str = TimeTools.get_china_now()
 
         # 校验 transport_type
-        valid_types = ["SSE", "STDIO", "Streamable_HTTP"]
+        valid_types = [TransportType.SSE, TransportType.STDIO, TransportType.STREAMABLE_HTTP]
         if data.get("transport_type") not in valid_types:
             raise ValueError(f"transport_type 只能为 {valid_types} 之一")
 
@@ -248,7 +249,7 @@ class McpServerService:
         now_str = TimeTools.get_china_now()
 
         # 校验 transport_type
-        valid_types = ["SSE", "STDIO", "Streamable_HTTP"]
+        valid_types = [TransportType.SSE, TransportType.STDIO, TransportType.STREAMABLE_HTTP]
         if data.get("transport_type") and data.get("transport_type") not in valid_types:
             raise ValueError(f"transport_type 只能为 {valid_types} 之一")
 
@@ -416,7 +417,7 @@ class McpToolService:
                 "status": 400,
             }
         try:
-            if server.transport_type == "STDIO":
+            if server.transport_type == TransportType.STDIO:
                 args = []
                 if server.stdio_arguments:
                     args = [word for word in server.stdio_arguments.split(" ") if word]
@@ -430,11 +431,12 @@ class McpToolService:
                     "status": 200,
                     "result": asyncio.run(client.call_tool(tool.name, arguments))
                 }
-            elif server.transport_type == "SSE":
+            elif server.transport_type in (TransportType.SSE, TransportType.STREAMABLE_HTTP):
                 client = MCPClient(
                     command_or_url=server.http_url,
                     headers=server.headers or {},
                     timeout=server.timeout,
+                    transport=server.transport_type,
                 )
                 return {
                     "status": 200,
@@ -442,7 +444,7 @@ class McpToolService:
                 }
             else:
                 return {
-                    "message": "该MCP服务类型不支持，仅支持SSE、STDIO",
+                    "message": "该MCP服务类型不支持，仅支持SSE、STDIO、Streamable_HTTP",
                     "status": 400,
                 }
         except Exception as e:
@@ -468,10 +470,12 @@ class McpToolService:
             yield {"flow_type": "mcp", "event": "error", "data": "MCP 服务不存在"}
             return
         try:
-            if server.transport_type == "STDIO":
+            if server.transport_type == TransportType.STDIO:
                 tools_func = self.sync_tools_from_stdio
-            elif server.transport_type == "SSE":
+            elif server.transport_type == TransportType.SSE:
                 tools_func = self.sync_tools_from_sse
+            elif server.transport_type == TransportType.STREAMABLE_HTTP:
+                tools_func = self.sync_tools_from_streamable_http
             else:
                 yield {
                     "flow_type": "mcp",
@@ -674,6 +678,45 @@ class McpToolService:
                 timeout=server.timeout or 30,
             ) as streams:
                 async with mcp.ClientSession(*streams) as session:
+                    await session.initialize()
+                    yield {
+                        "flow_type": "mcp",
+                        "event": "chunk",
+                        "data": "开始获取工具列表",
+                    }
+                    response = await session.list_tools()
+                    if response and response.tools:
+                        tools = []
+                        for tool in response.tools:
+                            tool_dict = tool.model_dump()
+                            tools.append(tool_dict)
+                            tool_name = tool_dict["name"]
+                            yield {
+                                "flow_type": "mcp",
+                                "event": "chunk",
+                                "data": f"同步工具: [{tool_name}] 成功",
+                            }
+                        yield {"flow_type": "mcp", "event": "finish", "data": tools}
+                    else:
+                        yield {
+                            "flow_type": "mcp",
+                            "event": "error",
+                            "data": "获取工具列表成功，单查询到0个工具，故失败！请检查该MCP是否提供Tool调用能力。",
+                        }
+        except Exception as e:
+            for error_msg in handle_exception(e):
+                yield error_msg
+
+    async def sync_tools_from_streamable_http(self, server: McpServer):
+        try:
+            yield {"flow_type": "mcp", "event": "chunk", "data": "初始化MCP客户端(Streamable HTTP)"}
+            async with streamablehttp_client(
+                url=server.http_url,
+                headers=server.headers,
+                timeout=server.timeout or 30,  # 建连超时
+                sse_read_timeout=max(server.timeout or 0, 300),  # 流式读超时,不小于SDK默认
+            ) as (read_stream, write_stream, _get_session_id):
+                async with mcp.ClientSession(read_stream, write_stream) as session:
                     await session.initialize()
                     yield {
                         "flow_type": "mcp",
