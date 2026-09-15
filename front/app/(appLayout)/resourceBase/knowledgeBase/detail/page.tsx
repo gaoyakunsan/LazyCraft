@@ -231,7 +231,7 @@ const KnowledgeBaseDetailContent = () => {
   return (
     <div className={styles.page}>
       <div className={styles.breadcrumb}>
-        <BackButton label='返回知识库列表' fallback='/resourceBase/knowledgeBase' />
+        <BackButton label='返回' fallback='/resourceBase/knowledgeBase' />
       </div>
       <div className={styles.card}>
         <div className={styles.header}>

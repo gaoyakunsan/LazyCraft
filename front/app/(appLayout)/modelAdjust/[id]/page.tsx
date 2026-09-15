@@ -149,7 +149,7 @@ const AdjustDetail = (req) => {
     <div className={styles.adjustDetailWrap}>
       <div className={styles.container}>
         <div className={styles.breadcrumb}>
-          <BackButton label='返回模型列表' fallback='/modelAdjust' />
+          <BackButton label='返回' fallback='/modelAdjust' />
         </div>
         <Card style={{ marginBottom: 20 }} type='inner' title={<div className={styles.title} >
           基础信息

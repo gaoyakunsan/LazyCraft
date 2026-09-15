@@ -1,9 +1,9 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Breadcrumb, Button, Col, Divider, Form, Input, InputNumber, Modal, Radio, Row, Select, TreeSelect } from 'antd'
-import Link from 'next/link'
+import { Button, Col, Divider, Form, Input, InputNumber, Modal, Radio, Row, Select, TreeSelect } from 'antd'
 import { useRouter } from 'next/navigation'
+import BackButton from '@/app/components/base/back-button'
 import InfoTitle from '../components/InfoTitle'
 import DatasetTreeSelect from '../components/datasetTreeSelect'
 import styles from './index.module.scss'
@@ -173,16 +173,7 @@ const CreateModelAdjust = () => {
     <div className={styles.adjustCreate}>
       <div className={styles.createWrap}>
         <div className={styles.breadcrumb}>
-          <Breadcrumb
-            items={[
-              {
-                title: <Link href='/modelAdjust'>模型微调</Link>,
-              },
-              {
-                title: '创建微调',
-              },
-            ]}
-          />
+          <BackButton label='返回' fallback='/modelAdjust' />
         </div>
         <Form
           form={baseForm}

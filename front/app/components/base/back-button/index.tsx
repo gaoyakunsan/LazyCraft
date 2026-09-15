@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation'
 
 type BackButtonProps = {
-  /** 按钮文案，如「返回模型列表」 */
+  /** 按钮文案，如「返回」 */
   label: string
   /** 点击后跳转的列表页地址 */
   fallback: string

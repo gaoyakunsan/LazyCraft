@@ -146,7 +146,7 @@ const ModelDetail = (req) => {
   return (
     <div className={styles.container}>
       <div className={styles.breadcrumb}>
-        <BackButton label='返回模型列表' fallback='/modelWarehouse/modelManage' />
+        <BackButton label='返回' fallback='/modelWarehouse/modelManage' />
       </div>
       <Card className={styles.cardSty} style={{ marginBottom: 20 }} type='inner' title={<div className={styles.title} >
         基础模型

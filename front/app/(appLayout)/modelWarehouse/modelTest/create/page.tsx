@@ -231,7 +231,7 @@ const ModelTestCreate = () => {
     <div className={styles.modelTestCreate}>
       <div className={styles.createWrap}>
         <div className={styles.breadcrumb}>
-          <BackButton label='返回模型评测列表' fallback='/modelWarehouse/modelTest' />
+          <BackButton label='返回' fallback='/modelWarehouse/modelTest' />
         </div>
         <Form
           form={baseForm}
