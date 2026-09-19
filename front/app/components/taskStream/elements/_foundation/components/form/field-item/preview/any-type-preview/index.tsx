@@ -5,7 +5,11 @@ import AudioPreview from '../audio-preview'
 import TextEditor from '../../text-composer'
 import BytesPreview from '../bytes-preview'
 import { JsonEditor } from '../../code'
+import MarkdownRenderer from '@/app/components/base/markdown-renderer'
 // import { ValueType, formatValueByType } from '../../utils'
+
+// 含 markdown 图片语法的文本（如智能体返回的数据分析报告），按 markdown 渲染以展示柱状图/饼图等图表
+const MARKDOWN_IMAGE_RE = /!\[[^\]]*\]\([^)]+\)/
 
 const judgeType = (value: any) => {
   if (!value)
@@ -44,6 +48,9 @@ const AnyTypePreview = (props) => {
 
   if (type === 'image')
     return <ImagePreview {...props} />
+
+  if (type === 'text' && typeof value === 'string' && MARKDOWN_IMAGE_RE.test(value))
+    return <MarkdownRenderer content={value} />
 
   return type === 'object'
     ? value.__mark__ === '<lazyllm-query>' ? <BytesPreview value={value.file_urls} /> : <JsonEditor {...props} />
