@@ -1,0 +1,300 @@
+{
+ "id": "17540188301690",
+ "type": "custom",
+ "data": {
+  "type": "universe",
+  "title": "数据库调用智能体-1-2",
+  "desc": "将输入的自然语言转变成sql语句，并操作数据库",
+  "config__input_ports": [
+   {
+    "id": "target",
+    "param_source_shape": [
+     {
+      "id": "input_1",
+      "variable_mode": "mode-line",
+      "variable_name": "query",
+      "variable_type": "str",
+      "payload__batch_flag": false,
+      "sourceNodeTitle": "条件分支-1"
+     }
+    ],
+    "param_check_success": true,
+    "param_input_error": [],
+    "param_input_success": [
+     {
+      "id": "query",
+      "variable_name": "query",
+      "variable_type": "str",
+      "variable_mode": "mode-line",
+      "variable_name_readonly": true,
+      "variable_type_readonly": true,
+      "variable_mode_readonly": false,
+      "variable_type_options": [
+       "str"
+      ],
+      "variable_file_type": "default"
+     }
+    ]
+   }
+  ],
+  "config__output_ports": [
+   {
+    "id": "source"
+   }
+  ],
+  "config__parameters": [
+   {
+    "name": "config__input_shape",
+    "type": "config__input_shape",
+    "label": "输入参数",
+    "effects": "",
+    "min": 1,
+    "max": 1,
+    "tooltip": "用于生成或调用SQL语句的输入"
+   },
+   {
+    "name": "config__output_shape",
+    "type": "config__output_shape",
+    "label": "输出参数",
+    "effects": "",
+    "min": 1,
+    "max": 1,
+    "tooltip": "数据库操作后的输出结果"
+   },
+   {
+    "name": "config__input_ports",
+    "type": "config__input_ports",
+    "label": "输入端点",
+    "effects": "",
+    "tooltip": "将取期望的字段"
+   },
+   {
+    "label": "模型来源",
+    "name": "payload__model_source",
+    "type": "select",
+    "allowClear": false,
+    "options": [
+     {
+      "value": "online_model",
+      "label": "在线模型"
+     },
+     {
+      "value": "inference_service",
+      "label": "平台推理服务"
+     }
+    ],
+    "required": true,
+    "defaultValue": "online_model",
+    "watch": [
+     {
+      "conditions": [
+       {
+        "key": "payload__model_source",
+        "value": [
+         "online_model",
+         "inference_service"
+        ],
+        "operator": "include"
+       }
+      ],
+      "actions": [
+       {
+        "key": "payload__source"
+       },
+       {
+        "key": "payload__base_model_selected_keys"
+       },
+       {
+        "key": "payload__inference_service"
+       },
+       {
+        "key": "payload__inference_service_selected_keys"
+       },
+       {
+        "key": "payload__jobid"
+       },
+       {
+        "key": "payload__token"
+       },
+       {
+        "key": "payload__stream",
+        "value": false
+       },
+       {
+        "key": "payload__prompt"
+       },
+       {
+        "key": "payload__prompt_template"
+       },
+       {
+        "key": "payload__use_history",
+        "value": false
+       }
+      ],
+      "children": [
+       {
+        "conditions": [
+         {
+          "key": "payload__model_source",
+          "value": "online_model"
+         }
+        ],
+        "actions": [
+         {
+          "key": "config__parameters",
+          "extend": true,
+          "value": [
+           {},
+           {},
+           {},
+           {},
+           {
+            "label": "",
+            "type": "online_model_select",
+            "_check_names": [
+             "payload__source",
+             "payload__base_model_selected_keys"
+            ],
+            "required": true
+           },
+           {},
+           {},
+           {}
+          ]
+         }
+        ]
+       },
+       {
+        "conditions": [
+         {
+          "key": "payload__model_source",
+          "value": "inference_service"
+         }
+        ],
+        "actions": [
+         {
+          "key": "config__parameters",
+          "extend": true,
+          "value": [
+           {},
+           {},
+           {},
+           {},
+           {
+            "label": "推理服务",
+            "name": "payload__inference_service",
+            "type": "inference_service_select",
+            "required": true,
+            "tooltip": "选择推理服务",
+            "_check_names": [],
+            "itemProps": {
+             "model_type": "localLLM",
+             "model_kind": "localLLM"
+            }
+           },
+           {},
+           {},
+           {}
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "type": "online_model_select",
+    "_check_names": [
+     "payload__source",
+     "payload__base_model_selected_keys"
+    ],
+    "required": true
+   },
+   {
+    "name": "payload__sql_manager",
+    "label": "Sql资源",
+    "type": "sql_manager_resource_selector",
+    "required": true,
+    "tooltip": "选择SqlManager添加用于调用的数据库"
+   },
+   {
+    "name": "payload__sql_examples_json",
+    "type": "sql_examples",
+    "required": false
+   },
+   {
+    "name": "payload__use_llm_for_sql_result",
+    "label": "对查询结果是否使用LLM解析回复",
+    "type": "boolean",
+    "defaultValue": true,
+    "required": false
+   }
+  ],
+  "config__input_shape": [
+   {
+    "id": "query",
+    "variable_name": "query",
+    "variable_type": "str",
+    "variable_mode": "mode-line",
+    "variable_name_readonly": true,
+    "variable_type_readonly": true,
+    "variable_mode_readonly": false,
+    "variable_type_options": [
+     "str"
+    ],
+    "variable_file_type": "default"
+   }
+  ],
+  "config__output_shape": [
+   {
+    "id": "output",
+    "variable_name": "output",
+    "variable_type": "any",
+    "variable_mode": "mode-line",
+    "variable_name_readonly": true,
+    "variable_type_readonly": false,
+    "variable_mode_readonly": false
+   }
+  ],
+  "name": "sql-call",
+  "classification": "function-module",
+  "payload__kind": "SqlCall",
+  "title_en": "SqlCall",
+  "config__can_run_by_single": true,
+  "about": "数据库调用模块，应用的开发者描述数据库的字段，大模型根据用户输入，转变成sql语句，然后查找数据库。",
+  "payload__model_source": "online_model",
+  "payload__use_llm_for_sql_result": true,
+  "selected": true,
+  "payload__source": "GLM",
+  "payload__base_url": "",
+  "payload__source_id": 12,
+  "payload__base_model_selected_keys": [
+   "glm-4"
+  ],
+  "payload__base_model": "glm-4",
+  "payload__can_finetune": false,
+  "payload__model_id": 12,
+  "payload__model_generate_control": {
+   "payload__temperature": 0.8,
+   "payload__top_p": 0.7,
+   "payload__max_tokens": 4096
+  },
+  "payload__sql_manager_name": "sql-manager",
+  "payload__base_model_id": 6,
+  "payload__sql_manager": "resource_6b2323e1_4d0d_487d_93ac_aed0e39d4b93"
+ },
+ "position": {
+  "x": 231.08842959828905,
+  "y": -31.797902384068223
+ },
+ "targetPosition": "left",
+ "sourcePosition": "right",
+ "positionAbsolute": {
+  "x": 231.08842959828905,
+  "y": -31.797902384068223
+ },
+ "width": 194,
+ "height": 104,
+ "selected": true
+}
