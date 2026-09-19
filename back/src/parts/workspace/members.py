@@ -315,7 +315,9 @@ class DetailTenantApi(Resource):
         args = parser.parse_args()
 
         # self.check_can_admin()  # 错误用法,应该改为下面的调用
-        if not current_user.can_write_in_tenant(args["tenant_id"]):
+        if not (
+            current_user.is_super or current_user.can_write_in_tenant(args["tenant_id"])
+        ):
             raise ForbiddenError()
 
         tenant = TenantService.get_tenant_by_id(args["tenant_id"])
