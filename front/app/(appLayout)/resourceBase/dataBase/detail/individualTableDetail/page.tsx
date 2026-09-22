@@ -1,12 +1,11 @@
 'use client'
 // 数据库表详情
 import React, { Suspense, useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
-import { Breadcrumb, Card, Col, Row, Table } from 'antd'
-import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
+import { Card, Col, Row, Table } from 'antd'
 import Image from 'next/image'
 import { useAntdTable } from 'ahooks'
-import style from '../index.module.scss'
+import BackButton from '@/app/components/base/back-button'
 import DatabaseIcon from '@/public/images/resource-base/database.png'
 import { getDataBaseSubTableList } from '@/infrastructure/api/database'
 
@@ -21,7 +20,6 @@ const DatabaseDetailContent = () => {
   const searchParams = useSearchParams()
   const [databaseTableInfo, setDatabaseTableInfo] = useState<any>({})
   const [tableColumns, setTableColumns] = useState<TableColumn[]>([])
-  const { back } = useRouter()
 
   const getTableData = ({ current, pageSize }): Promise<any> => {
     return getDataBaseSubTableList({
@@ -57,13 +55,7 @@ const DatabaseDetailContent = () => {
 
   return (
     <div className='px-[30px] pt-5'>
-      <Breadcrumb
-        items={[
-          { title: <Link href='/resourceBase/dataBase'>数据库</Link> },
-          { title: <span className={style.middleRouter} onClick={back}>数据库详情</span> },
-          { title: '数据库表详情' },
-        ]}
-      />
+      <BackButton label='返回' historyBack fallback='/resourceBase/dataBase' />
       <div className='mt-2'>
         <Card title="数据库表" >
           <Row gutter={10}>

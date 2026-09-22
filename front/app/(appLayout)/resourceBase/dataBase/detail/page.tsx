@@ -1,20 +1,19 @@
 'use client'
 
 import React, { Suspense } from 'react'
-import BackButton from '@/app/components/base/back-button'
 import {
   useRouter,
   useSearchParams,
 } from 'next/navigation'
 import {
-  Breadcrumb, Button, Card, Col, Divider, Form,
+  Button, Card, Col, Divider, Form,
   Input, Popconfirm, Row, Table, message,
 } from 'antd'
-import Link from 'next/link'
 import Image from 'next/image'
 
 import { useAntdTable } from 'ahooks'
 import dayjs from 'dayjs'
+import BackButton from '@/app/components/base/back-button'
 import { deleteDatabaseTable, getDataBaseTable } from '@/infrastructure/api/database'
 import useValidateSpace from '@/shared/hooks/use-validate-space'
 
@@ -65,7 +64,7 @@ const DatabaseDetailContent = () => {
   }
   return (
     <div className='px-[30px] pt-5'>
-      <BackButton label='返回数据库列表' fallback='/resourceBase/dataBase' />
+      <BackButton label='返回' fallback='/resourceBase/dataBase' />
       <div className='mt-2'>
         <Card title="数据库" >
           <Row gutter={10}>

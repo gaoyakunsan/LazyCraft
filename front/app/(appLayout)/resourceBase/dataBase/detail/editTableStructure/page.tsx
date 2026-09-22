@@ -2,12 +2,11 @@
 
 import React, { Suspense, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { Breadcrumb, Divider, Form, Input, message } from 'antd'
-import Link from 'next/link'
-
+import { Divider, Form, Input, message } from 'antd'
 import { useRequest } from 'ahooks'
 import style from '../index.module.scss'
 import EditableTable from './editableTable'
+import BackButton from '@/app/components/base/back-button'
 import { editTableStructure, getDataBaseSubTableList, getDataBaseTable } from '@/infrastructure/api/database'
 
 const EditTableStructureContent = () => {
@@ -58,13 +57,7 @@ const EditTableStructureContent = () => {
 
   return (
     <div className={`${style.editDatabaseTableContainer} px-[30px] pt-2`}>
-      <Breadcrumb
-        items={[
-          { title: <Link href='/resourceBase/dataBase'>数据库</Link> },
-          { title: <span className={style.middleRouter} onClick={back}>数据库详情</span> },
-          { title: '编辑数据库表结构' },
-        ]}
-      />
+      <BackButton label='返回' historyBack fallback='/resourceBase/dataBase' />
       <div className='mt-3 flex items-center'>
         <span className={style.splitLine} />
         <span className='text-[#1C2B29] text-lg font-medium'>基础信息</span>
