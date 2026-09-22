@@ -29,7 +29,8 @@
       padding: 1px;
 
       .prpItem {
-        width: 21.0938vw;
+        // 除去 3 个列间距(gap 1.0417vw*3)后正好一行 4 张卡片
+        width: calc((100% - 3.1251vw) / 4);
         cursor: pointer;
         // height: 9.4792vw;
         height: 250px;

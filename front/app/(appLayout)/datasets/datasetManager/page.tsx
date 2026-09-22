@@ -92,10 +92,11 @@ const DataSetManager = () => {
       title: '名称',
       dataIndex: 'name',
       key: 'name',
+      ellipsis: true,
     },
     {
       title: '标签',
-      width: 300,
+      width: 160,
       render(value, record, index) {
         return (
           <>
@@ -110,6 +111,7 @@ const DataSetManager = () => {
       title: '来源',
       dataIndex: 'from_type',
       key: 'from_type',
+      width: 90,
       render(_, record) {
         const map = {
           return: '数据回流',
@@ -122,27 +124,31 @@ const DataSetManager = () => {
       title: 'Tags数量',
       dataIndex: 'tags_num',
       key: 'tags_num',
+      width: 100,
     },
     {
       title: 'Branches数量',
       dataIndex: 'branches_num',
       key: 'branches_num',
+      width: 140,
     },
     {
       title: '创建人',
       dataIndex: 'user_name',
       key: 'user_name',
+      width: 110,
     },
     {
       title: '创建时间',
       dataIndex: 'created_at',
       key: 'created_at',
+      width: 195,
     },
     {
       title: '操作',
       align: 'right',
       key: 'action',
-      width: 150,
+      width: 130,
       render: (_, record) => (
         <>
           <Button type='link' size='small' onClick={() => handleJumpDetail(record)}>详情</Button>
@@ -192,7 +198,7 @@ const DataSetManager = () => {
         </div>
       </div>
 
-      <Table rowKey="id" columns={columns} {...tableProps} scroll={{ x: 'max-content' }} />
+      <Table rowKey="id" columns={columns} {...tableProps} tableLayout="fixed" />
     </div>
 
     <CreateModule key={showModal ? Date.now() : 'closed'} gettaglist={tagModeRef.current?.getList} visible={showModal} onSuccess={onSuccess} onClose={() => setShowModal(false)} />
