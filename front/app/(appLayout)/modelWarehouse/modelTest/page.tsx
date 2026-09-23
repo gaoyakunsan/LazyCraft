@@ -232,6 +232,8 @@ const ModelAdjust = () => {
           </Form.Item>
         </Form>
       </div>
+    </div>
+    <div className={styles.listWrap}>
       <Table rowKey="id" columns={columns} {...tableProps} />
     </div>
   </div>

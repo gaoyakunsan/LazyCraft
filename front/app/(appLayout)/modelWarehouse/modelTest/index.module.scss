@@ -3,7 +3,9 @@
   height: 100%;
   background: #FFFFFF;
   // box-shadow: 0px -2px 20px 0px rgba(7, 17, 39, 0.08);
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 
   .content {
     width: calc(100% - 48px);
@@ -25,5 +27,33 @@
       margin-top: 20px;
     }
 
+  }
+}
+
+.listWrap {
+  width: calc(100% - 48px);
+  margin: 0 auto;
+  padding: 0 30px;
+  box-sizing: border-box;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+
+  // 内容超出可视高度时用细滚动条，避免出现占宽的粗滚动框
+  scrollbar-width: thin;
+  scrollbar-color: var(--pulse-bg2) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--pulse-bg2);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
   }
 }

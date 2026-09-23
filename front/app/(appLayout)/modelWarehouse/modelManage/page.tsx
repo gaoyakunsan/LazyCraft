@@ -185,7 +185,7 @@ const ModelWarehouse = () => {
     setSName(e)
   }
   return (
-    <div className="page">
+    <div className={`page ${styles.wrap}`}>
       <div className={styles.tabsWrap}>
         <div className={styles.pageTop}>
           <div></div>

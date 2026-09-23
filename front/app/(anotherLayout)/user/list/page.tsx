@@ -216,7 +216,7 @@ const UserList = () => {
     },
   ]
 
-  return <div className='page'>
+  return <div className={`page ${styles.wrap}`}>
     <div className={styles.content}>
       <div className={styles.tableHeader}>
         <Form form={form} layout='inline'>

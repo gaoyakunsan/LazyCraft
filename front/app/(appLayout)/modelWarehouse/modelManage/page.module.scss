@@ -1,3 +1,19 @@
+.wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  // 列表被 antd Spin 包裹,两层包装 div 需放开高度限制,滚动才能收进 content
+  :global(.ant-spin-nested-loading) {
+    flex: 1;
+    min-height: 0;
+  }
+
+  :global(.ant-spin-container) {
+    height: 100%;
+  }
+}
+
 .tabsWrap {
   padding: 1.5625vw;
   padding-bottom: 1.0417vw;
@@ -12,6 +28,26 @@
 .content {
   padding: 0px 1.5625vw;
   padding-bottom: 1.0417vw;
+  height: 100%;
+  overflow-y: auto;
+
+  // 内容超出可视高度时用细滚动条，避免出现占宽的粗滚动框
+  scrollbar-width: thin;
+  scrollbar-color: var(--pulse-bg2) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--pulse-bg2);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
 }
 
 .cardItem {

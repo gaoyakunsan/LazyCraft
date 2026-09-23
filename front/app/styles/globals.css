@@ -434,3 +434,22 @@ html[data-changing-theme] * {
   pointer-events: none !important;
   transition: opacity 0.15s ease;
 }
+/* 内容超出可视高度时用细滚动条，避免出现占宽的粗滚动框（各列表页通用） */
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--pulse-bg2) transparent;
+}
+
+.thin-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: var(--pulse-bg2);
+  border-radius: 3px;
+}
+
+.thin-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}

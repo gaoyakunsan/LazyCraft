@@ -75,7 +75,7 @@ const Database = () => {
   const onSearchApp = (e) => {
     setSName(e)
   }
-  return <div className="px-[30px] pt-5">
+  return <div className="px-[30px] pt-5 h-full flex flex-col overflow-hidden">
     <div className='flex justify-end'>
       <Button type='primary' className="mb-5" onClick={() => toggle()}>新建数据库</Button>
     </div>
@@ -93,6 +93,7 @@ const Database = () => {
       />
     </div>
 
+    <div className="flex-1 min-h-0 overflow-y-auto thin-scroll">
     <Table rowKey="id" {...tableProps} pagination={pagination} loading={loading}>
       <Column title="序号" render={(text, record, index) => <div>{(tableProps?.pagination?.current - 1) * tableProps?.pagination?.pageSize + index + 1}</div>} />
       <Column title="数据库名称" dataIndex="name" />
@@ -118,6 +119,7 @@ const Database = () => {
         )
       }} />
     </Table>
+    </div>
 
     <Modal
       title="新建数据库"

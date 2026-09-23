@@ -378,6 +378,8 @@ const ModelAdjust = () => {
         </Form.Item>
         <Input.Search allowClear onChange={onChange} value={name} onSearch={onSearch} style={{ width: 270 }} placeholder='请输入任务名称' />
       </div>
+    </div>
+    <div className={styles.listWrap}>
       <Table rowKey="id" scroll={{ x: 'max-content' }} columns={columns} {...tableProps} />
     </div>
   </div>

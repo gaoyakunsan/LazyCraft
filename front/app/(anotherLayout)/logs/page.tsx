@@ -189,7 +189,7 @@ const Logs = () => {
             </Flex>
           </Form>
         </div>
-        <div className='mt-[20px]'>
+        <div className='mt-[20px] flex-1 min-h-0 overflow-y-auto thin-scroll'>
           <Table
             key={resetKey}
             rowKey='id'

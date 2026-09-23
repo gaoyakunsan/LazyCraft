@@ -95,7 +95,7 @@ const Articles = () => {
         <div className={styles.topWrap}>
           <Button type='primary' onClick={handleCreate}>创建文档</Button>
         </div>
-        <div className='mt-[20px]'>
+        <div className='mt-[20px] flex-1 min-h-0 overflow-y-auto thin-scroll'>
           <Table
             rowKey='id'
             columns={columns}

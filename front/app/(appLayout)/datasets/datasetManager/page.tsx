@@ -173,7 +173,7 @@ const DataSetManager = () => {
   const onSearchApp = (e) => {
     setSName(e)
   }
-  return <div className='page'>
+  return <div className={`page ${styles.wrap}`}>
     <div className={styles.pageTop}>
       <ClassifyMode selectLabels={selectLabels} setSelectLabels={setSelectLabels} type='dataset' />
       <Button type='primary' onClick={handleCreate}>添加数据集</Button>

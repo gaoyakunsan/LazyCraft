@@ -9,6 +9,41 @@
   .tabsWrap {
     flex: 1;
     min-height: 0;
+    display: flex;
+    flex-direction: column;
+
+    // 打通 antd Tabs 高度链,让 tab 内容撑满剩余高度(过滤项留在外面,仅列表滚动)
+    :global(.ant-tabs) {
+      flex: 1;
+      min-height: 0;
+    }
+
+    :global(.ant-tabs-content-holder) {
+      flex: 1;
+      min-height: 0;
+    }
+
+    :global(.ant-tabs-content) {
+      height: 100%;
+    }
+
+    :global(.ant-tabs-tabpane) {
+      height: 100%;
+    }
+  }
+
+  .pageTop {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    // padding-bottom: 1.0417vw;
+
+  }
+
+  .content {
+    // padding: 20px 120px;
+    flex: 1;
+    min-height: 0;
     overflow-y: auto;
 
     // 内容超出可视高度时用细滚动条，避免出现占宽的粗滚动框
@@ -28,18 +63,6 @@
     &::-webkit-scrollbar-track {
       background: transparent;
     }
-  }
-
-  .pageTop {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    // padding-bottom: 1.0417vw;
-
-  }
-
-  .content {
-    // padding: 20px 120px;
   }
 
   .cardItem {
