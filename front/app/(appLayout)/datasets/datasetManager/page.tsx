@@ -197,7 +197,9 @@ const DataSetManager = () => {
           />
         </div>
       </div>
+    </div>
 
+    <div className={styles.listWrap}>
       <Table rowKey="id" columns={columns} {...tableProps} tableLayout="fixed" />
     </div>
 

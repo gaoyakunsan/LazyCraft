@@ -6,13 +6,17 @@
   display: flex;
   flex-direction: column;
 
+  // 内层 tabsWrap: 仅包过滤行,自然高度,不参与拉伸
   .tabsWrap {
-    flex: 1;
-    min-height: 0;
     display: flex;
     flex-direction: column;
+  }
 
-    // 打通 antd Tabs 高度链,让 tab 内容撑满剩余高度(过滤项留在外面,仅列表滚动)
+  // 外层 tabsMain: 承担 Tabs 高度链,让 tab 内容撑满剩余高度
+  .tabsMain {
+    flex: 1;
+    min-height: 0;
+
     :global(.ant-tabs) {
       flex: 1;
       min-height: 0;

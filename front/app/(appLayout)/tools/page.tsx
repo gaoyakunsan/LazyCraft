@@ -669,7 +669,7 @@ const Tools = () => {
 
   return (
     <div className={styles.toolWrap}>
-      <div className={styles.tabsWrap}>
+      <div className={`${styles.tabsWrap} ${styles.tabsMain}`}>
         <Tabs
           activeKey={currentTab}
           type="card"
