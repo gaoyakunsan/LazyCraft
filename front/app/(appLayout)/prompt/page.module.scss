@@ -2,14 +2,20 @@
   width: calc(100% - 48px);
   margin: 0 auto;
   padding-top: 1.5625vw;
-  height: 42.7083vw;
-  // overflow-y: auto;
-  // overflow-y: overlay;
-  // scrollbar-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
-  // ::-webkit-scrollbar {
-  //   display: none;
-  // }
+  // 列表被 antd Spin 包裹,两层包装 div 需放开高度限制,滚动才能收进 scrollWrap
+  :global(.ant-spin-nested-loading) {
+    flex: 1;
+    min-height: 0;
+  }
+
+  :global(.ant-spin-container) {
+    height: 100%;
+    padding-top: 1.0417vw;
+  }
 
   .top {
     display: flex;
@@ -18,10 +24,9 @@
   }
 
   .scrollWrap {
-    height: 40.625vw;
+    height: 100%;
     overflow-y: auto;
     scrollbar-width: none;
-    margin-top: 1.0417vw;
 
     ::-webkit-scrollbar {
       display: none;
