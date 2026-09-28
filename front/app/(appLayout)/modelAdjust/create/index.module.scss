@@ -8,7 +8,8 @@
   padding-bottom: 40px;
 
   .createWrap {
-    width: 87.5vw;
+    // 旧顶栏布局的 87.5vw 在左侧栏布局下超出内容区,产生横向滚动条
+    width: calc(100% - 60px);
     margin: 0 auto;
 
     .breadcrumb {
