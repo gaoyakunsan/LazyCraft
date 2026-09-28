@@ -1,12 +1,12 @@
 'use client'
 import React, { useCallback, useEffect, useState } from 'react'
-import { Breadcrumb, Button, Card, Divider, Form, Input, Radio, Space, Spin } from 'antd'
+import { Button, Card, Divider, Form, Input, Radio, Space, Spin } from 'antd'
 import { useDebounceFn } from 'ahooks'
 // import useUrlState from '@ahooksjs/use-url-state';
 import { useSearchParams } from 'next/navigation'
-import Link from 'next/link'
 import InfoTitle from '../../../components/InfoTitle'
 import styles from './index.module.scss'
+import BackButton from '@/app/components/base/back-button'
 import Toast, { ToastTypeEnum } from '@/app/components/base/flash-notice'
 import { getAdjustInfo, getResultInfo, saveChoose } from '@/infrastructure/api/modelTest'
 
@@ -105,16 +105,7 @@ const Dimension = (req) => {
       <div className={styles.dimensionWrap}>
         <div className={styles.container}>
           <div className={styles.breadcrumb}>
-            <Breadcrumb
-              items={[
-                {
-                  title: <Link href='/modelWarehouse/modelTest'>模型测评</Link>,
-                },
-                {
-                  title: option_select_id === 'view' ? '查看' : '标注',
-                },
-              ]}
-            />
+            <BackButton label='返回' fallback='/modelWarehouse/modelTest' />
           </div>
           <Card style={{ marginBottom: 20 }} type='inner' title={<div className={styles.title} >
             基础信息

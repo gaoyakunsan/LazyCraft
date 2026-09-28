@@ -1,10 +1,10 @@
 'use client'
 import React, { useCallback, useEffect, useState } from 'react'
-import { Breadcrumb, Button, Card, Table } from 'antd'
+import { Button, Card, Table } from 'antd'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
 import InfoTitle from '../../../components/InfoTitle'
 import styles from './index.module.scss'
+import BackButton from '@/app/components/base/back-button'
 import { getAdjustInfo } from '@/infrastructure/api/modelAdjust'
 
 const Dimension = (req) => {
@@ -77,16 +77,7 @@ const Dimension = (req) => {
     <div className={styles.testReportWrap}>
       <div className={styles.container}>
         <div className={styles.breadcrumb}>
-          <Breadcrumb
-            items={[
-              {
-                title: <Link href='/modelWarehouse/modelTest'>模型测评</Link>,
-              },
-              {
-                title: '测评报告',
-              },
-            ]}
-          />
+          <BackButton label='返回' fallback='/modelWarehouse/modelTest' />
         </div>
         <Card style={{ marginBottom: 20 }} type='inner' title={<div className={styles.title} >
           基础信息
