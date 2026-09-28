@@ -22,9 +22,9 @@
   }
 
   .saveWrap {
-    position: fixed;
+    position: sticky;
     bottom: 0;
-    width: calc(100% - 180px);
+    width: 100%;
     text-align: right;
     background: #fff;
     z-index: 3;

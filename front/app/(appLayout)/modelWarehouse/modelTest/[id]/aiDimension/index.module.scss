@@ -115,10 +115,12 @@
   }
 
   .saveWrap {
-    position: fixed;
+    position: sticky;
     bottom: 0;
-    width: calc(100% - 249px);
+    margin: 0 (-1.5625vw);
+    padding: 0 1.5625vw;
     text-align: right;
     background: #fff;
+    z-index: 3;
   }
 }
