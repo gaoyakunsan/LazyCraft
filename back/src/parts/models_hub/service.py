@@ -453,7 +453,11 @@ class ModelService:
         # 验证 api_key 和 proxy_url 至少有一个存在
         if not (api_key or proxy_url):
             raise CommonError("api_key 和 proxy_url 不能同时为空，至少需要提供一个")
-        
+
+        # 去除首尾空白字符，避免粘贴时携带换行或空格导致认证失败
+        if api_key:
+            api_key = api_key.strip()
+
         # 只有当 api_key 存在且非空时，才进行验证
         if api_key and api_key.strip():
             res = False
@@ -1228,6 +1232,8 @@ class ModelService:
         engine = LightEngine()
         res = False
         try:
+            # 去除首尾空白字符，避免粘贴时携带换行或空格导致认证失败
+            api_key = api_key.strip()
             split_keys = api_key.split(":")
             secret_key = None
             origin_key = api_key
