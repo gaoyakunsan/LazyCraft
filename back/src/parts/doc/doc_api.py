@@ -28,6 +28,7 @@ from utils.util_storage import storage
 
 from . import fields
 from .doc_service import DocService
+from .image_bundle import load_image
 from .utils import get_content_type
 
 
@@ -202,6 +203,9 @@ class DocImage(Resource):
     def get(self, subpath):
         """获取文档图片。
 
+        优先从 storage 读取; storage 中缺失时回退到代码包中的同名图片,
+        避免帮助文档图片因存储被清理而丢失。
+
         Args:
             subpath (str): 图片文件路径
 
@@ -210,9 +214,11 @@ class DocImage(Resource):
         """
         file_path = subpath
         file_name = os.path.basename(file_path)
-        gen = storage.load_stream(file_path)
+        data = load_image(file_path)
+        if data is None:
+            return Response("Image not found", status=404)
         return Response(
-            gen,
+            data,
             content_type=get_content_type(file_name),
             headers={"Content-Disposition": f"inline; {file_name}"},
         )
@@ -263,9 +269,11 @@ class DocView(Resource):
             if subpath and 'doc_image/' in subpath:
                 img_path = subpath[subpath.index('doc_image/'):]
                 file_name = os.path.basename(img_path)
-                gen = storage.load_stream(img_path)
+                data = load_image(img_path)
+                if data is None:
+                    return Response("Image not found", status=404)
                 return Response(
-                    gen,
+                    data,
                     content_type=get_content_type(file_name),
                     headers={'Content-Disposition': f'inline; {file_name}'},
                 )

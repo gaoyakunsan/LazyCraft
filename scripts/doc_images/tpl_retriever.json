@@ -1,0 +1,300 @@
+{
+ "id": "1752224829748",
+ "type": "custom",
+ "data": {
+  "type": "universe",
+  "title": "RAG召回器-1",
+  "desc": "从文档中筛选出和用户查询相关的文档",
+  "config__input_ports": [
+   {
+    "id": "target",
+    "param_source_shape": [
+     {
+      "id": "output",
+      "variable_name": "output",
+      "variable_type": "str",
+      "variable_mode": "mode-line",
+      "variable_name_readonly": false,
+      "variable_type_readonly": false,
+      "variable_mode_readonly": false,
+      "variable_type_options": [
+       "str",
+       "list"
+      ],
+      "sourceNodeTitle": "问题改写"
+     }
+    ],
+    "param_check_success": true,
+    "param_input_success": [
+     {
+      "id": "query",
+      "variable_name": "query",
+      "variable_type": "str",
+      "variable_mode": "mode-line",
+      "variable_name_readonly": true,
+      "variable_type_readonly": true,
+      "variable_mode_readonly": false,
+      "variable_type_options": [
+       "str"
+      ],
+      "variable_file_type": "default"
+     }
+    ]
+   }
+  ],
+  "config__output_ports": [
+   {
+    "id": "source"
+   }
+  ],
+  "config__parameters": [
+   {
+    "name": "config__input_shape",
+    "type": "config__input_shape",
+    "label": "输入参数",
+    "effects": "",
+    "min": 1,
+    "max": 1
+   },
+   {
+    "name": "config__output_shape",
+    "type": "config__output_shape",
+    "label": "输出参数",
+    "effects": "",
+    "min": 1,
+    "max": 1
+   },
+   {
+    "name": "config__input_ports",
+    "type": "config__input_ports",
+    "label": "输入端点",
+    "effects": "",
+    "tooltip": "将取期望的字段"
+   },
+   {
+    "label": "知识库",
+    "name": "payload__doc",
+    "type": "document_resource_selector",
+    "required": true,
+    "linkageObj": {
+     "key": "payload__group_name",
+     "insertKeyFromValueKey": "payload__activated_groups"
+    }
+   },
+   {
+    "label": "文档切片组名",
+    "name": "payload__group_name",
+    "type": "select",
+    "required": true,
+    "tooltip": "文档预处理的存储方式，不同方式适用于不同文档",
+    "optionsTip": "从知识库中选择可用的文档切片组（包含激活的内置组和自定义组）",
+    "echoOptionsLinkageObj": {
+     "formKey": "payload__doc",
+     "getValueKey": "merged_groups",
+     "type": "document"
+    }
+   },
+   {
+    "label": "目标group",
+    "name": "payload__target",
+    "type": "retriever_select_target",
+    "required": false,
+    "tooltip": "用户内容与存储文段的匹配方式，不同方式适用于不同查询场景",
+    "optionsTip": "从知识库中选择可用的目标切片组，会过滤掉已选择的文档切片组"
+   },
+   {
+    "label": "输出结果数",
+    "name": "payload__topk",
+    "type": "number",
+    "required": true,
+    "defaultValue": 6,
+    "precision": 0,
+    "min": 1
+   },
+   {
+    "label": "输出格式",
+    "name": "payload__output_format",
+    "type": "select",
+    "allowClear": false,
+    "options": [
+     {
+      "label": "节点",
+      "value": null
+     },
+     {
+      "label": "内容",
+      "value": "content"
+     },
+     {
+      "label": "字典",
+      "value": "dict"
+     }
+    ],
+    "defaultValue": null,
+    "watch": [
+     {
+      "conditions": [
+       {
+        "value": "content",
+        "operator": "==="
+       }
+      ],
+      "actions": [
+       {
+        "key": "config__parameters.9.hidden",
+        "value": false
+       }
+      ]
+     },
+     {
+      "conditions": [
+       {
+        "value": "content",
+        "operator": "!=="
+       }
+      ],
+      "actions": [
+       {
+        "key": "config__parameters.9.hidden",
+        "value": true
+       },
+       {
+        "key": "payload__join",
+        "value": false
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "label": "join",
+    "name": "payload__join",
+    "type": "select",
+    "hidden": true,
+    "required": false,
+    "options": [
+     {
+      "label": "False",
+      "value": false
+     },
+     {
+      "label": "True",
+      "value": true
+     }
+    ],
+    "defaultValue": false,
+    "watch": [
+     {
+      "conditions": [
+       {
+        "value": true
+       }
+      ],
+      "actions": [
+       {
+        "key": "config__output_shape",
+        "value": [
+         {
+          "id": "output",
+          "variable_name": "output",
+          "variable_type": "str",
+          "variable_mode": "mode-line",
+          "variable_name_readonly": true,
+          "variable_type_readonly": true,
+          "variable_mode_readonly": false,
+          "variable_type_options": [
+           "str"
+          ],
+          "variable_file_type": "default"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "conditions": [
+       {
+        "value": false
+       }
+      ],
+      "actions": [
+       {
+        "key": "config__output_shape",
+        "value": [
+         {
+          "id": "output",
+          "variable_name": "output",
+          "variable_type": "list",
+          "variable_mode": "mode-line",
+          "variable_name_readonly": true,
+          "variable_type_readonly": true,
+          "variable_mode_readonly": false,
+          "variable_type_options": [
+           "list"
+          ],
+          "variable_file_type": "default"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "config__input_shape": [
+   {
+    "id": "query",
+    "variable_name": "query",
+    "variable_type": "str",
+    "variable_mode": "mode-line",
+    "variable_name_readonly": true,
+    "variable_type_readonly": true,
+    "variable_mode_readonly": false,
+    "variable_type_options": [
+     "str"
+    ],
+    "variable_file_type": "default"
+   }
+  ],
+  "config__output_shape": [
+   {
+    "id": "output",
+    "variable_name": "output",
+    "variable_type": "list",
+    "variable_mode": "mode-line",
+    "variable_name_readonly": true,
+    "variable_type_readonly": true,
+    "variable_mode_readonly": false,
+    "variable_type_options": [
+     "list"
+    ],
+    "variable_file_type": "default"
+   }
+  ],
+  "name": "retriever",
+  "classification": "function-module",
+  "payload__kind": "Retriever",
+  "title_en": "Retriver",
+  "config__can_run_by_single": true,
+  "about": "RAG模块的召回器",
+  "payload__topk": 6,
+  "payload__output_format": null,
+  "payload__join": false,
+  "selected": false,
+  "payload__group_name": "Group 1",
+  "payload__doc": "resource_30473843_10a4_4166_89fe_136e9daa2ecc"
+ },
+ "position": {
+  "x": 474.9593150150556,
+  "y": 315.74224438184837
+ },
+ "targetPosition": "left",
+ "sourcePosition": "right",
+ "positionAbsolute": {
+  "x": 474.9593150150556,
+  "y": 315.74224438184837
+ },
+ "width": 194,
+ "height": 91,
+ "selected": false
+}

@@ -65,6 +65,7 @@ class MyApp:
         init_websocket(self.app)
         model_hub_websocket(self.app)
         self.initialize_app_restart()
+        self.initialize_doc_images()
 
     def create_flask_app_with_configs(self) -> Flask:
         app = Flask(__name__)
@@ -133,21 +134,35 @@ class MyApp:
 
     def initialize_app_restart(self):
         """初始化应用重启功能。
-        
+
         在程序启动时重启所有已启动的应用。
         """
         try:
             # 在应用上下文中执行重启操作
             with self.app.app_context():
                 from parts.app.app_restart_service import AppRestartService
-                
+
                 restart_service = AppRestartService()
                 result = restart_service.restart_all_running_apps()
-                
+
                 logging.info(f"应用重启初始化完成: {result}")
-                
+
         except Exception as e:
             logging.error(f"应用重启初始化失败: {e}")
+
+    def initialize_doc_images(self):
+        """启动时同步帮助文档图片。
+
+        将代码包中随包发布的文档图片回填到 storage, 保证帮助文档
+        图片不因存储清理而丢失。
+        """
+        try:
+            with self.app.app_context():
+                from parts.doc.image_bundle import sync_bundled_images
+
+                sync_bundled_images()
+        except Exception as e:
+            logging.error(f"帮助文档图片同步失败: {e}")
 
 
 # Flask-Login configuration

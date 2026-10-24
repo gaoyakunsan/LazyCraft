@@ -1,0 +1,92 @@
+{
+ "id": "__end__",
+ "type": "custom",
+ "data": {
+  "type": "end",
+  "title": "结束",
+  "desc": "",
+  "payload__kind": "__end__",
+  "outputs": [],
+  "config__input_ports": [
+   {
+    "id": "target",
+    "param_source_shape": [
+     {
+      "id": "output",
+      "variable_name": "output",
+      "variable_type": "str",
+      "variable_mode": "mode-line",
+      "variable_name_readonly": true,
+      "variable_type_readonly": true,
+      "variable_mode_readonly": false,
+      "variable_type_options": [
+       "str"
+      ],
+      "variable_file_type": "default",
+      "sourceNodeTitle": "智能知识管家"
+     }
+    ],
+    "param_check_success": true,
+    "param_input_error": [
+     {
+      "id": "a3dc560a-f326-46a7-9d80-2d7af5e46d92",
+      "variable_mode": "mode-line",
+      "variable_name": "output",
+      "error_type": "type_mismatch",
+      "source_info": {
+       "node_title": "大模型-1",
+       "variable_name": "output",
+       "variable_type": "str"
+      }
+     }
+    ],
+    "param_input_success": [
+     {
+      "id": "a3dc560a-f326-46a7-9d80-2d7af5e46d92",
+      "variable_mode": "mode-line",
+      "variable_name": "output",
+      "variable_type": "str",
+      "payload__batch_flag": false
+     }
+    ]
+   }
+  ],
+  "config__output_ports": [],
+  "config__input_shape": [
+   {
+    "id": "a3dc560a-f326-46a7-9d80-2d7af5e46d92",
+    "variable_mode": "mode-line",
+    "variable_name": "output",
+    "variable_type": "str",
+    "payload__batch_flag": false
+   }
+  ],
+  "config__parameters": [
+   {
+    "name": "config__input_shape",
+    "type": "config__input_shape",
+    "label": "参数"
+   },
+   {
+    "name": "config__input_ports",
+    "type": "config__input_ports",
+    "label": "输入端点",
+    "tooltip": "输入参数的数量，需保证与输入参数数量保持一致"
+   }
+  ],
+  "selected": false
+ },
+ "position": {
+  "x": 1465.438119959877,
+  "y": 486.021434636815
+ },
+ "targetPosition": "left",
+ "sourcePosition": "right",
+ "positionAbsolute": {
+  "x": 1465.438119959877,
+  "y": 486.021434636815
+ },
+ "width": 194,
+ "height": 56,
+ "selected": false
+}

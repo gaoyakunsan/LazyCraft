@@ -1,0 +1,48 @@
+{
+ "id": "__start__",
+ "type": "custom",
+ "data": {
+  "type": "start",
+  "title": "开始",
+  "desc": "",
+  "payload__kind": "__start__",
+  "variables": [],
+  "config__input_ports": [],
+  "config__output_shape": [
+   {
+    "id": "015057c6-7718-44f7-be42-735bc83542fa",
+    "variable_mode": "mode-line",
+    "variable_name": "input",
+    "variable_type": "str",
+    "payload__batch_flag": false
+   }
+  ],
+  "config__output_ports": [
+   {
+    "id": "source"
+   }
+  ],
+  "config__parameters": [
+   {
+    "name": "config__output_shape",
+    "type": "config__output_shape",
+    "label": "参数",
+    "tooltip": "定义工作流需要的输入参数，可以选择多种格式"
+   }
+  ],
+  "selected": false
+ },
+ "position": {
+  "x": -42.876535109738825,
+  "y": 493.0925023513006
+ },
+ "targetPosition": "left",
+ "sourcePosition": "right",
+ "positionAbsolute": {
+  "x": -42.876535109738825,
+  "y": 493.0925023513006
+ },
+ "width": 194,
+ "height": 56,
+ "selected": false
+}
